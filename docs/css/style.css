@@ -118,13 +118,19 @@ a:hover {
   margin-top: 60px;
 }
 
+.faq-list li {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
 .faq-list p {
   margin: 0;
 }
 
 .faq-question {
-  margin-bottom: 12px;
-  font-size: 1.05rem;
+  margin-bottom: 0;
+  font-size: 1.1rem;
 }
 
 .faq-divider {
