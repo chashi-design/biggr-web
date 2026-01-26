@@ -8,11 +8,12 @@
 </head>
 <body>
   <div class="container">
-    <header class="app-header">
+        <header class="app-header">
       <a class="app-brand" href="./index.html">
         <img src="../assets/app-icon.png" alt="Biggr app icon" class="app-icon">
         <span class="app-name">Biggr</span>
       </a>
+      <a class="app-cta" href="https://apps.apple.com/app/id6758259008">Download on the App Store</a>
     </header>
 
     <h1>FAQ</h1>
@@ -69,14 +70,44 @@
         <p>Open the Workouts tab, select the workout you want, and tap the ☆ icon in the top right.</p>
       </li>
     </ul>
+    <hr class="footer-divider">
 
-        <footer class="site-footer">
-      <nav class="lang-switch" aria-label="Language">
-        <a href="../ja/faq.html" lang="ja">JP</a>
-        <span class="lang-divider" aria-hidden="true">/</span>
-        <a href="./faq.html" lang="en" aria-current="page">EN</a>
-      </nav>
-      <p class="footer-meta">© 2026 Biggr App</p>
+    <footer class="site-footer">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <img src="../assets/app-icon.png" alt="Biggr app icon" class="footer-icon">
+          <div class="footer-lang">
+            <p class="footer-title">Language</p>
+            <select id="lang-select" class="footer-select" aria-label="Language" onchange="location.href=this.value;">
+              <option value="../ja/faq.html">日本語</option>
+              <option value="./faq.html" selected>English</option>
+            </select>
+          </div>
+        </div>
+        <div class="footer-column footer-about">
+          <p class="footer-title">About</p>
+          <div class="footer-list">
+            <a href="https://apps.apple.com/app/id6758259008">Download on the App Store</a>
+          </div>
+        </div>
+        <div class="footer-column footer-support">
+          <p class="footer-title">Support</p>
+          <div class="footer-list">
+            <a href="./faq.html">FAQ</a>
+            <a href="https://forms.gle/xawttwzNAxQLWsqz7" target="_blank" rel="noopener">Contact</a>
+          </div>
+        </div>
+        <div class="footer-column footer-legal">
+          <p class="footer-title">Legal</p>
+          <div class="footer-list">
+            <a href="./privacypolicy.html">Privacy Policy</a>
+            <a href="./terms.html">Terms of Service</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-meta">© 2026 Biggr App</p>
+      </div>
     </footer>
   </div>
 </body>
