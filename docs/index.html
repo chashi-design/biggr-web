@@ -1,74 +1,25 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Biggr | Your workout, simply logged.</title>
+  <title>Redirecting to Biggr</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="./css/style.css">
+  <link rel="alternate" href="https://biggrapp.com/ja/" hreflang="ja">
+  <link rel="alternate" href="https://biggrapp.com/en/" hreflang="en">
+  <link rel="alternate" href="https://biggrapp.com/" hreflang="x-default">
+  <script>
+    (function () {
+      var lang = (navigator.languages && navigator.languages[0]) || navigator.language || "";
+      var isJapanese = /^ja/i.test(lang);
+      window.location.replace(isJapanese ? "./ja/" : "./en/");
+    })();
+  </script>
 </head>
 <body>
-  <div class="container">
-    <header class="app-header">
-      <a class="app-brand" href="./index.html">
-        <img src="./assets/app-icon.png" alt="Biggr app icon" class="app-icon">
-        <span class="app-name">Biggr</span>
-      </a>
-    </header>
-
-    <h2>プライバシーポリシー - Privacy Policy</h2>
-    <ul>
-      <li>
-        <a href="./ja/privacypolicy.html" lang="ja">
-          プライバシーポリシー（日本語）
-        </a>
-      </li>
-      <li>
-        <a href="./en/privacypolicy.html" lang="en">
-          Privacy Policy (English)
-        </a>
-      </li>
-    </ul>
-
-    <h2>利用規約 - Terms of Service</h2>
-    <ul>
-      <li>
-        <a href="./ja/terms.html" lang="ja">
-          利用規約（日本語）
-        </a>
-      </li>
-      <li>
-        <a href="./en/terms.html" lang="en">
-          Terms of Service (English)
-        </a>
-      </li>
-    </ul>
-
-    <h2>FAQ</h2>
-    <ul>
-      <li>
-        <a href="./ja/faq.html" lang="ja">
-          FAQ（日本語）
-        </a>
-      </li>
-      <li>
-        <a href="./en/faq.html" lang="en">
-          FAQ (English)
-        </a>
-      </li>
-    </ul>
-
-    <h2>お問い合わせ - Contact us</h2>
-    <ul>
-      <li>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfn-QEsVG_0EebNwjwPuYmaeMiJFlMFYcnPHDI1CLOmEyYKeA/viewform" lang="ja">
-          お問い合わせ / Contact us
-        </a>
-      </li>
-    </ul>
-
-    <footer>
-      © 2026 Biggr App
-    </footer>
-  </div>
+  <p>If you are not redirected, choose your language:</p>
+  <ul>
+    <li><a href="./ja/" lang="ja">日本語</a></li>
+    <li><a href="./en/" lang="en">English</a></li>
+  </ul>
 </body>
 </html>
