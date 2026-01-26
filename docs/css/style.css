@@ -13,6 +13,8 @@
   --chip-bg-hover: #e6e6e6;
   --select-border: #d6d6d6;
   --focus-ring: rgba(0, 77, 255, 0.35);
+  --cta-bg: #111111;
+  --cta-text: #ffffff;
 }
 
 * {
@@ -23,7 +25,7 @@
   :root {
     --primary: #4D7DFF;
     --bg: #0f1115;
-    --surface: #14181f;
+    --surface: #0f1115;
     --text: #e7ebf2;
     --text-strong: #f5f7fa;
     --text-secondary: #c5cbd6;
@@ -35,6 +37,8 @@
     --chip-bg-hover: #242a33;
     --select-border: #303844;
     --focus-ring: rgba(77, 125, 255, 0.4);
+    --cta-bg: #ffffff;
+    --cta-text: #111111;
   }
 }
 
@@ -122,8 +126,8 @@ a:hover {
   justify-content: center;
   padding: 8px 14px;
   border-radius: 999px;
-  background: var(--primary);
-  color: #ffffff;
+  background: var(--cta-bg);
+  color: var(--cta-text);
   font-size: 0.9rem;
   font-weight: 600;
   text-decoration: none;
