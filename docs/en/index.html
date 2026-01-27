@@ -8,7 +8,7 @@
 </head>
 <body>
   <div class="container">
-        <header class="app-header">
+    <header class="app-header">
       <a class="app-brand" href="./index.html">
         <img src="../assets/app-icon.png" alt="Biggr app icon" class="app-icon">
         <span class="app-name">Biggr</span>
@@ -16,44 +16,94 @@
       <a class="app-cta" href="https://apps.apple.com/app/id6758259008">Get the app</a>
     </header>
 
-    <h1>Biggr</h1>
-    <p>Workout logging and review for iOS.</p>
+    <section class="hero">
+      <div class="hero-content">
+        <h1 class="hero-title">Log workouts without hesitation</h1>
+        <p class="hero-copy">
+          Biggr is a simple, easy-to-use workout log app.<br>You can log from the calendar in seconds, review with a single tap, and save favorite workouts. iCloud sync makes it easy to carry your data over when you switch devices.
+        </p>
+        <div class="hero-actions">
+          <a class="app-store-link" href="https://apps.apple.com/app/id6758259008">
+            <img
+              class="app-store-badge"
+              src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
+              alt="Download on the App Store">
+          </a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <picture class="hero-mock">
+          <source srcset="../assets/hero-en-dark.png" media="(prefers-color-scheme: dark)">
+          <img src="../assets/hero-en-light.png" alt="Biggr screen preview">
+        </picture>
+      </div>
+    </section>
 
-    <h2>Privacy Policy</h2>
-    <ul>
-      <li>
-        <a href="./privacypolicy.html" lang="en">
-          Privacy Policy
-        </a>
-      </li>
-    </ul>
+    <section class="section" id="features">
+      <div class="section-header">
+        <h2 class="section-title">Features</h2>
+        <p class="section-lead">Designed so you can understand each step at a glance.</p>
+      </div>
+      <div class="feature-grid">
+        <article class="feature-card">
+          <div class="feature-shot" role="img" aria-label="Calendar logging screen"></div>
+          <h3 class="feature-title">Log from the calendar</h3>
+          <p class="feature-copy">Pick a date and start logging in seconds.</p>
+        </article>
+        <article class="feature-card">
+          <div class="feature-shot" role="img" aria-label="History overview screen"></div>
+          <h3 class="feature-title">Review instantly</h3>
+          <p class="feature-copy">See past workouts at a glance and track changes.</p>
+        </article>
+        <article class="feature-card">
+          <div class="feature-shot" role="img" aria-label="Workout search and favorites screen"></div>
+          <h3 class="feature-title">Search and save workouts</h3>
+          <p class="feature-copy">Keep favorites handy to shorten input.</p>
+        </article>
+      </div>
+    </section>
 
-    <h2>Terms of Service</h2>
-    <ul>
-      <li>
-        <a href="./terms.html" lang="en">
-          Terms of Service
-        </a>
-      </li>
-    </ul>
+    <section class="section" id="trust">
+      <div class="section-header">
+        <h2 class="section-title">Trust &amp; privacy</h2>
+        <p class="section-lead">Your training data stays simple and transparent.</p>
+      </div>
+      <ul class="trust-list">
+        <li>Your data is stored on your device and iCloud. We do not send it to our own servers.</li>
+        <li>iCloud sync can be toggled on or off in iOS Settings.</li>
+        <li>See details in the <a href="./privacypolicy.html">Privacy Policy</a>.</li>
+      </ul>
+    </section>
 
-    <h2>FAQ</h2>
-    <ul>
-      <li>
-        <a href="./faq.html" lang="en">
-          FAQ
-        </a>
-      </li>
-    </ul>
+    <section class="section" id="faq">
+      <div class="section-header">
+        <h2 class="section-title">FAQ</h2>
+        <p class="section-lead">Quick answers to common questions.</p>
+      </div>
+      <ul class="faq-list faq-compact">
+        <li>
+          <p class="faq-question"><strong>Can I change the weight unit?</strong></p>
+          <p>Yes. Both kg and lb are supported in Settings.</p>
+        </li>
+        <li>
+          <p class="faq-question"><strong>How do I delete a log?</strong></p>
+          <p>Open the record date and swipe left on the workout list.</p>
+        </li>
+        <li>
+          <p class="faq-question"><strong>What is iCloud backup?</strong></p>
+          <p>It keeps your logs in iCloud so they transfer with device changes.</p>
+        </li>
+        <li>
+          <p class="faq-question"><strong>I can’t find a workout to log.</strong></p>
+          <p>Please contact us. <a href="https://forms.gle/g3vNqFmwHUp5SP5a6" target="_blank" rel="noopener">Open the request form</a>.</p>
+        </li>
+        <li>
+          <p class="faq-question"><strong>How do I add a workout to favorites?</strong></p>
+          <p>Select a workout in the Workouts tab and tap the ☆ icon.</p>
+        </li>
+      </ul>
+    </section>
 
-    <h2>Contact</h2>
-    <ul>
-      <li>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfn-QEsVG_0EebNwjwPuYmaeMiJFlMFYcnPHDI1CLOmEyYKeA/viewform" lang="en">
-          Contact form
-        </a>
-      </li>
-    </ul>
     <hr class="footer-divider">
 
     <footer class="site-footer">

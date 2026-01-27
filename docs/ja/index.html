@@ -8,7 +8,7 @@
 </head>
 <body>
   <div class="container">
-        <header class="app-header">
+    <header class="app-header">
       <a class="app-brand" href="./index.html">
         <img src="../assets/app-icon.png" alt="Biggr app icon" class="app-icon">
         <span class="app-name">Biggr</span>
@@ -16,44 +16,94 @@
       <a class="app-cta" href="https://apps.apple.com/app/id6758259008">アプリを入手</a>
     </header>
 
-    <h1>Biggr</h1>
-    <p>トレーニングログを記録・閲覧できるiOSアプリ。</p>
+    <section class="hero">
+      <div class="hero-content">
+        <h1 class="hero-title">迷わず、すぐに記録できる</h1>
+        <p class="hero-copy">
+          Biggr は最もシンプルで使いやすい筋トレ記録アプリです。<br>カレンダーからすぐに記録でき、履歴はワンタップで振り返れます。<br>さらに iCloud 同期に対応しているので、機種変更の際も安心してデータを引き継げます。
+        </p>
+        <div class="hero-actions">
+          <a class="app-store-link" href="https://apps.apple.com/app/id6758259008">
+            <img
+              class="app-store-badge"
+              src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
+              alt="App Storeからダウンロード">
+          </a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <picture class="hero-mock">
+          <source srcset="../assets/hero-ja-dark.png" media="(prefers-color-scheme: dark)">
+          <img src="../assets/hero-ja-light.png" alt="Biggrの画面イメージ">
+        </picture>
+      </div>
+    </section>
 
-    <h2>プライバシーポリシー</h2>
-    <ul>
-      <li>
-        <a href="./privacypolicy.html" lang="ja">
-          プライバシーポリシー
-        </a>
-      </li>
-    </ul>
+    <section class="section" id="features">
+      <div class="section-header">
+        <h2 class="section-title">機能紹介</h2>
+        <p class="section-lead">迷わず使える導線を、画面で伝える構成にしています。</p>
+      </div>
+      <div class="feature-grid">
+        <article class="feature-card">
+          <div class="feature-shot" role="img" aria-label="カレンダーから記録できる画面"></div>
+          <h3 class="feature-title">カレンダーからすぐ記録</h3>
+          <p class="feature-copy">日付を選ぶだけで記録を開始。迷いを減らします。</p>
+        </article>
+        <article class="feature-card">
+          <div class="feature-shot" role="img" aria-label="履歴を振り返る画面"></div>
+          <h3 class="feature-title">履歴をすぐ振り返り</h3>
+          <p class="feature-copy">過去の記録を一覧で確認。変化がすぐ分かります。</p>
+        </article>
+        <article class="feature-card">
+          <div class="feature-shot" role="img" aria-label="種目のお気に入りと検索画面"></div>
+          <h3 class="feature-title">種目をすぐ検索・保存</h3>
+          <p class="feature-copy">よく使う種目はお気に入りに。入力を短縮します。</p>
+        </article>
+      </div>
+    </section>
 
-    <h2>利用規約</h2>
-    <ul>
-      <li>
-        <a href="./terms.html" lang="ja">
-          利用規約
-        </a>
-      </li>
-    </ul>
+    <section class="section" id="trust">
+      <div class="section-header">
+        <h2 class="section-title">安心・信頼</h2>
+        <p class="section-lead">大切な記録を、わかりやすく扱います。</p>
+      </div>
+      <ul class="trust-list">
+        <li>データは端末内とiCloudに保存されます。開発者サーバーには送信しません。</li>
+        <li>iCloud同期は端末の設定でオン・オフを切り替えできます。</li>
+        <li><a href="./privacypolicy.html">プライバシーポリシー</a>で取り扱いを明記しています。</li>
+      </ul>
+    </section>
 
-    <h2>FAQ</h2>
-    <ul>
-      <li>
-        <a href="./faq.html" lang="ja">
-          FAQ
-        </a>
-      </li>
-    </ul>
+    <section class="section" id="faq">
+      <div class="section-header">
+        <h2 class="section-title">FAQ</h2>
+        <p class="section-lead">よくある質問を短くまとめました。</p>
+      </div>
+      <ul class="faq-list faq-compact">
+        <li>
+          <p class="faq-question"><strong>重量の単位は変更できますか？</strong></p>
+          <p>kg と lb に対応しています。設定から切り替えできます。</p>
+        </li>
+        <li>
+          <p class="faq-question"><strong>記録したデータを削除するには？</strong></p>
+          <p>記録タブで日付を選び、種目リストを左にスワイプして削除します。</p>
+        </li>
+        <li>
+          <p class="faq-question"><strong>iCloud バックアップとは何ですか？</strong></p>
+          <p>iCloudに保存して、機種変更時も記録を引き継げる仕組みです。</p>
+        </li>
+        <li>
+          <p class="faq-question"><strong>記録したい種目が見つかりません。</strong></p>
+          <p>お手数ですがお問い合わせください。<a href="https://forms.gle/g3vNqFmwHUp5SP5a6" target="_blank" rel="noopener">フォームはこちら</a>。</p>
+        </li>
+        <li>
+          <p class="faq-question"><strong>お気に入りの登録方法を教えてください。</strong></p>
+          <p>種目タブで対象を選択し、右上の ☆ アイコンで登録できます。</p>
+        </li>
+      </ul>
+    </section>
 
-    <h2>お問い合わせ</h2>
-    <ul>
-      <li>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfn-QEsVG_0EebNwjwPuYmaeMiJFlMFYcnPHDI1CLOmEyYKeA/viewform" lang="ja">
-          お問い合わせフォーム
-        </a>
-      </li>
-    </ul>
     <hr class="footer-divider">
 
     <footer class="site-footer">
