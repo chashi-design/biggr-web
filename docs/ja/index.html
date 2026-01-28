@@ -10,7 +10,7 @@
   <div class="container">
     <header class="app-header">
       <a class="app-brand" href="./index.html">
-        <img src="../assets/app-icon.png" alt="Biggr app icon" class="app-icon">
+        <img src="../assets/app/app-icon.png" alt="Biggr app icon" class="app-icon">
         <span class="app-name">Biggr</span>
       </a>
       <a class="app-cta" href="https://apps.apple.com/app/id6758259008">アプリを入手</a>
@@ -33,8 +33,8 @@
       </div>
       <div class="hero-visual">
         <picture class="hero-mock">
-          <source srcset="../assets/hero-ja-dark.png" media="(prefers-color-scheme: dark)">
-          <img src="../assets/hero-ja-light.png" alt="Biggrの画面イメージ">
+          <source srcset="../assets/hero/hero-ja-dark.png" media="(prefers-color-scheme: dark)">
+          <img src="../assets/hero/hero-ja-light.png" alt="Biggrの画面イメージ">
         </picture>
       </div>
     </section>
@@ -46,19 +46,34 @@
       </div>
       <div class="feature-grid">
         <article class="feature-card">
-          <div class="feature-shot" role="img" aria-label="カレンダーから記録できる画面"></div>
-          <h3 class="feature-title">カレンダーからすぐ記録</h3>
-          <p class="feature-copy">日付を選ぶだけで記録を開始。迷いを減らします。</p>
+          <picture class="feature-shot">
+            <source srcset="../assets/features/feature-1-ja-dark.png" media="(prefers-color-scheme: dark)">
+            <img src="../assets/features/feature-1-ja-light.png" alt="カレンダーから記録できる画面">
+          </picture>
+          <div class="feature-body">
+            <h3 class="feature-title">カレンダーからすぐ記録</h3>
+            <p class="feature-copy">日付を選ぶだけで記録を開始。迷いを減らします。</p>
+          </div>
         </article>
         <article class="feature-card">
-          <div class="feature-shot" role="img" aria-label="履歴を振り返る画面"></div>
-          <h3 class="feature-title">履歴をすぐ振り返り</h3>
-          <p class="feature-copy">過去の記録を一覧で確認。変化がすぐ分かります。</p>
+          <picture class="feature-shot">
+            <source srcset="../assets/features/feature-2-ja-dark.png" media="(prefers-color-scheme: dark)">
+            <img src="../assets/features/feature-2-ja-light.png" alt="履歴を振り返る画面">
+          </picture>
+          <div class="feature-body">
+            <h3 class="feature-title">履歴をすぐ振り返り</h3>
+            <p class="feature-copy">過去の記録を一覧で確認。変化がすぐ分かります。</p>
+          </div>
         </article>
         <article class="feature-card">
-          <div class="feature-shot" role="img" aria-label="種目のお気に入りと検索画面"></div>
-          <h3 class="feature-title">種目をすぐ検索・保存</h3>
-          <p class="feature-copy">よく使う種目はお気に入りに。入力を短縮します。</p>
+          <picture class="feature-shot">
+            <source srcset="../assets/features/feature-3-ja-dark.png" media="(prefers-color-scheme: dark)">
+            <img src="../assets/features/feature-3-ja-light.png" alt="種目のお気に入りと検索画面">
+          </picture>
+          <div class="feature-body">
+            <h3 class="feature-title">種目をすぐ検索・保存</h3>
+            <p class="feature-copy">よく使う種目はお気に入りに。入力を短縮します。</p>
+          </div>
         </article>
       </div>
     </section>
@@ -109,7 +124,7 @@
     <footer class="site-footer">
       <div class="footer-content">
         <div class="footer-brand">
-          <img src="../assets/app-icon.png" alt="Biggr app icon" class="footer-icon">
+          <img src="../assets/app/app-icon.png" alt="Biggr app icon" class="footer-icon">
           <div class="footer-lang">
             <p class="footer-title">言語</p>
             <select id="lang-select" class="footer-select" aria-label="言語" onchange="location.href=this.value;">

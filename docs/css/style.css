@@ -1,6 +1,7 @@
 :root {
   --primary: #004DFF;
   --bg: #ffffff;
+  --emphasis: #f7f7f7;
   --surface: #ffffff;
   --text: #222;
   --text-strong: #111;
@@ -27,6 +28,7 @@
   :root {
     --primary: #4D7DFF;
     --bg: #0f1115;
+    --emphasis: #1f232a;
     --surface: #0f1115;
     --text: #e7ebf2;
     --text-strong: #f5f7fa;
@@ -160,7 +162,7 @@ a:hover {
 
 .section-title {
   margin: 0;
-  font-size: clamp(1.6rem, 3vw, 2.1rem);
+  font-size: clamp(2.2rem, 4vw, 3.5rem);
   color: var(--text-strong);
 }
 
@@ -174,26 +176,38 @@ a:hover {
 
 .feature-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 24px;
+  grid-template-columns: 1fr;
+  gap: 40px;
 }
 
 .feature-card {
   display: flex;
   flex-direction: column;
   gap: 12px;
-  padding: 20px;
-  border-radius: 16px;
-  border: 1px solid var(--border);
-  background: var(--surface);
+  padding: 32px;
+  border-radius: 40px;
+  background: var(--emphasis);
 }
 
 .feature-shot {
+  display: block;
   width: 100%;
   aspect-ratio: 9 / 16;
   border-radius: 14px;
-  border: 1px solid var(--border);
-  background: var(--hero-mock-bg);
+  overflow: hidden;
+}
+
+.feature-shot img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.feature-body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .feature-title {
@@ -206,6 +220,23 @@ a:hover {
   margin: 0;
   color: var(--text-secondary);
   line-height: 1.6;
+}
+
+@media (min-width: 721px) {
+  .feature-card {
+    flex-direction: row;
+    align-items: center;
+    gap: 32px;
+  }
+
+  .feature-shot {
+    flex: 0 0 38%;
+    max-width: 360px;
+  }
+
+  .feature-body {
+    flex: 1;
+  }
 }
 
 .trust-list {

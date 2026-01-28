@@ -10,7 +10,7 @@
   <div class="container">
     <header class="app-header">
       <a class="app-brand" href="./index.html">
-        <img src="../assets/app-icon.png" alt="Biggr app icon" class="app-icon">
+        <img src="../assets/app/app-icon.png" alt="Biggr app icon" class="app-icon">
         <span class="app-name">Biggr</span>
       </a>
       <a class="app-cta" href="https://apps.apple.com/app/id6758259008">Get the app</a>
@@ -33,8 +33,8 @@
       </div>
       <div class="hero-visual">
         <picture class="hero-mock">
-          <source srcset="../assets/hero-en-dark.png" media="(prefers-color-scheme: dark)">
-          <img src="../assets/hero-en-light.png" alt="Biggr screen preview">
+          <source srcset="../assets/hero/hero-en-dark.png" media="(prefers-color-scheme: dark)">
+          <img src="../assets/hero/hero-en-light.png" alt="Biggr screen preview">
         </picture>
       </div>
     </section>
@@ -46,19 +46,34 @@
       </div>
       <div class="feature-grid">
         <article class="feature-card">
-          <div class="feature-shot" role="img" aria-label="Calendar logging screen"></div>
-          <h3 class="feature-title">Log from the calendar</h3>
-          <p class="feature-copy">Pick a date and start logging in seconds.</p>
+          <picture class="feature-shot">
+            <source srcset="../assets/features/feature-1-en-dark.png" media="(prefers-color-scheme: dark)">
+            <img src="../assets/features/feature-1-en-light.png" alt="Calendar logging screen">
+          </picture>
+          <div class="feature-body">
+            <h3 class="feature-title">Log from the calendar</h3>
+            <p class="feature-copy">Pick a date and start logging in seconds.</p>
+          </div>
         </article>
         <article class="feature-card">
-          <div class="feature-shot" role="img" aria-label="History overview screen"></div>
-          <h3 class="feature-title">Review instantly</h3>
-          <p class="feature-copy">See past workouts at a glance and track changes.</p>
+          <picture class="feature-shot">
+            <source srcset="../assets/features/feature-2-en-dark.png" media="(prefers-color-scheme: dark)">
+            <img src="../assets/features/feature-2-en-light.png" alt="History overview screen">
+          </picture>
+          <div class="feature-body">
+            <h3 class="feature-title">Review instantly</h3>
+            <p class="feature-copy">See past workouts at a glance and track changes.</p>
+          </div>
         </article>
         <article class="feature-card">
-          <div class="feature-shot" role="img" aria-label="Workout search and favorites screen"></div>
-          <h3 class="feature-title">Search and save workouts</h3>
-          <p class="feature-copy">Keep favorites handy to shorten input.</p>
+          <picture class="feature-shot">
+            <source srcset="../assets/features/feature-3-en-dark.png" media="(prefers-color-scheme: dark)">
+            <img src="../assets/features/feature-3-en-light.png" alt="Workout search and favorites screen">
+          </picture>
+          <div class="feature-body">
+            <h3 class="feature-title">Search and save workouts</h3>
+            <p class="feature-copy">Keep favorites handy to shorten input.</p>
+          </div>
         </article>
       </div>
     </section>
@@ -109,7 +124,7 @@
     <footer class="site-footer">
       <div class="footer-content">
         <div class="footer-brand">
-          <img src="../assets/app-icon.png" alt="Biggr app icon" class="footer-icon">
+          <img src="../assets/app/app-icon.png" alt="Biggr app icon" class="footer-icon">
           <div class="footer-lang">
             <p class="footer-title">Language</p>
             <select id="lang-select" class="footer-select" aria-label="Language" onchange="location.href=this.value;">
