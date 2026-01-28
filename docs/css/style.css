@@ -229,6 +229,10 @@ a:hover {
     gap: 32px;
   }
 
+  .feature-card:nth-child(even) {
+    flex-direction: row-reverse;
+  }
+
   .feature-shot {
     flex: 0 0 38%;
     max-width: 360px;
@@ -236,6 +240,18 @@ a:hover {
 
   .feature-body {
     flex: 1;
+  }
+
+  .hero-copy-line {
+    display: block;
+  }
+
+  .hero-copy-line + .hero-copy-line {
+    margin-top: 6px;
+  }
+
+  .hero-copy-line + .hero-copy-line::before {
+    content: "";
   }
 }
 
@@ -287,6 +303,18 @@ a:hover {
   line-height: 1.7;
   color: var(--text-secondary);
   max-width: 50rem;
+}
+
+.hero-copy-line {
+  display: inline;
+}
+
+.hero-copy-line + .hero-copy-line::before {
+  content: " ";
+}
+
+html[lang="ja"] .hero-copy-line + .hero-copy-line::before {
+  content: "";
 }
 
 .hero-actions {
