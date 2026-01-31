@@ -36,6 +36,11 @@
     <changefreq>monthly</changefreq>
   </url>
   <url>
+    <loc>https://biggrapp.com/ja/releasenotes.html</loc>
+    <lastmod>2026-01-31</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
     <loc>https://biggrapp.com/en/faq.html</loc>
     <lastmod>2026-01-31</lastmod>
     <changefreq>monthly</changefreq>
@@ -52,6 +57,11 @@
   </url>
   <url>
     <loc>https://biggrapp.com/en/terms.html</loc>
+    <lastmod>2026-01-31</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/releasenotes.html</loc>
     <lastmod>2026-01-31</lastmod>
     <changefreq>monthly</changefreq>
   </url>
