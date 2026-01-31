@@ -1,11 +1,11 @@
 :root {
   --primary: #004DFF;
   --bg: #ffffff;
-  --emphasis: #f7f7f7;
+  --emphasis: #f8f8fc;
   --surface: #ffffff;
   --text: #222;
   --text-strong: #111;
-  --text-secondary: #555;
+  --text-secondary: #707075;
   --text-muted: #666;
   --text-subtle: #888;
   --border: #e6e6e6;
@@ -169,12 +169,11 @@ a:hover {
 
 .section-header {
   text-align: center;
-  margin-bottom: 28px;
 }
 
 .section-title {
-  margin: 0;
-  font-size: clamp(2.2rem, 4vw, 3.5rem);
+  margin-bottom: 28px;
+  font-size: clamp(1.8rem, 4vw, 3.5rem);
   color: var(--text-strong);
 }
 
@@ -249,6 +248,12 @@ a:hover {
   object-fit: contain;
 }
 
+.feature-icon {
+  width: 36px;
+  height: 36px;
+  display: block;
+}
+
 .feature-body {
   display: flex;
   flex-direction: column;
@@ -266,6 +271,7 @@ a:hover {
   margin: 0;
   color: var(--text-secondary);
   line-height: 1.6;
+  font-weight: 600;
 }
 
 @media (min-width: 721px) {
@@ -318,6 +324,7 @@ a:hover {
   max-width: 48rem;
   color: var(--text-secondary);
   text-align: center;
+  font-weight: 600;
 }
 
 #trust {
@@ -327,7 +334,7 @@ a:hover {
 .trust-media {
   display: flex;
   justify-content: center;
-  margin: 16px 0 8px;
+  margin: 0 0 28px;
 }
 
 .trust-media:empty {
@@ -388,6 +395,7 @@ a:hover {
 .hero-copy {
   margin: 0;
   font-size: 1.05rem;
+  font-weight: 600;
   line-height: 1.7;
   color: var(--text-secondary);
   max-width: 50rem;
@@ -516,6 +524,39 @@ html[lang="ja"] .hero-copy-line + .hero-copy-line::before {
   margin-top: 12px;
   color: var(--text-secondary);
   line-height: 1.6;
+}
+
+.faq-more {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.faq-more-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 18px;
+  border-radius: 999px;
+  border: 1px solid var(--border-strong);
+  background: var(--surface);
+  color: var(--text-strong);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.faq-more-link:hover {
+  text-decoration: none;
+  background: var(--chip-bg);
+}
+
+.faq-page .faq-question {
+  cursor: default;
+  justify-content: flex-start;
+}
+
+.faq-page .faq-question::after {
+  content: none;
 }
 
 .faq-divider {
@@ -657,7 +698,7 @@ footer {
   }
 
   .hero-lead {
-    font-size: clamp(1.6rem, 6vw, 2.7rem);
+    font-size: clamp(2.2rem, 6vw, 3rem);
   }
 
   .footer-content {
