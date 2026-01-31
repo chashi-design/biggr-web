@@ -236,6 +236,11 @@ UI文言、オンボーディング、ヘルプ、エラーメッセージ、設
 - 続けやすい
 - iPhone 筋トレ 記録
 
+### Sitemap / robots
+- `docs/sitemap.xml` に主要URLを網羅する
+- `changefreq` を付与し、ページ更新時に該当URLの `changefreq` も見直す
+- サイト更新時は該当URLの `lastmod` も更新する
+
 ### OGP方針（Open Graph / SNS共有）
 - 目的：SNS/チャット共有での見栄え・誤解防止
 - ルール：
