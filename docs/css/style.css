@@ -225,16 +225,23 @@ a:hover {
   color: var(--text-secondary);
 }
 
-.hero-copy-line {
-  display: inline;
+.hero-copy-line,
+.feature-copy-line,
+.copy-line {
+  display: inline-block;
+  white-space: nowrap;
 }
 
-.hero-copy-line + .hero-copy-line::before {
-  content: " ";
+html[lang="en"] .hero-copy-line,
+html[lang="en"] .feature-copy-line,
+html[lang="en"] .copy-line {
+  margin-right: 0.35em;
 }
 
-html[lang="ja"] .hero-copy-line + .hero-copy-line::before {
-  content: "";
+html[lang="en"] .hero-copy-line:last-child,
+html[lang="en"] .feature-copy-line:last-child,
+html[lang="en"] .copy-line:last-child {
+  margin-right: 0;
 }
 
 .hero-actions {
@@ -517,6 +524,10 @@ html[lang="ja"] .hero-copy-line + .hero-copy-line::before {
   cursor: pointer;
 }
 
+.faq-question-text {
+  display: inline-block;
+}
+
 .faq-question::-webkit-details-marker {
   display: none;
 }
@@ -707,18 +718,6 @@ footer {
 
   .feature-body {
     flex: 1;
-  }
-
-  .hero-copy-line {
-    display: block;
-  }
-
-  .hero-copy-line + .hero-copy-line {
-    margin-top: 6px;
-  }
-
-  .hero-copy-line + .hero-copy-line::before {
-    content: "";
   }
 
   .hero-lead {
