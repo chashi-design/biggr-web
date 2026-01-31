@@ -38,30 +38,24 @@
 <body>
   <div class="container">
     <header class="app-header">
-      <a class="app-brand" href="./index.html">
-        <img src="../assets/app/app-icon.png" alt="Biggr app icon" class="app-icon">
-        <span class="app-name">Biggr</span>
-      </a>
-      <a class="app-cta" href="https://apps.apple.com/app/id6758259008">アプリを入手</a>
+      <div class="app-header-inner">
+        <a class="app-brand" href="./index.html">
+          <img src="../assets/app/app-icon.png" alt="Biggr app icon" class="app-icon">
+          <span class="app-name">Biggr</span>
+        </a>
+        <a class="app-cta" href="https://apps.apple.com/app/id6758259008">アプリを入手</a>
+      </div>
     </header>
 
     <main class="main-content">
 
     <section class="hero">
       <div class="hero-content">
-        <h1 class="hero-title">筋トレ記録アプリ Biggr</h1>
-        <p class="hero-lead">積み重ねが見える。<br>今日もトレーニング。</p>
+        <h1 class="hero-title">簡単に記録、続けやすい筋トレ記録アプリ</h1>
+        <h2 class="hero-lead">積み重ねが見える。<br>モチベーションが上がる。</h2>
         <p class="hero-copy">
-          <span class="hero-copy-line">筋トレの記録を続けたい人のための、シンプルな筋トレ記録アプリです。</span><span class="hero-copy-line">カレンダーから数秒で入力でき、履歴はワンタップで振り返れます。</span><span class="hero-copy-line">お気に入り登録で記録を短縮し、iCloud同期で機種変更時もデータを安全に引き継げます。必要な情報だけが見えるので、迷わず続けられます。</span>
+          <span class="hero-copy-line">筋トレの記録を続けたい人のための、シンプルな筋トレ記録アプリです。</span><span class="hero-copy-line">カレンダーから数秒で入力でき、履歴はワンタップで振り返れます。</span><span class="hero-copy-line">お気に入り登録で記録を短縮し、iCloud同期で機種変更時もデータを安全に引き継げます。</span>
         </p>
-        <div class="hero-actions">
-          <a class="app-store-link" href="https://apps.apple.com/app/id6758259008">
-            <img
-              class="app-store-badge"
-              src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
-              alt="App Storeからダウンロード">
-          </a>
-        </div>
       </div>
       <div class="hero-visual">
         <picture class="hero-mock">
@@ -110,15 +104,21 @@
     </section>
 
     <section class="section" id="trust">
-      <div class="section-header">
-        <h2 class="section-title">安心・信頼</h2>
-        <p class="section-lead">大切な記録を、わかりやすく扱います。</p>
+      <h2 class="section-title">安心・信頼</h2>
+      <div class="trust-panel">
+        <div class="trust-media">
+          <picture>
+            <source srcset="../assets/privacy/privacy-ja-dark.png" media="(prefers-color-scheme: dark)">
+            <img src="../assets/privacy/privacy-ja-light.png" alt="プライバシーと保存についての説明画面">
+          </picture>
+        </div>
+        <ul class="trust-list">
+          <li>大切な記録を、わかりやすく扱います。</li>
+          <li>データは端末内とiCloudに保存されます。開発者サーバーには送信しません。</li>
+          <li>iCloud同期は端末の設定でオン・オフを切り替えできます。</li>
+          <li><a href="./privacypolicy.html">プライバシーポリシー</a>で取り扱いを明記しています。</li>
+        </ul>
       </div>
-      <ul class="trust-list">
-        <li>データは端末内とiCloudに保存されます。開発者サーバーには送信しません。</li>
-        <li>iCloud同期は端末の設定でオン・オフを切り替えできます。</li>
-        <li><a href="./privacypolicy.html">プライバシーポリシー</a>で取り扱いを明記しています。</li>
-      </ul>
     </section>
 
     <section class="section" id="faq">
@@ -147,6 +147,29 @@
           <summary class="faq-question">お気に入りの登録方法を教えてください。</summary>
           <div class="faq-answer">種目タブで対象を選択し、右上の ☆ アイコンで登録できます。</div>
         </details>
+      </div>
+    </section>
+
+    <section class="section" id="download">
+      <div class="download-panel">
+        <div class="section-header">
+          <h2 class="section-title">アプリを入手</h2>
+          <p class="section-lead">記録は数秒で完了。Biggrを今すぐ使い始められます。</p>
+        </div>
+        <div class="download-media">
+          <picture>
+            <source srcset="../assets/download/download-ja-dark.png" media="(prefers-color-scheme: dark)">
+            <img src="../assets/download/download-ja-light.png" alt="Biggrのダウンロード案内">
+          </picture>
+        </div>
+        <div class="download-actions">
+          <a class="app-store-link" href="https://apps.apple.com/app/id6758259008">
+            <img
+              class="app-store-badge"
+              src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
+              alt="App Storeからダウンロード">
+          </a>
+        </div>
       </div>
     </section>
 

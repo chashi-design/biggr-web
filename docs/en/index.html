@@ -34,30 +34,24 @@
 <body>
   <div class="container">
     <header class="app-header">
-      <a class="app-brand" href="./index.html">
-        <img src="../assets/app/app-icon.png" alt="Biggr app icon" class="app-icon">
-        <span class="app-name">Biggr</span>
-      </a>
-      <a class="app-cta" href="https://apps.apple.com/app/id6758259008">Get the app</a>
+      <div class="app-header-inner">
+        <a class="app-brand" href="./index.html">
+          <img src="../assets/app/app-icon.png" alt="Biggr app icon" class="app-icon">
+          <span class="app-name">Biggr</span>
+        </a>
+        <a class="app-cta" href="https://apps.apple.com/app/id6758259008">Get the app</a>
+      </div>
     </header>
 
     <main class="main-content">
 
     <section class="hero">
       <div class="hero-content">
-        <h1 class="hero-title">Workout Log App</h1>
-        <p class="hero-lead">Progress you can see.<br>Train today, too.</p>
+        <h1 class="hero-title">An easy workout log app you can stick with</h1>
+        <h2 class="hero-lead">Progress you can see.<br>Stay motivated.</h2>
         <p class="hero-copy">
-          <span class="hero-copy-line">Log in seconds with a calendar view, then review your history in one tap.</span><span class="hero-copy-line">iCloud sync keeps your workouts with you when you switch devices.</span>
+          <span class="hero-copy-line">A simple workout log app for people who want to keep recording workouts.</span><span class="hero-copy-line">Log in seconds with a calendar view, then review your history in one tap.</span><span class="hero-copy-line">Save favorite exercises to shorten input, and iCloud sync keeps your data safe when you switch devices.</span>
         </p>
-        <div class="hero-actions">
-          <a class="app-store-link" href="https://apps.apple.com/app/id6758259008">
-            <img
-              class="app-store-badge"
-              src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
-              alt="Download on the App Store">
-          </a>
-        </div>
       </div>
       <div class="hero-visual">
         <picture class="hero-mock">
@@ -69,8 +63,7 @@
 
     <section class="section" id="features">
       <div class="section-header">
-        <h2 class="section-title">Features</h2>
-        <p class="section-lead">Designed so you can understand each step at a glance.</p>
+        <h2 class="section-title">What this app can do</h2>
       </div>
       <div class="feature-grid">
         <article class="feature-card">
@@ -79,7 +72,7 @@
             <img src="../assets/features/feature-1-en-light.png" alt="Calendar logging screen">
           </picture>
           <div class="feature-body">
-            <h3 class="feature-title">Log from the calendar</h3>
+            <h3 class="feature-title">Log right from the calendar</h3>
             <p class="feature-copy">Pick a date and start logging in seconds.</p>
           </div>
         </article>
@@ -89,8 +82,8 @@
             <img src="../assets/features/feature-2-en-light.png" alt="History overview screen">
           </picture>
           <div class="feature-body">
-            <h3 class="feature-title">Review instantly</h3>
-            <p class="feature-copy">See past workouts at a glance and track changes.</p>
+            <h3 class="feature-title">Review history instantly</h3>
+            <p class="feature-copy">See past logs in a list and spot changes quickly.</p>
           </div>
         </article>
         <article class="feature-card">
@@ -99,7 +92,7 @@
             <img src="../assets/features/feature-3-en-light.png" alt="Workout search and favorites screen">
           </picture>
           <div class="feature-body">
-            <h3 class="feature-title">Search and save workouts</h3>
+            <h3 class="feature-title">Search and save exercises</h3>
             <p class="feature-copy">Keep favorites handy to shorten input.</p>
           </div>
         </article>
@@ -107,15 +100,21 @@
     </section>
 
     <section class="section" id="trust">
-      <div class="section-header">
-        <h2 class="section-title">Trust &amp; privacy</h2>
-        <p class="section-lead">Your training data stays simple and transparent.</p>
+      <h2 class="section-title">Trust &amp; privacy</h2>
+      <div class="trust-panel">
+        <div class="trust-media">
+          <picture>
+            <source srcset="../assets/privacy/privacy-en-dark.png" media="(prefers-color-scheme: dark)">
+            <img src="../assets/privacy/privacy-en-light.png" alt="Privacy and storage overview">
+          </picture>
+        </div>
+        <ul class="trust-list">
+          <li>Your training data stays clear and easy to understand.</li>
+          <li>Your data is stored on your device and iCloud. We do not send it to our own servers.</li>
+          <li>iCloud sync can be toggled on or off in iOS Settings.</li>
+          <li>See details in the <a href="./privacypolicy.html">Privacy Policy</a>.</li>
+        </ul>
       </div>
-      <ul class="trust-list">
-        <li>Your data is stored on your device and iCloud. We do not send it to our own servers.</li>
-        <li>iCloud sync can be toggled on or off in iOS Settings.</li>
-        <li>See details in the <a href="./privacypolicy.html">Privacy Policy</a>.</li>
-      </ul>
     </section>
 
     <section class="section" id="faq">
@@ -144,6 +143,29 @@
           <summary class="faq-question">How do I add a workout to favorites?</summary>
           <div class="faq-answer">Select a workout in the Workouts tab and tap the ☆ icon.</div>
         </details>
+      </div>
+    </section>
+
+    <section class="section" id="download">
+      <div class="download-panel">
+        <div class="section-header">
+          <h2 class="section-title">Get the app</h2>
+          <p class="section-lead">Log in seconds. Start using Biggr today.</p>
+        </div>
+        <div class="download-media">
+          <picture>
+            <source srcset="../assets/download/download-en-dark.png" media="(prefers-color-scheme: dark)">
+            <img src="../assets/download/download-en-light.png" alt="Biggr download preview">
+          </picture>
+        </div>
+        <div class="download-actions">
+          <a class="app-store-link" href="https://apps.apple.com/app/id6758259008">
+            <img
+              class="app-store-badge"
+              src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
+              alt="Download on the App Store">
+          </a>
+        </div>
       </div>
     </section>
 
