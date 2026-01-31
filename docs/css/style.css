@@ -452,6 +452,65 @@ html[lang="ja"] .hero-copy-line + .hero-copy-line::before {
   display: block;
 }
 
+.release-lead {
+  max-width: 44rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 32px;
+}
+
+.release-section {
+  margin-top: 32px;
+}
+
+.release-entry {
+  margin-top: 16px;
+  padding: 18px 22px;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.release-head {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.release-version {
+  font-weight: 600;
+  color: var(--text-strong);
+}
+
+.release-date {
+  color: var(--text-subtle);
+  font-size: 0.95rem;
+}
+
+.release-list {
+  margin: 12px 0 0;
+  padding-left: 18px;
+  color: var(--text-secondary);
+}
+
+.release-empty {
+  margin-top: 16px;
+  padding: 18px 22px;
+  border-radius: 16px;
+  background: var(--emphasis);
+  color: var(--text-secondary);
+}
+
+.release-empty p {
+  margin: 0 0 10px;
+}
+
+.release-empty p:last-child {
+  margin-bottom: 0;
+}
+
 .faq-nav {
   list-style: none;
   padding-left: 0;
