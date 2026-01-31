@@ -8,12 +8,17 @@
 </head>
 <body>
   <div class="container">
-    <header class="app-header">
-      <a class="app-brand" href="../index.html">
-        <img src="../assets/app-icon.png" alt="Biggr app icon" class="app-icon">
+        <header class="app-header">
+      <div class="app-header-inner">
+      <a class="app-brand" href="./index.html">
+        <img src="../assets/app/app-icon.png" alt="Biggr app icon" class="app-icon">
         <span class="app-name">Biggr</span>
       </a>
+      <a class="app-cta" href="https://apps.apple.com/app/id6758259008">アプリを入手</a>
+          </div>
     </header>
+
+    <main class="main-content">
 
     <h1>プライバシーポリシー</h1>
 
@@ -68,9 +73,46 @@
       制定日：2026年1月24日<br>
       事業者名：廣橋 孝紀
     </p>
+    </main>
 
-    <footer>
-      © 2026 Biggr App
+    <hr class="footer-divider">
+
+    <footer class="site-footer">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <img src="../assets/app/app-icon.png" alt="Biggr app icon" class="footer-icon">
+          <div class="footer-lang">
+            <p class="footer-title">言語</p>
+            <select id="lang-select" class="footer-select" aria-label="言語" onchange="location.href=this.value;">
+              <option value="./privacypolicy.html" selected>日本語</option>
+              <option value="../en/privacypolicy.html">English</option>
+            </select>
+          </div>
+        </div>
+        <div class="footer-column footer-about">
+          <p class="footer-title">アプリについて</p>
+          <div class="footer-list">
+            <a href="https://apps.apple.com/app/id6758259008">アプリを入手</a>
+          </div>
+        </div>
+        <div class="footer-column footer-support">
+          <p class="footer-title">サポート</p>
+          <div class="footer-list">
+            <a href="./faq.html">FAQ</a>
+            <a href="https://forms.gle/xawttwzNAxQLWsqz7" target="_blank" rel="noopener">お問い合わせ</a>
+          </div>
+        </div>
+        <div class="footer-column footer-legal">
+          <p class="footer-title">法的情報</p>
+          <div class="footer-list">
+            <a href="./privacypolicy.html">プライバシーポリシー</a>
+            <a href="./terms.html">利用規約</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-meta">© 2026 Biggr App</p>
+      </div>
     </footer>
   </div>
 </body>
