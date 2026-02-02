@@ -25,6 +25,7 @@
   --header-inset-double: 32px;
   --header-radius: 22px;
   --header-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+  --header-border: rgba(17, 17, 17, 0.08);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -50,6 +51,7 @@
     --shadow-strong: 0 24px 60px rgba(0, 0, 0, 0.55);
     --header-bg: rgba(15, 17, 21, 0.72);
     --header-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
+    --header-border: rgba(255, 255, 255, 0.08);
   }
 }
 
@@ -141,7 +143,7 @@ a:hover {
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   box-sizing: border-box;
-  border: 1px solid var(--border-strong);
+  border: 1px solid var(--header-border);
 }
 
 .app-header-inner {
