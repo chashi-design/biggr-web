@@ -470,6 +470,7 @@ html[lang="en"] .copy-line:last-child {
   margin: 12px 0 0;
   padding-left: 18px;
   color: var(--text-secondary);
+  line-height: 1.6;
 }
 
 .release-empty {
