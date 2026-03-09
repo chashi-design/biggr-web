@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * Generate static exercise list/detail pages for JA/EN SEO content.
+ * Generate static exercise list/detail pages for Japanese SEO content.
  *
  * Data source:
  * - data/exercises.json (base exercise fields)
@@ -10,9 +10,7 @@
  * Output:
  * - docs/ja/exercises/index.html
  * - docs/ja/exercises/{slug}/index.html
- * - docs/en/exercises/index.html
- * - docs/en/exercises/{slug}/index.html
- * - docs/sitemap.xml (append /ja/exercises and /en/exercises URLs)
+ * - docs/sitemap.xml (append /ja/exercises URLs)
  */
 
 const fs = require("node:fs/promises");
@@ -22,7 +20,6 @@ const ROOT_DIR = path.resolve(__dirname, "..");
 const DATA_DIR = path.join(ROOT_DIR, "data");
 const DOCS_DIR = path.join(ROOT_DIR, "docs");
 const JA_EXERCISES_DIR = path.join(DOCS_DIR, "ja", "exercises");
-const EN_EXERCISES_DIR = path.join(DOCS_DIR, "en", "exercises");
 const EXERCISE_IMAGE_DIR = path.join(DOCS_DIR, "assets", "exercises");
 const SITEMAP_PATH = path.join(DOCS_DIR, "sitemap.xml");
 
@@ -31,6 +28,7 @@ const APP_STORE_URL = "https://apps.apple.com/app/id6758259008";
 const TODAY = new Date().toISOString().slice(0, 10);
 
 const MUSCLE_GROUP_ORDER = [
+  "all",
   "chest",
   "back",
   "shoulders",
@@ -43,6 +41,7 @@ const MUSCLE_GROUP_ORDER = [
 ];
 
 const MUSCLE_GROUP_LABELS = {
+  all: "全て",
   chest: "胸",
   back: "背中",
   shoulders: "肩",
@@ -52,18 +51,6 @@ const MUSCLE_GROUP_LABELS = {
   abs: "腹筋",
   full_body: "全身",
   other: "その他"
-};
-
-const MUSCLE_GROUP_LABELS_EN = {
-  chest: "Chest",
-  back: "Back",
-  shoulders: "Shoulders",
-  arms: "Arms",
-  legs: "Legs",
-  cardio: "Cardio",
-  abs: "Abs",
-  full_body: "Full Body",
-  other: "Other"
 };
 
 const EQUIPMENT_LABELS = {
@@ -81,21 +68,6 @@ const EQUIPMENT_LABELS = {
   nil: "その他"
 };
 
-const EQUIPMENT_LABELS_EN = {
-  barbell: "Barbell",
-  dumbbell: "Dumbbell",
-  machine: "Machine",
-  cable: "Cable",
-  smith: "Smith machine",
-  kettlebell: "Kettlebell",
-  device: "Device",
-  bodyweight: "Bodyweight",
-  plate: "Plate",
-  water: "Water",
-  unknown: "Other",
-  nil: "Other"
-};
-
 const EQUIPMENT_LABEL_ORDER = [
   "バーベル",
   "ダンベル",
@@ -110,19 +82,16 @@ const EQUIPMENT_LABEL_ORDER = [
   "その他"
 ];
 
-const EQUIPMENT_LABEL_ORDER_EN = [
-  "Barbell",
-  "Dumbbell",
-  "Machine",
-  "Cable",
-  "Smith machine",
-  "Kettlebell",
-  "Device",
-  "Bodyweight",
-  "Plate",
-  "Water",
-  "Other"
-];
+const TRACKING_TYPE_LABELS = {
+  weightReps: "重量・回数",
+  repsOnly: "回数",
+  durationOnly: "時間",
+  distanceOnly: "距離",
+  weight_reps: "重量・回数",
+  reps_only: "回数",
+  time: "時間",
+  distance_time: "距離・時間"
+};
 
 const DEFAULT_REP_GUIDE_REPS = {
   strength: "1〜5回",
@@ -130,22 +99,10 @@ const DEFAULT_REP_GUIDE_REPS = {
   endurance: "13〜20回"
 };
 
-const DEFAULT_REP_GUIDE_REPS_EN = {
-  strength: "1-5 reps",
-  hypertrophy: "6-12 reps",
-  endurance: "13-20 reps"
-};
-
 const DEFAULT_REP_GUIDE_TIME = {
   strength: "高強度 20〜60秒",
   hypertrophy: "中強度 10〜20分",
   endurance: "低〜中強度 20〜60分"
-};
-
-const DEFAULT_REP_GUIDE_TIME_EN = {
-  strength: "High intensity: 20-60 sec",
-  hypertrophy: "Moderate intensity: 10-20 min",
-  endurance: "Low to moderate intensity: 20-60 min"
 };
 
 const PATTERN_ALIASES = {
@@ -315,174 +272,6 @@ const TIPS_BY_MUSCLE_GROUP = {
   ]
 };
 
-const HOW_TO_BY_PATTERN_EN = {
-  push: [
-    "Set a stable position and brace your torso.",
-    "Press with control without using momentum.",
-    "Lower under control while keeping range of motion."
-  ],
-  pull: [
-    "Keep your chest up and shoulders down.",
-    "Drive with the elbows to load the target muscles.",
-    "Control the return phase without dropping the weight."
-  ],
-  row: [
-    "Brace your torso and keep the spine neutral.",
-    "Pull your elbows back and squeeze your upper back.",
-    "Lower slowly and avoid bouncing."
-  ],
-  hinge: [
-    "Keep your spine neutral and hinge from the hips.",
-    "Lower until you feel tension in the posterior chain.",
-    "Drive through your feet to stand back up."
-  ],
-  squat: [
-    "Set your stance and brace your core.",
-    "Bend hips and knees together to lower.",
-    "Push through your full foot to stand."
-  ],
-  isolation: [
-    "Keep constant tension on the target muscle.",
-    "Use controlled reps without momentum.",
-    "Slow down the lowering phase."
-  ],
-  curl: [
-    "Keep elbow position stable.",
-    "Lift by flexing at the elbow.",
-    "Lower slowly while maintaining tension."
-  ],
-  extension: [
-    "Fix your elbows and reduce shoulder shrugging.",
-    "Extend with control through full range.",
-    "Return slowly without losing form."
-  ],
-  core: [
-    "Brace your core and set posture first.",
-    "Move without momentum and keep control.",
-    "Keep breathing during the set."
-  ],
-  cardio: [
-    "Start with a gradual warm-up.",
-    "Set pace and intensity based on your goal.",
-    "Finish with a short cool-down."
-  ],
-  mobility: [
-    "Move through a pain-free range.",
-    "Control the movement and avoid bouncing.",
-    "Check left-right balance as you repeat."
-  ]
-};
-
-const FORM_POINTS_BY_PATTERN_EN = {
-  push: ["Do not shrug your shoulders", "Keep wrists neutral", "Avoid excessive momentum"],
-  pull: ["Do not overextend your lower back", "Keep shoulders from rolling forward", "Do not yank the weight"],
-  row: ["Do not round your back", "Avoid neck tension", "Do not rush the lowering phase"],
-  hinge: ["Keep a neutral back", "Do not lock your knees hard", "Keep load close to your body"],
-  squat: ["Track knees with toes", "Keep your chest up", "Keep heels grounded"],
-  isolation: ["Use full controlled range", "Keep tension on the target muscle"],
-  curl: ["Do not swing elbows", "Avoid overextending wrists"],
-  extension: ["Do not flare elbows too much", "Keep shoulders down"],
-  core: ["Avoid excessive lumbar extension", "Keep neck relaxed"],
-  cardio: ["Do not hold your breath", "Avoid starting too hard"],
-  mobility: ["Avoid painful angles", "Do not rely only on momentum"]
-};
-
-const TIPS_BY_MUSCLE_GROUP_EN = {
-  chest: [
-    "Prioritize form and range of motion before adding load.",
-    "If shoulders feel uncomfortable, reduce load and range."
-  ],
-  back: [
-    "Focus on pulling with your back rather than your arms.",
-    "If momentum increases, reduce load one step."
-  ],
-  shoulders: [
-    "Stabilize movement path before increasing weight.",
-    "Reduce neck tension and keep shoulders controlled."
-  ],
-  arms: [
-    "Keeping elbows fixed helps target the working muscle.",
-    "Control the lowering phase instead of rushing reps."
-  ],
-  legs: [
-    "Warm up hips and ankles before heavier sets.",
-    "Use safety settings when training with high loads."
-  ],
-  cardio: [
-    "Adjust intensity based on your condition that day.",
-    "Prioritize consistency over pace."
-  ],
-  abs: [
-    "Prioritize core stability over total reps.",
-    "If lower back feels stressed, reduce range."
-  ],
-  full_body: [
-    "Take longer rest on high-intensity days.",
-    "If form breaks down, reduce reps and reset."
-  ],
-  other: [
-    "Stop when pain appears and review your form.",
-    "Choose a load you can repeat with control."
-  ]
-};
-
-const DETAILED_MUSCLE_FALLBACK_BY_GROUP = {
-  chest: ["大胸筋", "三角筋前部", "上腕三頭筋"],
-  back: ["広背筋", "僧帽筋", "菱形筋", "上腕二頭筋"],
-  shoulders: ["三角筋前部", "三角筋中部", "三角筋後部", "上腕三頭筋"],
-  arms: ["上腕二頭筋", "上腕筋", "上腕三頭筋", "前腕"],
-  legs: ["大腿四頭筋", "ハムストリング", "臀筋"],
-  abs: ["腹直筋", "腹斜筋", "腹横筋"],
-  cardio: ["大腿四頭筋", "ハムストリング", "臀筋", "ふくらはぎ"],
-  full_body: ["全身"],
-  other: ["全身"]
-};
-
-const DETAILED_MUSCLE_FALLBACK_BY_GROUP_EN = {
-  chest: ["Pectorals", "Front delts", "Triceps"],
-  back: ["Lats", "Trapezius", "Rhomboids", "Biceps"],
-  shoulders: ["Front delts", "Lateral delts", "Rear delts", "Triceps"],
-  arms: ["Biceps", "Brachialis", "Triceps", "Forearms"],
-  legs: ["Quadriceps", "Hamstrings", "Glutes"],
-  abs: ["Rectus abdominis", "Obliques", "Transverse abdominis"],
-  cardio: ["Quadriceps", "Hamstrings", "Glutes", "Calves"],
-  full_body: ["Full body"],
-  other: ["Full body"]
-};
-
-const DETAILED_MUSCLE_KEYWORDS = [
-  "大胸筋",
-  "三角筋前部",
-  "三角筋中部",
-  "三角筋後部",
-  "三角筋",
-  "上腕三頭筋",
-  "上腕二頭筋",
-  "上腕筋",
-  "前腕筋群",
-  "前腕",
-  "僧帽筋",
-  "菱形筋",
-  "広背筋",
-  "ローテーターカフ",
-  "大腿四頭筋",
-  "ハムストリング",
-  "臀筋",
-  "中臀筋",
-  "内転筋群",
-  "腓腹筋",
-  "ヒラメ筋",
-  "ふくらはぎ",
-  "脊柱起立筋",
-  "腹直筋",
-  "腹横筋",
-  "腹斜筋",
-  "体幹",
-  "肩甲帯",
-  "握力",
-  "上背部"
-];
-
 const PLACEHOLDER_BG_BY_MUSCLE_GROUP = {
   chest: "#c2410c",
   back: "#0f766e",
@@ -567,64 +356,6 @@ function normalizeAliases(aliases) {
   return [];
 }
 
-function normalizeMuscleText(value) {
-  return String(value || "")
-    .replace(/[()（）]/g, "")
-    .replace(/[＋+]/g, "")
-    .replace(/\s+/g, "")
-    .trim();
-}
-
-function uniqueOrderedStrings(values) {
-  const seen = new Set();
-  const list = [];
-  for (const raw of values) {
-    const value = normalizeMuscleText(raw);
-    if (!value || seen.has(value)) {
-      continue;
-    }
-    seen.add(value);
-    list.push(value);
-  }
-  return list;
-}
-
-function uniqueOrderedStringsSimple(values) {
-  const seen = new Set();
-  const list = [];
-  for (const raw of values) {
-    const value = String(raw || "").trim();
-    if (!value || seen.has(value)) {
-      continue;
-    }
-    seen.add(value);
-    list.push(value);
-  }
-  return list;
-}
-
-function compactDetailedMuscles(values) {
-  const list = uniqueOrderedStrings(values);
-  const hasShoulderSubdivision = list.some(
-    (item) => item === "三角筋前部" || item === "三角筋中部" || item === "三角筋後部"
-  );
-  const hasForearmGroup = list.includes("前腕筋群");
-  const hasCalfSubdivision = list.includes("腓腹筋") || list.includes("ヒラメ筋");
-
-  return list.filter((item) => {
-    if (hasShoulderSubdivision && item === "三角筋") {
-      return false;
-    }
-    if (hasForearmGroup && item === "前腕") {
-      return false;
-    }
-    if (hasCalfSubdivision && item === "ふくらはぎ") {
-      return false;
-    }
-    return true;
-  });
-}
-
 function normalizeExercise(rawExercise, slug) {
   return {
     ...rawExercise,
@@ -635,29 +366,9 @@ function normalizeExercise(rawExercise, slug) {
     pattern: rawExercise.pattern || "isolation",
     trackingType: rawExercise.trackingType || "weight_reps",
     descJa: (rawExercise.descJa || "").trim(),
-    descEn: (rawExercise.descEn || "").trim(),
     name: rawExercise.name || rawExercise.nameEn || rawExercise.id,
     nameEn: rawExercise.nameEn || rawExercise.name || rawExercise.id
   };
-}
-
-function getExerciseName(exercise, locale) {
-  if (locale === "en") {
-    return exercise.nameEn || exercise.name || exercise.id;
-  }
-  return exercise.name || exercise.nameEn || exercise.id;
-}
-
-function getMuscleGroupLabels(locale) {
-  return locale === "en" ? MUSCLE_GROUP_LABELS_EN : MUSCLE_GROUP_LABELS;
-}
-
-function getEquipmentLabels(locale) {
-  return locale === "en" ? EQUIPMENT_LABELS_EN : EQUIPMENT_LABELS;
-}
-
-function getEquipmentLabelOrder(locale) {
-  return locale === "en" ? EQUIPMENT_LABEL_ORDER_EN : EQUIPMENT_LABEL_ORDER;
 }
 
 function toPatternFamily(pattern) {
@@ -749,7 +460,7 @@ function mapLabel(map, key, fallback) {
   return map[key] || fallback;
 }
 
-function buildRepGuide(exercise, repGuideFromDetail, locale = "ja") {
+function buildRepGuide(exercise, repGuideFromDetail) {
   if (repGuideFromDetail && repGuideFromDetail.strength && repGuideFromDetail.hypertrophy && repGuideFromDetail.endurance) {
     return repGuideFromDetail;
   }
@@ -760,129 +471,49 @@ function buildRepGuide(exercise, repGuideFromDetail, locale = "ja") {
     exercise.trackingType === "durationOnly" ||
     exercise.trackingType === "distanceOnly"
   ) {
-    return locale === "en" ? DEFAULT_REP_GUIDE_TIME_EN : DEFAULT_REP_GUIDE_TIME;
+    return DEFAULT_REP_GUIDE_TIME;
   }
 
-  return locale === "en" ? DEFAULT_REP_GUIDE_REPS_EN : DEFAULT_REP_GUIDE_REPS;
+  return DEFAULT_REP_GUIDE_REPS;
 }
 
-function sortEquipmentLabels(labels, locale) {
-  const labelOrder = getEquipmentLabelOrder(locale);
+function sortEquipmentLabels(labels) {
   return labels.slice().sort((a, b) => {
-    const indexA = labelOrder.indexOf(a);
-    const indexB = labelOrder.indexOf(b);
+    const indexA = EQUIPMENT_LABEL_ORDER.indexOf(a);
+    const indexB = EQUIPMENT_LABEL_ORDER.indexOf(b);
     const scoreA = indexA === -1 ? Number.MAX_SAFE_INTEGER : indexA;
     const scoreB = indexB === -1 ? Number.MAX_SAFE_INTEGER : indexB;
     if (scoreA !== scoreB) {
       return scoreA - scoreB;
     }
-    return a.localeCompare(b, locale === "en" ? "en" : "ja");
+    return a.localeCompare(b, "ja");
   });
 }
 
-function buildHowToSteps(exercise, detailSteps, locale = "ja") {
+function buildHowToSteps(exercise, detailSteps) {
   if (Array.isArray(detailSteps) && detailSteps.length >= 3) {
     return detailSteps.slice(0, 5);
   }
   const patternFamily = toPatternFamily(exercise.pattern);
-  const dictionary = locale === "en" ? HOW_TO_BY_PATTERN_EN : HOW_TO_BY_PATTERN;
-  return dictionary[patternFamily] || dictionary.isolation;
+  return HOW_TO_BY_PATTERN[patternFamily] || HOW_TO_BY_PATTERN.isolation;
 }
 
-function buildFormPoints(exercise, detailPoints, locale = "ja") {
+function buildFormPoints(exercise, detailPoints) {
   if (Array.isArray(detailPoints) && detailPoints.length > 0) {
     return detailPoints.slice(0, 6);
   }
   const patternFamily = toPatternFamily(exercise.pattern);
-  const dictionary = locale === "en" ? FORM_POINTS_BY_PATTERN_EN : FORM_POINTS_BY_PATTERN;
-  return dictionary[patternFamily] || dictionary.isolation;
+  return FORM_POINTS_BY_PATTERN[patternFamily] || FORM_POINTS_BY_PATTERN.isolation;
 }
 
-function buildTips(exercise, detailTips, locale = "ja") {
+function buildTips(exercise, detailTips) {
   if (Array.isArray(detailTips) && detailTips.length > 0) {
     return detailTips.slice(0, 5);
   }
-  const dictionary = locale === "en" ? TIPS_BY_MUSCLE_GROUP_EN : TIPS_BY_MUSCLE_GROUP;
-  return dictionary[exercise.muscleGroup] || dictionary.other;
+  return TIPS_BY_MUSCLE_GROUP[exercise.muscleGroup] || TIPS_BY_MUSCLE_GROUP.other;
 }
 
-function extractDetailedMusclesFromDesc(descJa) {
-  const desc = String(descJa || "");
-  if (!desc) {
-    return [];
-  }
-
-  const fromParens = [];
-  const parenMatches = desc.matchAll(/（([^）]+)）/g);
-  for (const match of parenMatches) {
-    const inside = match && match[1] ? match[1] : "";
-    const tokens = inside.split(/[、,／/・＋+]/);
-    for (const token of tokens) {
-      const cleaned = normalizeMuscleText(token);
-      if (cleaned) {
-        fromParens.push(cleaned);
-      }
-    }
-  }
-
-  const fromKeywords = DETAILED_MUSCLE_KEYWORDS
-    .map((keyword) => ({ keyword, index: desc.indexOf(keyword) }))
-    .filter((item) => item.index !== -1)
-    .sort((a, b) => a.index - b.index)
-    .map((item) => item.keyword);
-
-  return uniqueOrderedStrings([...fromParens, ...fromKeywords]);
-}
-
-function buildDetailedMuscles(exercise, detail, muscleGroupLabel, locale = "ja") {
-  const detailPrimary = Array.isArray(detail.primaryMuscles) ? detail.primaryMuscles : [];
-  const detailSecondary = Array.isArray(detail.secondaryMuscles) ? detail.secondaryMuscles : [];
-
-  if (locale === "en") {
-    const fromDetail = uniqueOrderedStringsSimple([...detailPrimary, ...detailSecondary]);
-    if (fromDetail.length > 0) {
-      return fromDetail;
-    }
-
-    const fallbackEn =
-      DETAILED_MUSCLE_FALLBACK_BY_GROUP_EN[exercise.muscleGroup] || DETAILED_MUSCLE_FALLBACK_BY_GROUP_EN.other;
-    const normalizedFallbackEn = uniqueOrderedStringsSimple(fallbackEn);
-    if (normalizedFallbackEn.length > 0) {
-      return normalizedFallbackEn;
-    }
-
-    return [muscleGroupLabel];
-  }
-
-  const fromDetail = compactDetailedMuscles([...detailPrimary, ...detailSecondary]);
-  if (fromDetail.length > 0) {
-    return fromDetail;
-  }
-
-  const fromDesc = compactDetailedMuscles(extractDetailedMusclesFromDesc(exercise.descJa));
-  if (fromDesc.length > 0) {
-    return fromDesc;
-  }
-
-  const fallback = DETAILED_MUSCLE_FALLBACK_BY_GROUP[exercise.muscleGroup] || DETAILED_MUSCLE_FALLBACK_BY_GROUP.other;
-  const normalizedFallback = compactDetailedMuscles(fallback);
-  if (normalizedFallback.length > 0) {
-    return normalizedFallback;
-  }
-
-  return [muscleGroupLabel];
-}
-
-function buildLeadText(exercise, locale = "ja") {
-  if (locale === "en") {
-    if (exercise.descEn) {
-      return exercise.descEn;
-    }
-    const muscleLabel = mapLabel(MUSCLE_GROUP_LABELS_EN, exercise.muscleGroup, "Other");
-    const exerciseName = getExerciseName(exercise, "en");
-    return `${exerciseName} is an exercise that mainly targets ${muscleLabel}. Start with manageable intensity and prioritize stable form.`;
-  }
-
+function buildLeadText(exercise) {
   if (exercise.descJa) {
     return exercise.descJa;
   }
@@ -891,30 +522,14 @@ function buildLeadText(exercise, locale = "ja") {
   return `${exercise.name}は、${muscleLabel}を中心に取り入れやすい種目です。無理のない負荷設定でフォームを確認しながら継続してください。`;
 }
 
-function buildSeoTitle(exercise, detail, locale = "ja") {
-  if (locale === "en") {
-    if (detail && typeof detail.seoTitleEn === "string" && detail.seoTitleEn.trim()) {
-      return detail.seoTitleEn.trim();
-    }
-    const exerciseName = getExerciseName(exercise, "en");
-    return `What Is ${exerciseName}? Muscles Worked, Equipment, and Form Basics | Biggr`;
-  }
-
+function buildSeoTitle(exercise, detail) {
   if (detail && detail.seoTitle) {
     return detail.seoTitle;
   }
   return `${exercise.name}とは？鍛えられる部位・器具・やり方の基本 | Biggr`;
 }
 
-function buildSeoDescription(exercise, detail, equipmentLabel, locale = "ja") {
-  if (locale === "en") {
-    if (detail && typeof detail.seoDescriptionEn === "string" && detail.seoDescriptionEn.trim()) {
-      return detail.seoDescriptionEn.trim();
-    }
-    const exerciseName = getExerciseName(exercise, "en");
-    return `Learn the basics of ${exerciseName}: muscles worked, equipment (${equipmentLabel}), rep guide, and links for form videos. Workout log app Biggr.`;
-  }
-
+function buildSeoDescription(exercise, detail, equipmentLabel) {
   if (detail && detail.seoDescription) {
     return detail.seoDescription;
   }
@@ -962,20 +577,16 @@ function normalizeSocialLink(input, fallbackKey) {
   return { url: "", title: "" };
 }
 
-function buildSocialLinks(exercise, detail, locale = "ja") {
+function buildSocialLinks(exercise, detail) {
   // `socialLinks` を優先しつつ、既存の `youtubeUrl` / `youtubeTitle` も後方互換で扱う。
   const socialMap = detail && detail.socialLinks && typeof detail.socialLinks === "object" ? detail.socialLinks : {};
-  const searchName = getExerciseName(exercise, locale);
-  const isEnglish = locale === "en";
 
   const youtubeSource = normalizeSocialLink(socialMap.youtube || detail.youtubeUrl, "youtube");
   const tiktokSource = normalizeSocialLink(socialMap.tiktok, "tiktok");
   const instagramSource = normalizeSocialLink(socialMap.instagram, "instagram");
 
   const normalizedYoutubeTitle =
-    youtubeSource.title ||
-    (typeof detail.youtubeTitle === "string" ? detail.youtubeTitle.trim() : "") ||
-    (isEnglish ? `${searchName} form video` : `${exercise.name}のフォーム動画`);
+    youtubeSource.title || (typeof detail.youtubeTitle === "string" ? detail.youtubeTitle.trim() : "") || `${exercise.name}のフォーム動画`;
 
   return [
     {
@@ -983,30 +594,29 @@ function buildSocialLinks(exercise, detail, locale = "ja") {
       label: "YouTube",
       iconUrl: "../../../assets/sns/youtube.svg",
       title: normalizedYoutubeTitle,
-      url: youtubeSource.url || toYoutubeSearchUrl(isEnglish ? `${searchName} form` : `${exercise.name} フォーム`),
-      ctaLabel: isEnglish ? "Watch on YouTube" : "YouTubeで見る"
+      url: youtubeSource.url || toYoutubeSearchUrl(exercise.name),
+      ctaLabel: "YouTubeで見る"
     },
     {
       platform: "tiktok",
       label: "TikTok",
       iconUrl: "../../../assets/sns/tiktok.svg",
-      title: tiktokSource.title || (isEnglish ? `Find ${searchName} on TikTok` : `${exercise.name}の動作をTikTokで探す`),
-      url: tiktokSource.url || toTikTokSearchUrl(isEnglish ? `${searchName} form` : `${exercise.name} フォーム`),
-      ctaLabel: isEnglish ? "Watch on TikTok" : "TikTokで見る"
+      title: tiktokSource.title || `${exercise.name}の動作をTikTokで探す`,
+      url: tiktokSource.url || toTikTokSearchUrl(exercise.name),
+      ctaLabel: "TikTokで見る"
     },
     {
       platform: "instagram",
       label: "Instagram",
       iconUrl: "../../../assets/sns/Instagram.svg",
-      title:
-        instagramSource.title || (isEnglish ? `Find ${searchName} on Instagram` : `${exercise.name}のフォームをInstagramで探す`),
-      url: instagramSource.url || toInstagramSearchUrl(searchName),
-      ctaLabel: isEnglish ? "Watch on Instagram" : "Instagramで見る"
+      title: instagramSource.title || `${exercise.name}のフォームをInstagramで探す`,
+      url: instagramSource.url || toInstagramSearchUrl(exercise.name),
+      ctaLabel: "Instagramで見る"
     }
   ];
 }
 
-function buildRelatedExercises(allExercises, current, detail, locale = "ja") {
+function buildRelatedExercises(allExercises, current, detail) {
   const byId = new Map(allExercises.map((exercise) => [exercise.id, exercise]));
 
   // 補助データに関連IDがある場合はそれを優先する。
@@ -1047,7 +657,7 @@ function buildRelatedExercises(allExercises, current, detail, locale = "ja") {
     if (b.score !== a.score) {
       return b.score - a.score;
     }
-    return getExerciseName(a.target, locale).localeCompare(getExerciseName(b.target, locale), locale === "en" ? "en" : "ja");
+    return a.target.name.localeCompare(b.target.name, "ja");
   });
 
   const related = bucket.map((item) => item.target);
@@ -1064,7 +674,7 @@ function buildRelatedExercises(allExercises, current, detail, locale = "ja") {
   if (uniqueRelated.length < 3) {
     const sortedAll = allExercises
       .filter((exercise) => exercise.id !== current.id)
-      .sort((a, b) => getExerciseName(a, locale).localeCompare(getExerciseName(b, locale), locale === "en" ? "en" : "ja"));
+      .sort((a, b) => a.name.localeCompare(b.name, "ja"));
 
     for (const candidate of sortedAll) {
       if (uniqueIds.has(candidate.id)) {
@@ -1167,91 +777,6 @@ function buildDetailStructuredData(exercise, seoDescription) {
   };
 }
 
-function buildListStructuredDataEn(exercises) {
-  const itemList = exercises
-    .slice()
-    .sort((a, b) => getExerciseName(a, "en").localeCompare(getExerciseName(b, "en"), "en"))
-    .map((exercise, index) => ({
-      "@type": "ListItem",
-      position: index + 1,
-      url: `${BASE_URL}/en/exercises/${exercise.slug}/`,
-      name: getExerciseName(exercise, "en")
-    }));
-
-  return {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "WebPage",
-        name: "Exercise Library | Find Workouts by Muscle Group | Biggr",
-        description: "Browse workouts in Biggr by muscle group. Check muscles worked, rep guidance, and form basics.",
-        inLanguage: "en",
-        url: `${BASE_URL}/en/exercises/`
-      },
-      {
-        "@type": "BreadcrumbList",
-        itemListElement: [
-          {
-            "@type": "ListItem",
-            position: 1,
-            name: "Biggr",
-            item: `${BASE_URL}/en/`
-          },
-          {
-            "@type": "ListItem",
-            position: 2,
-            name: "Exercise Library",
-            item: `${BASE_URL}/en/exercises/`
-          }
-        ]
-      },
-      {
-        "@type": "ItemList",
-        name: "Biggr Exercise Library",
-        itemListElement: itemList
-      }
-    ]
-  };
-}
-
-function buildDetailStructuredDataEn(exercise, seoDescription) {
-  return {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "WebPage",
-        name: getExerciseName(exercise, "en"),
-        description: seoDescription,
-        inLanguage: "en",
-        url: `${BASE_URL}/en/exercises/${exercise.slug}/`
-      },
-      {
-        "@type": "BreadcrumbList",
-        itemListElement: [
-          {
-            "@type": "ListItem",
-            position: 1,
-            name: "Biggr",
-            item: `${BASE_URL}/en/`
-          },
-          {
-            "@type": "ListItem",
-            position: 2,
-            name: "Exercise Library",
-            item: `${BASE_URL}/en/exercises/`
-          },
-          {
-            "@type": "ListItem",
-            position: 3,
-            name: getExerciseName(exercise, "en"),
-            item: `${BASE_URL}/en/exercises/${exercise.slug}/`
-          }
-        ]
-      }
-    ]
-  };
-}
-
 function renderDownloadPanel(assetPrefix) {
   return `<div class="download-panel">
         <div class="section-header">
@@ -1275,32 +800,7 @@ function renderDownloadPanel(assetPrefix) {
       </div>`;
 }
 
-function renderDownloadPanelEn(assetPrefix) {
-  return `<div class="download-panel">
-        <div class="section-header">
-          <h2 class="section-title">Get the app</h2>
-          <p class="section-lead"><span class="copy-line">Log your training</span><span class="copy-line">and workouts</span><span class="copy-line">in Biggr.</span><span class="copy-line">Start for free</span><span class="copy-line">right now.</span></p>
-        </div>
-        <div class="download-media">
-          <picture>
-            <source srcset="${assetPrefix}/download/download-en-dark.png 1x, ${assetPrefix}/download/download-en-dark@2x.png 2x, ${assetPrefix}/download/download-en-dark@3x.png 3x" media="(prefers-color-scheme: dark)">
-            <img src="${assetPrefix}/download/download-en-light.png" srcset="${assetPrefix}/download/download-en-light.png 1x, ${assetPrefix}/download/download-en-light@2x.png 2x, ${assetPrefix}/download/download-en-light@3x.png 3x" alt="Biggr download preview">
-          </picture>
-        </div>
-        <div class="download-actions">
-          <a class="app-store-link" href="${APP_STORE_URL}">
-            <img
-              class="app-store-badge"
-              src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
-              alt="Download on the App Store">
-          </a>
-        </div>
-      </div>`;
-}
-
 function listPageHtml(exercises, categories) {
-  const defaultCategory = categories[0] || "other";
-
   const categoryNav = categories
     .map((category, index) => {
       const isActive = index === 0;
@@ -1312,7 +812,10 @@ function listPageHtml(exercises, categories) {
 
   const categorySections = categories
     .map((category, index) => {
-      const items = exercises.filter((exercise) => exercise.muscleGroup === category);
+      const isAll = category === "all";
+      const items = isAll
+        ? exercises.slice()
+        : exercises.filter((exercise) => exercise.muscleGroup === category);
 
       const sorted = items.sort((a, b) => a.name.localeCompare(b.name, "ja"));
       const bucketByEquipment = new Map();
@@ -1324,7 +827,7 @@ function listPageHtml(exercises, categories) {
         bucketByEquipment.get(equipmentLabel).push(exercise);
       }
 
-      const equipmentSectionHtml = sortEquipmentLabels(Array.from(bucketByEquipment.keys()), "ja")
+      const equipmentSectionHtml = sortEquipmentLabels(Array.from(bucketByEquipment.keys()))
         .map((equipmentLabel) => {
           const cards = bucketByEquipment
             .get(equipmentLabel)
@@ -1386,7 +889,6 @@ ${equipmentSectionHtml}
   <link rel="manifest" href="../../site.webmanifest">
   <link rel="canonical" href="${BASE_URL}/ja/exercises/">
   <link rel="alternate" hreflang="ja" href="${BASE_URL}/ja/exercises/">
-  <link rel="alternate" hreflang="en" href="${BASE_URL}/en/exercises/">
   <link rel="alternate" hreflang="x-default" href="${BASE_URL}/ja/exercises/">
   <script>document.documentElement.classList.add("js-enabled");</script>
   <script type="application/ld+json">${structuredData}</script>
@@ -1413,7 +915,7 @@ ${equipmentSectionHtml}
 
       <section class="exercise-hero">
         <h1 class="exercise-page-title">筋トレ種目一覧</h1>
-        <p class="exercise-page-lead">Biggrに収録している種目を部位別に検索できます。各ページで、鍛えられる部位・回数の目安・やり方・フォームのポイントを確認できます。</p>
+        <p class="exercise-page-lead">Biggrに登録されている種目を部位別に検索できます。やり方・フォームのポイントを確認できます。</p>
       </section>
 
       <section class="section exercise-browser" aria-labelledby="exercise-browser-title">
@@ -1448,7 +950,7 @@ ${equipmentSectionHtml}
             <p class="footer-title">言語</p>
             <select id="lang-select" class="footer-select" aria-label="言語" onchange="location.href=this.value;">
               <option value="./index.html" selected>日本語</option>
-              <option value="../../en/exercises/">English</option>
+              <option value="../../en/index.html">English</option>
             </select>
           </div>
         </div>
@@ -1500,16 +1002,6 @@ ${equipmentSectionHtml}
         });
       }
 
-      function getActiveCategory() {
-        var activeTab = tabs.find(function (tab) {
-          return tab.classList.contains("is-active");
-        });
-        if (activeTab) {
-          return activeTab.dataset.category;
-        }
-        return sections.length > 0 ? sections[0].dataset.category : "${defaultCategory}";
-      }
-
       function updateSearch() {
         var keyword = (searchInput.value || "").trim().toLowerCase();
         var visibleCount = 0;
@@ -1529,18 +1021,9 @@ ${equipmentSectionHtml}
           return;
         }
 
-        var activeCategory = getActiveCategory();
-
         sections.forEach(function (section) {
-          var isTargetSection = section.dataset.category === activeCategory;
           var sectionVisibleCount = 0;
           section.classList.add("is-searching");
-
-          if (!isTargetSection) {
-            section.hidden = true;
-            section.classList.remove("is-active");
-            return;
-          }
 
           Array.prototype.forEach.call(section.querySelectorAll(".exercise-equipment-group"), function (group) {
             var groupVisibleCount = 0;
@@ -1559,8 +1042,8 @@ ${equipmentSectionHtml}
             group.hidden = groupVisibleCount === 0;
           });
 
-          section.hidden = false;
-          section.classList.add("is-active");
+          section.hidden = sectionVisibleCount === 0;
+          section.classList.toggle("is-active", sectionVisibleCount > 0);
         });
 
         searchStatus.textContent = "検索結果: " + visibleCount + "件";
@@ -1568,306 +1051,12 @@ ${equipmentSectionHtml}
 
       tabs.forEach(function (tab) {
         tab.addEventListener("click", function (event) {
-          event.preventDefault();
-          setActiveCategory(tab.dataset.category);
-          history.replaceState(null, "", "#category-" + tab.dataset.category);
-          updateSearch();
-        });
-      });
-
-      if (searchInput) {
-        searchInput.addEventListener("input", updateSearch);
-      }
-
-      var hash = window.location.hash.replace("#category-", "");
-      var targetCategory = tabs.some(function (tab) {
-        return tab.dataset.category === hash;
-      })
-        ? hash
-        : "${defaultCategory}";
-
-      setActiveCategory(targetCategory);
-      updateSearch();
-    })();
-  </script>
-</body>
-</html>`;
-}
-
-function listPageHtmlEn(exercises, categories) {
-  const defaultCategory = categories[0] || "other";
-  const muscleLabels = getMuscleGroupLabels("en");
-  const equipmentLabels = getEquipmentLabels("en");
-
-  const categoryNav = categories
-    .map((category, index) => {
-      const isActive = index === 0;
-      return `<a class="exercise-tab${isActive ? " is-active" : ""}" href="#category-${category}" data-category="${category}" role="tab" aria-selected="${isActive ? "true" : "false"}">${escapeHtml(
-        mapLabel(muscleLabels, category, "Other")
-      )}</a>`;
-    })
-    .join("\n          ");
-
-  const categorySections = categories
-    .map((category, index) => {
-      const items = exercises.filter((exercise) => exercise.muscleGroup === category);
-      const sorted = items.sort((a, b) => getExerciseName(a, "en").localeCompare(getExerciseName(b, "en"), "en"));
-      const bucketByEquipment = new Map();
-      for (const exercise of sorted) {
-        const equipmentLabel = mapLabel(equipmentLabels, exercise.equipment, "Other");
-        if (!bucketByEquipment.has(equipmentLabel)) {
-          bucketByEquipment.set(equipmentLabel, []);
-        }
-        bucketByEquipment.get(equipmentLabel).push(exercise);
-      }
-
-      const equipmentSectionHtml = sortEquipmentLabels(Array.from(bucketByEquipment.keys()), "en")
-        .map((equipmentLabel) => {
-          const cards = bucketByEquipment
-            .get(equipmentLabel)
-            .map((exercise) => {
-              const aliases = exercise.aliases.join(" ");
-              const imageSrc = toListExerciseImageSrc(exercise);
-              const muscleGroupLabel = mapLabel(muscleLabels, exercise.muscleGroup, "Other");
-              const exerciseName = getExerciseName(exercise, "en");
-
-              return `
-                <a class="exercise-card" href="./${escapeHtml(exercise.slug)}/" data-name="${escapeHtml(
-                  `${exercise.name} ${exercise.nameEn}`
-                )}" data-aliases="${escapeHtml(aliases)}" data-muscle-group="${escapeHtml(muscleGroupLabel)}">
-                  <div class="exercise-card-media">
-                    <img src="${escapeHtml(imageSrc)}" alt="${escapeHtml(exerciseName)} exercise image" class="exercise-card-image" loading="lazy" decoding="async">
-                  </div>
-                  <h3 class="exercise-card-title">${escapeHtml(exerciseName)}</h3>
-                  <p class="exercise-card-meta">${escapeHtml(muscleGroupLabel)}</p>
-                </a>`;
-            })
-            .join("\n");
-
-          return `
-          <section class="exercise-equipment-group" data-equipment-group="${escapeHtml(equipmentLabel)}">
-            <h3 class="exercise-equipment-title">${escapeHtml(equipmentLabel)}</h3>
-            <div class="exercise-card-grid">
-${cards}
-            </div>
-          </section>`;
-        })
-        .join("\n");
-
-      return `
-      <section class="exercise-category${index === 0 ? " is-active" : ""}" id="category-${category}" data-category="${category}">
-${equipmentSectionHtml}
-      </section>`;
-    })
-    .join("\n");
-
-  const structuredData = JSON.stringify(buildListStructuredDataEn(exercises));
-
-  return `<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Exercise Library | Find Workouts by Muscle Group | Biggr</title>
-  <meta name="description" content="Browse workouts in Biggr by muscle group. Check muscles worked, rep guidance, and form basics.">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Exercise Library | Biggr">
-  <meta property="og:description" content="Browse exercises by muscle group and check form basics, rep guide, and related workouts.">
-  <meta property="og:url" content="${BASE_URL}/en/exercises/">
-  <meta property="og:image" content="${BASE_URL}/assets/hero/hero-en-light.png">
-  <meta name="twitter:card" content="summary_large_image">
-  <link rel="apple-touch-icon" sizes="180x180" href="../../assets/favicon/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon/favicon-32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="../../assets/favicon/favicon-16.png">
-  <link rel="manifest" href="../../site.webmanifest">
-  <link rel="canonical" href="${BASE_URL}/en/exercises/">
-  <link rel="alternate" hreflang="en" href="${BASE_URL}/en/exercises/">
-  <link rel="alternate" hreflang="ja" href="${BASE_URL}/ja/exercises/">
-  <link rel="alternate" hreflang="x-default" href="${BASE_URL}/en/exercises/">
-  <script>document.documentElement.classList.add("js-enabled");</script>
-  <script type="application/ld+json">${structuredData}</script>
-  <link rel="stylesheet" href="../../css/style.css">
-</head>
-<body class="exercise-list-page">
-  <div class="container">
-    <header class="app-header">
-      <div class="app-header-inner">
-        <a class="app-brand" href="../index.html">
-          <img src="../../assets/app/app-icon.png" alt="Biggr app icon" class="app-icon">
-          <span class="app-name">Biggr</span>
-        </a>
-        <a class="app-cta" href="${APP_STORE_URL}">Get the app</a>
-      </div>
-    </header>
-
-    <main class="main-content">
-      <nav class="breadcrumb" aria-label="Breadcrumb">
-        <a href="../index.html">Biggr</a>
-        <span aria-hidden="true">/</span>
-        <span>Exercise Library</span>
-      </nav>
-
-      <section class="exercise-hero">
-        <h1 class="exercise-page-title">Exercise Library</h1>
-        <p class="exercise-page-lead">Browse all exercises available in Biggr by muscle group. Each page includes muscles worked, rep guide, form basics, and practical tips.</p>
-      </section>
-
-      <section class="section exercise-browser" aria-labelledby="exercise-browser-title">
-        <div class="section-header section-header-left">
-          <h2 class="section-title" id="exercise-browser-title">Browse by Muscle Group</h2>
-        </div>
-
-        <label class="exercise-search-label" for="exercise-search">Search exercises</label>
-        <input class="exercise-search-input" id="exercise-search" type="search" placeholder="e.g. Bench Press / Dumbbell Curl / squat" autocomplete="off">
-
-        <nav class="exercise-tabs" aria-label="Muscle group categories" role="tablist">
-          ${categoryNav}
-        </nav>
-
-        <p id="exercise-search-status" class="exercise-search-status" aria-live="polite"></p>
-
-        ${categorySections}
-      </section>
-
-      <section class="section exercise-list-cta" id="download">
-        ${renderDownloadPanelEn("../../assets")}
-      </section>
-    </main>
-
-    <hr class="footer-divider">
-
-    <footer class="site-footer">
-      <div class="footer-content">
-        <div class="footer-brand">
-          <img src="../../assets/app/app-icon.png" alt="Biggr app icon" class="footer-icon">
-          <div class="footer-lang">
-            <p class="footer-title">Language</p>
-            <select id="lang-select" class="footer-select" aria-label="Language" onchange="location.href=this.value;">
-              <option value="../../ja/exercises/index.html">日本語</option>
-              <option value="./index.html" selected>English</option>
-            </select>
-          </div>
-        </div>
-        <div class="footer-column footer-about">
-          <p class="footer-title">About</p>
-          <div class="footer-list">
-            <a href="${APP_STORE_URL}">Get the app</a>
-          </div>
-        </div>
-        <div class="footer-column footer-support">
-          <p class="footer-title">Support</p>
-          <div class="footer-list">
-            <a href="./index.html">Exercise Library</a>
-            <a href="../faq.html">FAQ</a>
-            <a href="../releasenotes.html">Release Notes</a>
-            <a href="https://forms.gle/xawttwzNAxQLWsqz7" target="_blank" rel="noopener">Contact</a>
-          </div>
-        </div>
-        <div class="footer-column footer-legal">
-          <p class="footer-title">Legal</p>
-          <div class="footer-list">
-            <a href="../privacypolicy.html">Privacy Policy</a>
-            <a href="../terms.html">Terms of Service</a>
-          </div>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p class="footer-meta">© ${new Date().getFullYear()} Biggr App</p>
-      </div>
-    </footer>
-  </div>
-
-  <script>
-    (function () {
-      var tabs = Array.prototype.slice.call(document.querySelectorAll(".exercise-tab"));
-      var sections = Array.prototype.slice.call(document.querySelectorAll(".exercise-category"));
-      var searchInput = document.getElementById("exercise-search");
-      var searchStatus = document.getElementById("exercise-search-status");
-
-      function setActiveCategory(category) {
-        tabs.forEach(function (tab) {
-          var active = tab.dataset.category === category;
-          tab.classList.toggle("is-active", active);
-          tab.setAttribute("aria-selected", active ? "true" : "false");
-        });
-
-        sections.forEach(function (section) {
-          section.classList.toggle("is-active", section.dataset.category === category);
-        });
-      }
-
-      function getActiveCategory() {
-        var activeTab = tabs.find(function (tab) {
-          return tab.classList.contains("is-active");
-        });
-        if (activeTab) {
-          return activeTab.dataset.category;
-        }
-        return sections.length > 0 ? sections[0].dataset.category : "${defaultCategory}";
-      }
-
-      function updateSearch() {
-        var keyword = (searchInput.value || "").trim().toLowerCase();
-        var visibleCount = 0;
-
-        if (!keyword) {
-          sections.forEach(function (section) {
-            section.classList.remove("is-searching");
-            section.hidden = false;
-            Array.prototype.forEach.call(section.querySelectorAll(".exercise-equipment-group"), function (group) {
-              group.hidden = false;
-            });
-            Array.prototype.forEach.call(section.querySelectorAll(".exercise-card"), function (card) {
-              card.hidden = false;
-            });
-          });
-          searchStatus.textContent = "";
-          return;
-        }
-
-        var activeCategory = getActiveCategory();
-
-        sections.forEach(function (section) {
-          var isTargetSection = section.dataset.category === activeCategory;
-          var sectionVisibleCount = 0;
-          section.classList.add("is-searching");
-
-          if (!isTargetSection) {
-            section.hidden = true;
-            section.classList.remove("is-active");
+          if (searchInput.value.trim()) {
             return;
           }
-
-          Array.prototype.forEach.call(section.querySelectorAll(".exercise-equipment-group"), function (group) {
-            var groupVisibleCount = 0;
-
-            Array.prototype.forEach.call(group.querySelectorAll(".exercise-card"), function (card) {
-              var haystack = (card.dataset.name + " " + card.dataset.aliases + " " + card.dataset.muscleGroup).toLowerCase();
-              var matched = haystack.indexOf(keyword) !== -1;
-              card.hidden = !matched;
-              if (matched) {
-                groupVisibleCount += 1;
-                sectionVisibleCount += 1;
-                visibleCount += 1;
-              }
-            });
-
-            group.hidden = groupVisibleCount === 0;
-          });
-
-          section.hidden = false;
-          section.classList.add("is-active");
-        });
-
-        searchStatus.textContent = "Results: " + visibleCount;
-      }
-
-      tabs.forEach(function (tab) {
-        tab.addEventListener("click", function (event) {
           event.preventDefault();
           setActiveCategory(tab.dataset.category);
           history.replaceState(null, "", "#category-" + tab.dataset.category);
-          updateSearch();
         });
       });
 
@@ -1880,7 +1069,7 @@ ${equipmentSectionHtml}
         return tab.dataset.category === hash;
       })
         ? hash
-        : "${defaultCategory}";
+        : "all";
 
       setActiveCategory(targetCategory);
       updateSearch();
@@ -1893,7 +1082,7 @@ ${equipmentSectionHtml}
 function detailPageHtml(exercise, detail, relatedExercises) {
   const equipmentLabel = mapLabel(EQUIPMENT_LABELS, exercise.equipment, "その他");
   const muscleGroupLabel = mapLabel(MUSCLE_GROUP_LABELS, exercise.muscleGroup, "その他");
-  const detailedMuscles = buildDetailedMuscles(exercise, detail, muscleGroupLabel);
+  const trackingTypeLabel = mapLabel(TRACKING_TYPE_LABELS, exercise.trackingType, "未設定");
 
   const repGuide = buildRepGuide(exercise, detail.repGuide);
   const howToSteps = buildHowToSteps(exercise, detail.howToSteps);
@@ -1964,7 +1153,6 @@ function detailPageHtml(exercise, detail, relatedExercises) {
   <link rel="manifest" href="../../../site.webmanifest">
   <link rel="canonical" href="${canonicalUrl}">
   <link rel="alternate" hreflang="ja" href="${canonicalUrl}">
-  <link rel="alternate" hreflang="en" href="${BASE_URL}/en/exercises/${exercise.slug}/">
   <link rel="alternate" hreflang="x-default" href="${canonicalUrl}">
   <script type="application/ld+json">${structuredData}</script>
   <link rel="stylesheet" href="../../../css/style.css">
@@ -2001,16 +1189,16 @@ function detailPageHtml(exercise, detail, relatedExercises) {
           <h2 class="exercise-detail-heading" id="basic-info-title">基本情報</h2>
           <dl class="detail-facts">
             <div class="detail-fact">
-              <dt>メイン部位</dt>
+              <dt>対象部位</dt>
               <dd>${escapeHtml(muscleGroupLabel)}</dd>
-            </div>
-            <div class="detail-fact">
-              <dt>詳細部位</dt>
-              <dd>${detailedMuscles.map((item) => escapeHtml(item)).join(" / ")}</dd>
             </div>
             <div class="detail-fact">
               <dt>器具</dt>
               <dd>${escapeHtml(equipmentLabel)}</dd>
+            </div>
+            <div class="detail-fact">
+              <dt>記録形式</dt>
+              <dd>${escapeHtml(trackingTypeLabel)}</dd>
             </div>
             ${aliasesHtml}
           </dl>
@@ -2042,11 +1230,20 @@ function detailPageHtml(exercise, detail, relatedExercises) {
         <section class="section exercise-detail-section" id="rep-guide">
           <h2 class="exercise-detail-heading">目的別回数設定</h2>
           <p class="exercise-detail-note">目的や体力に応じた一般的な目安です。無理のない範囲で調整してください。</p>
-          <ul class="rep-guide-list">
-            <li><span class="rep-guide-label">筋力アップ:</span> ${escapeHtml(repGuide.strength)}</li>
-            <li><span class="rep-guide-label">筋肥大:</span> ${escapeHtml(repGuide.hypertrophy)}</li>
-            <li><span class="rep-guide-label">持久力アップ:</span> ${escapeHtml(repGuide.endurance)}</li>
-          </ul>
+          <dl class="rep-guide-list">
+            <div class="rep-guide-item">
+              <dt>筋力アップ</dt>
+              <dd>${escapeHtml(repGuide.strength)}</dd>
+            </div>
+            <div class="rep-guide-item">
+              <dt>筋肥大</dt>
+              <dd>${escapeHtml(repGuide.hypertrophy)}</dd>
+            </div>
+            <div class="rep-guide-item">
+              <dt>持久力アップ</dt>
+              <dd>${escapeHtml(repGuide.endurance)}</dd>
+            </div>
+          </dl>
         </section>
 
         <section class="section exercise-detail-section" id="related">
@@ -2054,9 +1251,7 @@ function detailPageHtml(exercise, detail, relatedExercises) {
           <ul class="related-list">
             ${relatedHtml}
           </ul>
-          <div class="faq-more">
-            <a class="faq-more-link" href="../index.html">筋トレ種目一覧に戻る</a>
-          </div>
+          <p class="exercise-detail-copy"><a href="../index.html">筋トレ種目一覧に戻る</a></p>
         </section>
 
         <section class="section exercise-detail-cta" id="download">
@@ -2075,7 +1270,7 @@ function detailPageHtml(exercise, detail, relatedExercises) {
             <p class="footer-title">言語</p>
             <select id="lang-select" class="footer-select" aria-label="言語" onchange="location.href=this.value;">
               <option value="../index.html" selected>日本語</option>
-              <option value="../../../en/exercises/${exercise.slug}/">English</option>
+              <option value="../../../en/index.html">English</option>
             </select>
           </div>
         </div>
@@ -2111,231 +1306,11 @@ function detailPageHtml(exercise, detail, relatedExercises) {
 </html>`;
 }
 
-function detailPageHtmlEn(exercise, detail, relatedExercises) {
-  const equipmentLabel = mapLabel(EQUIPMENT_LABELS_EN, exercise.equipment, "Other");
-  const muscleGroupLabel = mapLabel(MUSCLE_GROUP_LABELS_EN, exercise.muscleGroup, "Other");
-  const detailedMuscles = buildDetailedMuscles(exercise, detail, muscleGroupLabel, "en");
-
-  const repGuide = buildRepGuide(exercise, detail.repGuide, "en");
-  const howToSteps = buildHowToSteps(exercise, detail.howToSteps, "en");
-  const formPoints = buildFormPoints(exercise, detail.formPoints, "en");
-  const tips = buildTips(exercise, detail.tips, "en");
-  const socialLinks = buildSocialLinks(exercise, detail, "en");
-  const aliases = normalizeAliases(exercise.aliases);
-  const exerciseName = getExerciseName(exercise, "en");
-
-  const leadText = buildLeadText(exercise, "en");
-  const detailImageSrc = toDetailExerciseImageSrc(exercise);
-  const seoTitle = buildSeoTitle(exercise, detail, "en");
-  const seoDescription = buildSeoDescription(exercise, detail, equipmentLabel, "en");
-  const canonicalUrl = `${BASE_URL}/en/exercises/${exercise.slug}/`;
-  const structuredData = JSON.stringify(buildDetailStructuredDataEn(exercise, seoDescription));
-
-  const aliasesHtml = aliases.length > 0
-    ? `<div class="detail-fact">
-            <dt>Also Known As</dt>
-            <dd>${aliases.map((alias) => escapeHtml(alias)).join(" / ")}</dd>
-          </div>`
-    : "";
-
-  const socialCardsHtml = socialLinks
-    .map((social) => {
-      return `<a class="social-link-card social-link-card-${escapeHtml(social.platform)}" href="${escapeHtml(
-        social.url
-      )}" target="_blank" rel="noopener noreferrer" aria-label="${escapeHtml(social.ctaLabel)}">
-          <img src="${escapeHtml(social.iconUrl)}" alt="" loading="lazy" decoding="async" class="social-link-logo">
-        </a>`;
-    })
-    .join("\n            ");
-
-  const socialLinksHtml = `<section class="section exercise-detail-section" id="social-videos">
-        <h2 class="exercise-detail-heading">Social Videos</h2>
-        <div class="social-link-grid">
-          ${socialCardsHtml}
-        </div>
-      </section>`;
-
-  const relatedHtml = relatedExercises
-    .map((related) => {
-      const relatedEquipment = mapLabel(EQUIPMENT_LABELS_EN, related.equipment, "Other");
-      const relatedName = getExerciseName(related, "en");
-      return `<li>
-          <a class="related-item" href="../${escapeHtml(related.slug)}/">${escapeHtml(relatedName)}
-          <span class="related-meta">${escapeHtml(mapLabel(MUSCLE_GROUP_LABELS_EN, related.muscleGroup, "Other"))} / ${escapeHtml(
-            relatedEquipment
-          )}</span></a>
-        </li>`;
-    })
-    .join("\n");
-
-  return `<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>${escapeHtml(seoTitle)}</title>
-  <meta name="description" content="${escapeHtml(seoDescription)}">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta property="og:type" content="article">
-  <meta property="og:title" content="${escapeHtml(seoTitle)}">
-  <meta property="og:description" content="${escapeHtml(seoDescription)}">
-  <meta property="og:url" content="${canonicalUrl}">
-  <meta property="og:image" content="${BASE_URL}/assets/hero/hero-en-light.png">
-  <meta name="twitter:card" content="summary_large_image">
-  <link rel="apple-touch-icon" sizes="180x180" href="../../../assets/favicon/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="../../../assets/favicon/favicon-32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="../../../assets/favicon/favicon-16.png">
-  <link rel="manifest" href="../../../site.webmanifest">
-  <link rel="canonical" href="${canonicalUrl}">
-  <link rel="alternate" hreflang="en" href="${canonicalUrl}">
-  <link rel="alternate" hreflang="ja" href="${BASE_URL}/ja/exercises/${exercise.slug}/">
-  <link rel="alternate" hreflang="x-default" href="${canonicalUrl}">
-  <script type="application/ld+json">${structuredData}</script>
-  <link rel="stylesheet" href="../../../css/style.css">
-</head>
-<body class="exercise-detail-page">
-  <div class="container">
-    <header class="app-header">
-      <div class="app-header-inner">
-        <a class="app-brand" href="../../index.html">
-          <img src="../../../assets/app/app-icon.png" alt="Biggr app icon" class="app-icon">
-          <span class="app-name">Biggr</span>
-        </a>
-        <a class="app-cta" href="${APP_STORE_URL}">Get the app</a>
-      </div>
-    </header>
-
-    <main class="main-content">
-      <nav class="breadcrumb" aria-label="Breadcrumb">
-        <a href="../../index.html">Biggr</a>
-        <span aria-hidden="true">/</span>
-        <a href="../index.html">Exercise Library</a>
-        <span aria-hidden="true">/</span>
-        <span>${escapeHtml(exerciseName)}</span>
-      </nav>
-
-      <article class="exercise-detail-article">
-        <h1 class="exercise-page-title">${escapeHtml(exerciseName)}</h1>
-        <p class="exercise-page-lead">${escapeHtml(leadText)}</p>
-        <div class="exercise-detail-media">
-          <img src="${escapeHtml(detailImageSrc)}" alt="${escapeHtml(exerciseName)} exercise image" class="exercise-detail-image" loading="lazy" decoding="async">
-        </div>
-
-        <section class="section exercise-basic-info" aria-labelledby="basic-info-title">
-          <h2 class="exercise-detail-heading" id="basic-info-title">Basic Info</h2>
-          <dl class="detail-facts">
-            <div class="detail-fact">
-              <dt>Primary Muscle Group</dt>
-              <dd>${escapeHtml(muscleGroupLabel)}</dd>
-            </div>
-            <div class="detail-fact">
-              <dt>Detailed Muscles</dt>
-              <dd>${detailedMuscles.map((item) => escapeHtml(item)).join(" / ")}</dd>
-            </div>
-            <div class="detail-fact">
-              <dt>Equipment</dt>
-              <dd>${escapeHtml(equipmentLabel)}</dd>
-            </div>
-            ${aliasesHtml}
-          </dl>
-        </section>
-
-        ${socialLinksHtml}
-
-        <section class="section exercise-detail-section" id="how-to">
-          <h2 class="exercise-detail-heading">How to Perform</h2>
-          <ol class="howto-list">
-            ${howToSteps.map((step) => `<li>${escapeHtml(step)}</li>`).join("\n            ")}
-          </ol>
-        </section>
-
-        <section class="section exercise-detail-section" id="form-points">
-          <h2 class="exercise-detail-heading">Form Tips</h2>
-          <ul class="form-points-list">
-            ${formPoints.map((point) => `<li>${escapeHtml(point)}</li>`).join("\n            ")}
-          </ul>
-        </section>
-
-        <section class="section exercise-detail-section" id="tips">
-          <h2 class="exercise-detail-heading">Pro Tips</h2>
-          <ul class="tips-list">
-            ${tips.map((tip) => `<li>${escapeHtml(tip)}</li>`).join("\n            ")}
-          </ul>
-        </section>
-
-        <section class="section exercise-detail-section" id="rep-guide">
-          <h2 class="exercise-detail-heading">Rep Guide</h2>
-          <p class="exercise-detail-note">General guidelines. Adjust based on your goal, experience, and condition.</p>
-          <ul class="rep-guide-list">
-            <li><span class="rep-guide-label">Strength:</span> ${escapeHtml(repGuide.strength)}</li>
-            <li><span class="rep-guide-label">Hypertrophy:</span> ${escapeHtml(repGuide.hypertrophy)}</li>
-            <li><span class="rep-guide-label">Endurance:</span> ${escapeHtml(repGuide.endurance)}</li>
-          </ul>
-        </section>
-
-        <section class="section exercise-detail-section" id="related">
-          <h2 class="exercise-detail-heading">Related Exercises</h2>
-          <ul class="related-list">
-            ${relatedHtml}
-          </ul>
-          <div class="faq-more">
-            <a class="faq-more-link" href="../index.html">Back to Exercise Library</a>
-          </div>
-        </section>
-
-        <section class="section exercise-detail-cta" id="download">
-          ${renderDownloadPanelEn("../../../assets")}
-        </section>
-      </article>
-    </main>
-
-    <hr class="footer-divider">
-
-    <footer class="site-footer">
-      <div class="footer-content">
-        <div class="footer-brand">
-          <img src="../../../assets/app/app-icon.png" alt="Biggr app icon" class="footer-icon">
-          <div class="footer-lang">
-            <p class="footer-title">Language</p>
-            <select id="lang-select" class="footer-select" aria-label="Language" onchange="location.href=this.value;">
-              <option value="../../../ja/exercises/${exercise.slug}/">日本語</option>
-              <option value="../${exercise.slug}/" selected>English</option>
-            </select>
-          </div>
-        </div>
-        <div class="footer-column footer-about">
-          <p class="footer-title">About</p>
-          <div class="footer-list">
-            <a href="${APP_STORE_URL}">Get the app</a>
-          </div>
-        </div>
-        <div class="footer-column footer-support">
-          <p class="footer-title">Support</p>
-          <div class="footer-list">
-            <a href="../index.html">Exercise Library</a>
-            <a href="../../faq.html">FAQ</a>
-            <a href="../../releasenotes.html">Release Notes</a>
-            <a href="https://forms.gle/xawttwzNAxQLWsqz7" target="_blank" rel="noopener">Contact</a>
-          </div>
-        </div>
-        <div class="footer-column footer-legal">
-          <p class="footer-title">Legal</p>
-          <div class="footer-list">
-            <a href="../../privacypolicy.html">Privacy Policy</a>
-            <a href="../../terms.html">Terms of Service</a>
-          </div>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p class="footer-meta">© ${new Date().getFullYear()} Biggr App</p>
-      </div>
-    </footer>
-  </div>
-</body>
-</html>`;
-}
-
 function buildCategories(exercises) {
   const categories = MUSCLE_GROUP_ORDER.filter((category) => {
+    if (category === "all") {
+      return true;
+    }
     return exercises.some((exercise) => exercise.muscleGroup === category);
   });
 
@@ -2359,29 +1334,9 @@ async function writeExercisePages(exercises, detailMap) {
 
   for (const exercise of exercises) {
     const detail = detailMap[exercise.id] || detailMap[exercise.slug] || {};
-    const related = buildRelatedExercises(exercises, exercise, detail, "ja");
+    const related = buildRelatedExercises(exercises, exercise, detail);
     const html = detailPageHtml(exercise, detail, related);
     const targetDir = path.join(JA_EXERCISES_DIR, exercise.slug);
-    await fs.mkdir(targetDir, { recursive: true });
-    await fs.writeFile(path.join(targetDir, "index.html"), html, "utf-8");
-  }
-
-  return categories;
-}
-
-async function writeExercisePagesEn(exercises, detailMap) {
-  await fs.rm(EN_EXERCISES_DIR, { recursive: true, force: true });
-  await fs.mkdir(EN_EXERCISES_DIR, { recursive: true });
-
-  const categories = buildCategories(exercises);
-  const listHtml = listPageHtmlEn(exercises, categories);
-  await fs.writeFile(path.join(EN_EXERCISES_DIR, "index.html"), listHtml, "utf-8");
-
-  for (const exercise of exercises) {
-    const detail = detailMap[exercise.id] || detailMap[exercise.slug] || {};
-    const related = buildRelatedExercises(exercises, exercise, detail, "en");
-    const html = detailPageHtmlEn(exercise, detail, related);
-    const targetDir = path.join(EN_EXERCISES_DIR, exercise.slug);
     await fs.mkdir(targetDir, { recursive: true });
     await fs.writeFile(path.join(targetDir, "index.html"), html, "utf-8");
   }
@@ -2425,17 +1380,10 @@ async function updateSitemap(exercises) {
   const xmlText = await fs.readFile(SITEMAP_PATH, "utf-8");
   const parsedEntries = parseSitemap(xmlText);
 
-  const filteredEntries = parsedEntries.filter(
-    (entry) => !entry.loc.includes("/ja/exercises/") && !entry.loc.includes("/en/exercises/")
-  );
+  const filteredEntries = parsedEntries.filter((entry) => !entry.loc.includes("/ja/exercises/"));
 
   filteredEntries.push({
     loc: `${BASE_URL}/ja/exercises/`,
-    lastmod: TODAY,
-    changefreq: "weekly"
-  });
-  filteredEntries.push({
-    loc: `${BASE_URL}/en/exercises/`,
     lastmod: TODAY,
     changefreq: "weekly"
   });
@@ -2444,11 +1392,6 @@ async function updateSitemap(exercises) {
   for (const exercise of sortedExercises) {
     filteredEntries.push({
       loc: `${BASE_URL}/ja/exercises/${exercise.slug}/`,
-      lastmod: TODAY,
-      changefreq: "monthly"
-    });
-    filteredEntries.push({
-      loc: `${BASE_URL}/en/exercises/${exercise.slug}/`,
       lastmod: TODAY,
       changefreq: "monthly"
     });
@@ -2491,20 +1434,15 @@ async function main() {
   });
 
   const createdImageCount = await ensureExercisePlaceholderImages(exercises);
-  const categoriesJa = await writeExercisePages(exercises, detailMap);
-  const categoriesEn = await writeExercisePagesEn(exercises, detailMap);
+  const categories = await writeExercisePages(exercises, detailMap);
   await updateSitemap(exercises);
 
   const detailCount = exercises.filter((exercise) => detailMap[exercise.id] || detailMap[exercise.slug]).length;
   const missingDetail = exercises.length - detailCount;
 
-  console.log(
-    `[generate] Completed. ${exercises.length} exercises, JA categories: ${categoriesJa.length}, EN categories: ${categoriesEn.length}.`
-  );
+  console.log(`[generate] Completed. ${exercises.length} exercises, ${categories.length} categories.`);
   console.log(`[generate] Placeholder images: ${createdImageCount} created, ${exercises.length - createdImageCount} existing.`);
-  console.log(
-    `[generate] Wrote: docs/ja/exercises/index.html + ${exercises.length} detail pages, docs/en/exercises/index.html + ${exercises.length} detail pages.`
-  );
+  console.log(`[generate] Wrote: docs/ja/exercises/index.html + ${exercises.length} detail pages.`);
   console.log(`[generate] Updated: docs/sitemap.xml`);
   console.log(`[report] detail data coverage: ${detailCount}/${exercises.length} exercises (${missingDetail} using fallbacks).`);
 }

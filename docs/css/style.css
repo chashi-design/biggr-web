@@ -803,7 +803,6 @@ html[lang="en"] .copy-line:last-child {
   overflow: hidden;
   border-bottom: 1px solid var(--border);
   border-radius: 0;
-  background: var(--emphasis);
 }
 
 .exercise-card-image {
@@ -839,7 +838,14 @@ html[lang="en"] .copy-line:last-child {
 }
 
 .exercise-detail-media {
-  margin-top: 20px;
+  margin: 20px auto 0;
+}
+
+@media (min-width: 720px) {
+  .exercise-detail-media {
+    width: 500px;
+    max-width: 100%;
+  }
 }
 
 .exercise-detail-image {
@@ -847,9 +853,7 @@ html[lang="en"] .copy-line:last-child {
   width: 100%;
   aspect-ratio: 980 / 610;
   object-fit: cover;
-  border: 1px solid var(--border);
-  border-radius: 0;
-  background: var(--emphasis);
+  border-radius: 24px;
 }
 
 .exercise-detail-heading {
