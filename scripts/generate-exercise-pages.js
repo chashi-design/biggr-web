@@ -20,7 +20,9 @@ const ROOT_DIR = path.resolve(__dirname, "..");
 const DATA_DIR = path.join(ROOT_DIR, "data");
 const DOCS_DIR = path.join(ROOT_DIR, "docs");
 const JA_EXERCISES_DIR = path.join(DOCS_DIR, "ja", "exercises");
+const EN_EXERCISES_DIR = path.join(DOCS_DIR, "en", "exercises");
 const EXERCISE_IMAGE_DIR = path.join(DOCS_DIR, "assets", "exercises");
+const PLACEHOLDER_EXERCISE_IMAGE_PATH = path.join(EXERCISE_IMAGE_DIR, "climbmill.png");
 const SITEMAP_PATH = path.join(DOCS_DIR, "sitemap.xml");
 
 const BASE_URL = "https://biggrapp.com";
@@ -28,7 +30,6 @@ const APP_STORE_URL = "https://apps.apple.com/app/id6758259008";
 const TODAY = new Date().toISOString().slice(0, 10);
 
 const MUSCLE_GROUP_ORDER = [
-  "all",
   "chest",
   "back",
   "shoulders",
@@ -41,7 +42,6 @@ const MUSCLE_GROUP_ORDER = [
 ];
 
 const MUSCLE_GROUP_LABELS = {
-  all: "全て",
   chest: "胸",
   back: "背中",
   shoulders: "肩",
@@ -51,6 +51,18 @@ const MUSCLE_GROUP_LABELS = {
   abs: "腹筋",
   full_body: "全身",
   other: "その他"
+};
+
+const MUSCLE_GROUP_LABELS_EN = {
+  chest: "Chest",
+  back: "Back",
+  shoulders: "Shoulders",
+  arms: "Arms",
+  legs: "Legs",
+  cardio: "Cardio",
+  abs: "Abs",
+  full_body: "Full body",
+  other: "Other"
 };
 
 const EQUIPMENT_LABELS = {
@@ -68,6 +80,21 @@ const EQUIPMENT_LABELS = {
   nil: "その他"
 };
 
+const EQUIPMENT_LABELS_EN = {
+  barbell: "Barbell",
+  dumbbell: "Dumbbell",
+  machine: "Machine",
+  cable: "Cable",
+  smith: "Smith machine",
+  kettlebell: "Kettlebell",
+  device: "Device",
+  bodyweight: "Bodyweight",
+  plate: "Plate",
+  water: "Water",
+  unknown: "Other",
+  nil: "Other"
+};
+
 const EQUIPMENT_LABEL_ORDER = [
   "バーベル",
   "ダンベル",
@@ -80,6 +107,20 @@ const EQUIPMENT_LABEL_ORDER = [
   "プレート",
   "水中",
   "その他"
+];
+
+const EQUIPMENT_LABEL_ORDER_EN = [
+  "Barbell",
+  "Dumbbell",
+  "Machine",
+  "Cable",
+  "Smith machine",
+  "Kettlebell",
+  "Device",
+  "Bodyweight",
+  "Plate",
+  "Water",
+  "Other"
 ];
 
 const TRACKING_TYPE_LABELS = {
@@ -376,11 +417,11 @@ function toPatternFamily(pattern) {
 }
 
 function toListExerciseImageSrc(exercise) {
-  return `../../assets/exercises/${exercise.slug}.svg`;
+  return `../../assets/exercises/${exercise.slug}.png`;
 }
 
 function toDetailExerciseImageSrc(exercise) {
-  return `../../../assets/exercises/${exercise.slug}.svg`;
+  return `../../../assets/exercises/${exercise.slug}.png`;
 }
 
 function splitTitleLines(text, maxChars = 14) {
@@ -437,10 +478,11 @@ function buildExercisePlaceholderSvg(exercise) {
 
 async function ensureExercisePlaceholderImages(exercises) {
   await fs.mkdir(EXERCISE_IMAGE_DIR, { recursive: true });
+  await fs.access(PLACEHOLDER_EXERCISE_IMAGE_PATH);
 
   let createdCount = 0;
   for (const exercise of exercises) {
-    const filePath = path.join(EXERCISE_IMAGE_DIR, `${exercise.slug}.svg`);
+    const filePath = path.join(EXERCISE_IMAGE_DIR, `${exercise.slug}.png`);
     try {
       await fs.access(filePath);
       continue;
@@ -448,8 +490,8 @@ async function ensureExercisePlaceholderImages(exercises) {
       // missing file: create a placeholder
     }
 
-    const svg = buildExercisePlaceholderSvg(exercise);
-    await fs.writeFile(filePath, svg, "utf-8");
+    // Reuse the shared placeholder image so generated pages stay aligned with the current PNG-based asset set.
+    await fs.copyFile(PLACEHOLDER_EXERCISE_IMAGE_PATH, filePath);
     createdCount += 1;
   }
 
@@ -477,16 +519,16 @@ function buildRepGuide(exercise, repGuideFromDetail) {
   return DEFAULT_REP_GUIDE_REPS;
 }
 
-function sortEquipmentLabels(labels) {
+function sortEquipmentLabels(labels, order = EQUIPMENT_LABEL_ORDER, locale = "ja") {
   return labels.slice().sort((a, b) => {
-    const indexA = EQUIPMENT_LABEL_ORDER.indexOf(a);
-    const indexB = EQUIPMENT_LABEL_ORDER.indexOf(b);
+    const indexA = order.indexOf(a);
+    const indexB = order.indexOf(b);
     const scoreA = indexA === -1 ? Number.MAX_SAFE_INTEGER : indexA;
     const scoreB = indexB === -1 ? Number.MAX_SAFE_INTEGER : indexB;
     if (scoreA !== scoreB) {
       return scoreA - scoreB;
     }
-    return a.localeCompare(b, "ja");
+    return a.localeCompare(b, locale);
   });
 }
 
@@ -739,6 +781,53 @@ function buildListStructuredData(exercises) {
   };
 }
 
+function buildListStructuredDataEn(exercises) {
+  const itemList = exercises
+    .slice()
+    .sort((a, b) => a.nameEn.localeCompare(b.nameEn, "en"))
+    .map((exercise, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      url: `${BASE_URL}/en/exercises/${exercise.slug}/`,
+      name: exercise.nameEn
+    }));
+
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        name: "Exercise Library | Find Workouts by Muscle Group | Biggr",
+        description: "Browse workouts in Biggr by muscle group. Check muscles worked, rep guidance, and form basics.",
+        inLanguage: "en",
+        url: `${BASE_URL}/en/exercises/`
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Biggr",
+            item: `${BASE_URL}/en/`
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "Exercise Library",
+            item: `${BASE_URL}/en/exercises/`
+          }
+        ]
+      },
+      {
+        "@type": "ItemList",
+        name: "Biggr Exercise Library",
+        itemListElement: itemList
+      }
+    ]
+  };
+}
+
 function buildDetailStructuredData(exercise, seoDescription) {
   return {
     "@context": "https://schema.org",
@@ -800,7 +889,31 @@ function renderDownloadPanel(assetPrefix) {
       </div>`;
 }
 
+function renderDownloadPanelEn(assetPrefix) {
+  return `<div class="download-panel">
+        <div class="section-header">
+          <h2 class="section-title">Get the app</h2>
+          <p class="section-lead"><span class="copy-line">Log your training</span><span class="copy-line">and workouts</span><span class="copy-line">in Biggr.</span><span class="copy-line">Start for free</span><span class="copy-line">right now.</span></p>
+        </div>
+        <div class="download-media">
+          <picture>
+            <source srcset="${assetPrefix}/download/download-en-dark.png 1x, ${assetPrefix}/download/download-en-dark@2x.png 2x, ${assetPrefix}/download/download-en-dark@3x.png 3x" media="(prefers-color-scheme: dark)">
+            <img src="${assetPrefix}/download/download-en-light.png" srcset="${assetPrefix}/download/download-en-light.png 1x, ${assetPrefix}/download/download-en-light@2x.png 2x, ${assetPrefix}/download/download-en-light@3x.png 3x" alt="Biggr download preview">
+          </picture>
+        </div>
+        <div class="download-actions">
+          <a class="app-store-link" href="${APP_STORE_URL}">
+            <img
+              class="app-store-badge"
+              src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
+              alt="Download on the App Store">
+          </a>
+        </div>
+      </div>`;
+}
+
 function listPageHtml(exercises, categories) {
+  const defaultCategory = categories[0] || "chest";
   const categoryNav = categories
     .map((category, index) => {
       const isActive = index === 0;
@@ -812,10 +925,7 @@ function listPageHtml(exercises, categories) {
 
   const categorySections = categories
     .map((category, index) => {
-      const isAll = category === "all";
-      const items = isAll
-        ? exercises.slice()
-        : exercises.filter((exercise) => exercise.muscleGroup === category);
+      const items = exercises.filter((exercise) => exercise.muscleGroup === category);
 
       const sorted = items.sort((a, b) => a.name.localeCompare(b.name, "ja"));
       const bucketByEquipment = new Map();
@@ -1002,6 +1112,16 @@ ${equipmentSectionHtml}
         });
       }
 
+      function getActiveCategory() {
+        var activeTab = tabs.find(function (tab) {
+          return tab.classList.contains("is-active");
+        });
+        if (activeTab) {
+          return activeTab.dataset.category;
+        }
+        return sections.length > 0 ? sections[0].dataset.category : "${escapeHtml(defaultCategory)}";
+      }
+
       function updateSearch() {
         var keyword = (searchInput.value || "").trim().toLowerCase();
         var visibleCount = 0;
@@ -1021,9 +1141,18 @@ ${equipmentSectionHtml}
           return;
         }
 
+        var activeCategory = getActiveCategory();
+
         sections.forEach(function (section) {
+          var isTargetSection = section.dataset.category === activeCategory;
           var sectionVisibleCount = 0;
           section.classList.add("is-searching");
+
+          if (!isTargetSection) {
+            section.hidden = true;
+            section.classList.remove("is-active");
+            return;
+          }
 
           Array.prototype.forEach.call(section.querySelectorAll(".exercise-equipment-group"), function (group) {
             var groupVisibleCount = 0;
@@ -1042,8 +1171,8 @@ ${equipmentSectionHtml}
             group.hidden = groupVisibleCount === 0;
           });
 
-          section.hidden = sectionVisibleCount === 0;
-          section.classList.toggle("is-active", sectionVisibleCount > 0);
+          section.hidden = false;
+          section.classList.add("is-active");
         });
 
         searchStatus.textContent = "検索結果: " + visibleCount + "件";
@@ -1051,12 +1180,10 @@ ${equipmentSectionHtml}
 
       tabs.forEach(function (tab) {
         tab.addEventListener("click", function (event) {
-          if (searchInput.value.trim()) {
-            return;
-          }
           event.preventDefault();
           setActiveCategory(tab.dataset.category);
           history.replaceState(null, "", "#category-" + tab.dataset.category);
+          updateSearch();
         });
       });
 
@@ -1069,7 +1196,301 @@ ${equipmentSectionHtml}
         return tab.dataset.category === hash;
       })
         ? hash
-        : "all";
+        : "${escapeHtml(defaultCategory)}";
+
+      setActiveCategory(targetCategory);
+      updateSearch();
+    })();
+  </script>
+</body>
+</html>`;
+}
+
+function listPageHtmlEn(exercises, categories) {
+  const defaultCategory = categories[0] || "chest";
+  const categoryNav = categories
+    .map((category, index) => {
+      const isActive = index === 0;
+      return `<a class="exercise-tab${isActive ? " is-active" : ""}" href="#category-${category}" data-category="${category}" role="tab" aria-selected="${isActive ? "true" : "false"}">${escapeHtml(
+        mapLabel(MUSCLE_GROUP_LABELS_EN, category, "Other")
+      )}</a>`;
+    })
+    .join("\n          ");
+
+  const categorySections = categories
+    .map((category, index) => {
+      const items = exercises.filter((exercise) => exercise.muscleGroup === category);
+      const sorted = items.sort((a, b) => a.nameEn.localeCompare(b.nameEn, "en"));
+      const bucketByEquipment = new Map();
+      for (const exercise of sorted) {
+        const equipmentLabel = mapLabel(EQUIPMENT_LABELS_EN, exercise.equipment, "Other");
+        if (!bucketByEquipment.has(equipmentLabel)) {
+          bucketByEquipment.set(equipmentLabel, []);
+        }
+        bucketByEquipment.get(equipmentLabel).push(exercise);
+      }
+
+      const equipmentSectionHtml = sortEquipmentLabels(Array.from(bucketByEquipment.keys()), EQUIPMENT_LABEL_ORDER_EN, "en")
+        .map((equipmentLabel) => {
+          const cards = bucketByEquipment
+            .get(equipmentLabel)
+            .map((exercise) => {
+              const aliases = exercise.aliases.join(" ");
+              const imageSrc = toListExerciseImageSrc(exercise);
+              const muscleGroupLabel = mapLabel(MUSCLE_GROUP_LABELS_EN, exercise.muscleGroup, "Other");
+
+              return `
+                <a class="exercise-card" href="./${escapeHtml(exercise.slug)}/" data-name="${escapeHtml(
+                  exercise.name
+                )} ${escapeHtml(exercise.nameEn)}" data-aliases="${escapeHtml(aliases)}" data-muscle-group="${escapeHtml(
+                  muscleGroupLabel
+                )}">
+                  <div class="exercise-card-media">
+                    <img src="${escapeHtml(imageSrc)}" alt="${escapeHtml(exercise.nameEn)} exercise image" class="exercise-card-image" loading="lazy" decoding="async">
+                  </div>
+                  <h3 class="exercise-card-title">${escapeHtml(exercise.nameEn)}</h3>
+                  <p class="exercise-card-meta">${escapeHtml(muscleGroupLabel)}</p>
+                </a>`;
+            })
+            .join("\n");
+
+          return `
+          <section class="exercise-equipment-group" data-equipment-group="${escapeHtml(equipmentLabel)}">
+            <h3 class="exercise-equipment-title">${escapeHtml(equipmentLabel)}</h3>
+            <div class="exercise-card-grid">
+${cards}
+            </div>
+          </section>`;
+        })
+        .join("\n");
+
+      return `
+      <section class="exercise-category${index === 0 ? " is-active" : ""}" id="category-${category}" data-category="${category}">
+${equipmentSectionHtml}
+      </section>`;
+    })
+    .join("\n");
+
+  const structuredData = JSON.stringify(buildListStructuredDataEn(exercises));
+
+  return `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Exercise Library | Find Workouts by Muscle Group | Biggr</title>
+  <meta name="description" content="Browse workouts in Biggr by muscle group. Check muscles worked, rep guidance, and form basics.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Exercise Library | Biggr">
+  <meta property="og:description" content="Browse workouts by muscle group and open each exercise page for muscles worked, rep guidance, and basics.">
+  <meta property="og:url" content="${BASE_URL}/en/exercises/">
+  <meta property="og:image" content="${BASE_URL}/assets/hero/hero-en-light.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="apple-touch-icon" sizes="180x180" href="../../assets/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../../assets/favicon/favicon-16.png">
+  <link rel="manifest" href="../../site.webmanifest">
+  <link rel="canonical" href="${BASE_URL}/en/exercises/">
+  <link rel="alternate" hreflang="en" href="${BASE_URL}/en/exercises/">
+  <link rel="alternate" hreflang="ja" href="${BASE_URL}/ja/exercises/">
+  <link rel="alternate" hreflang="x-default" href="${BASE_URL}/en/exercises/">
+  <script>document.documentElement.classList.add("js-enabled");</script>
+  <script type="application/ld+json">${structuredData}</script>
+  <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body class="exercise-list-page">
+  <div class="container">
+    <header class="app-header">
+      <div class="app-header-inner">
+        <a class="app-brand" href="../index.html">
+          <img src="../../assets/app/app-icon.png" alt="Biggr app icon" class="app-icon">
+          <span class="app-name">Biggr</span>
+        </a>
+        <a class="app-cta" href="${APP_STORE_URL}">Download on the App Store</a>
+      </div>
+    </header>
+
+    <main class="main-content">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="../index.html">Biggr</a>
+        <span aria-hidden="true">/</span>
+        <span>Exercise Library</span>
+      </nav>
+
+      <section class="exercise-hero">
+        <h1 class="exercise-page-title">Exercise Library</h1>
+        <p class="exercise-page-lead">Browse exercises available in Biggr by muscle group. Check how to perform them and basic rep guidance.</p>
+      </section>
+
+      <section class="section exercise-browser" aria-labelledby="exercise-browser-title">
+        <div class="section-header section-header-left">
+          <h2 class="section-title" id="exercise-browser-title">Browse by muscle group</h2>
+        </div>
+
+        <label class="exercise-search-label" for="exercise-search">Search exercises</label>
+        <input class="exercise-search-input" id="exercise-search" type="search" placeholder="e.g. Bench Press / Dumbbell Curl / squat" autocomplete="off">
+
+        <nav class="exercise-tabs" aria-label="Muscle group categories" role="tablist">
+          ${categoryNav}
+        </nav>
+
+        <p id="exercise-search-status" class="exercise-search-status" aria-live="polite"></p>
+
+        ${categorySections}
+      </section>
+
+      <section class="section exercise-list-cta" id="download">
+        ${renderDownloadPanelEn("../../assets")}
+      </section>
+    </main>
+
+    <hr class="footer-divider">
+
+    <footer class="site-footer">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <img src="../../assets/app/app-icon.png" alt="Biggr app icon" class="footer-icon">
+          <div class="footer-lang">
+            <p class="footer-title">Language</p>
+            <select id="lang-select" class="footer-select" aria-label="Language" onchange="location.href=this.value;">
+              <option value="../../ja/exercises/index.html">日本語</option>
+              <option value="./index.html" selected>English</option>
+            </select>
+          </div>
+        </div>
+        <div class="footer-column footer-about">
+          <p class="footer-title">About</p>
+          <div class="footer-list">
+            <a href="${APP_STORE_URL}">Get the app</a>
+          </div>
+        </div>
+        <div class="footer-column footer-support">
+          <p class="footer-title">Support</p>
+          <div class="footer-list">
+            <a href="./index.html">Exercise Library</a>
+            <a href="../faq.html">FAQ</a>
+            <a href="../releasenotes.html">Release Notes</a>
+            <a href="https://forms.gle/xawttwzNAxQLWsqz7" target="_blank" rel="noopener">Contact</a>
+          </div>
+        </div>
+        <div class="footer-column footer-legal">
+          <p class="footer-title">Legal</p>
+          <div class="footer-list">
+            <a href="../privacypolicy.html">Privacy Policy</a>
+            <a href="../terms.html">Terms of Service</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-meta">© ${new Date().getFullYear()} Biggr App</p>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    (function () {
+      var tabs = Array.prototype.slice.call(document.querySelectorAll(".exercise-tab"));
+      var sections = Array.prototype.slice.call(document.querySelectorAll(".exercise-category"));
+      var searchInput = document.getElementById("exercise-search");
+      var searchStatus = document.getElementById("exercise-search-status");
+
+      function setActiveCategory(category) {
+        tabs.forEach(function (tab) {
+          var active = tab.dataset.category === category;
+          tab.classList.toggle("is-active", active);
+          tab.setAttribute("aria-selected", active ? "true" : "false");
+        });
+
+        sections.forEach(function (section) {
+          section.classList.toggle("is-active", section.dataset.category === category);
+        });
+      }
+
+      function getActiveCategory() {
+        var activeTab = tabs.find(function (tab) {
+          return tab.classList.contains("is-active");
+        });
+        if (activeTab) {
+          return activeTab.dataset.category;
+        }
+        return sections.length > 0 ? sections[0].dataset.category : "${escapeHtml(defaultCategory)}";
+      }
+
+      function updateSearch() {
+        var keyword = (searchInput.value || "").trim().toLowerCase();
+        var visibleCount = 0;
+
+        if (!keyword) {
+          sections.forEach(function (section) {
+            section.classList.remove("is-searching");
+            section.hidden = false;
+            Array.prototype.forEach.call(section.querySelectorAll(".exercise-equipment-group"), function (group) {
+              group.hidden = false;
+            });
+            Array.prototype.forEach.call(section.querySelectorAll(".exercise-card"), function (card) {
+              card.hidden = false;
+            });
+          });
+          searchStatus.textContent = "";
+          return;
+        }
+
+        var activeCategory = getActiveCategory();
+
+        sections.forEach(function (section) {
+          var isTargetSection = section.dataset.category === activeCategory;
+          var sectionVisibleCount = 0;
+          section.classList.add("is-searching");
+
+          if (!isTargetSection) {
+            section.hidden = true;
+            section.classList.remove("is-active");
+            return;
+          }
+
+          Array.prototype.forEach.call(section.querySelectorAll(".exercise-equipment-group"), function (group) {
+            var groupVisibleCount = 0;
+
+            Array.prototype.forEach.call(group.querySelectorAll(".exercise-card"), function (card) {
+              var haystack = (card.dataset.name + " " + card.dataset.aliases + " " + card.dataset.muscleGroup).toLowerCase();
+              var matched = haystack.indexOf(keyword) !== -1;
+              card.hidden = !matched;
+              if (matched) {
+                groupVisibleCount += 1;
+                sectionVisibleCount += 1;
+                visibleCount += 1;
+              }
+            });
+
+            group.hidden = groupVisibleCount === 0;
+          });
+
+          section.hidden = false;
+          section.classList.add("is-active");
+        });
+
+        searchStatus.textContent = "Results: " + visibleCount;
+      }
+
+      tabs.forEach(function (tab) {
+        tab.addEventListener("click", function (event) {
+          event.preventDefault();
+          setActiveCategory(tab.dataset.category);
+          history.replaceState(null, "", "#category-" + tab.dataset.category);
+          updateSearch();
+        });
+      });
+
+      if (searchInput) {
+        searchInput.addEventListener("input", updateSearch);
+      }
+
+      var hash = window.location.hash.replace("#category-", "");
+      var targetCategory = tabs.some(function (tab) {
+        return tab.dataset.category === hash;
+      })
+        ? hash
+        : "${escapeHtml(defaultCategory)}";
 
       setActiveCategory(targetCategory);
       updateSearch();
@@ -1307,15 +1728,10 @@ function detailPageHtml(exercise, detail, relatedExercises) {
 }
 
 function buildCategories(exercises) {
-  const categories = MUSCLE_GROUP_ORDER.filter((category) => {
-    if (category === "all") {
-      return true;
-    }
-    return exercises.some((exercise) => exercise.muscleGroup === category);
-  });
+  const categories = MUSCLE_GROUP_ORDER.filter((category) => exercises.some((exercise) => exercise.muscleGroup === category));
 
   // 想定外のカテゴリがデータにある場合は「その他」扱いで末尾に追加。
-  const known = new Set(categories);
+  const known = new Set(MUSCLE_GROUP_ORDER);
   const unknownCategories = Array.from(new Set(exercises.map((exercise) => exercise.muscleGroup))).filter(
     (category) => !known.has(category)
   );
@@ -1327,10 +1743,13 @@ async function writeExercisePages(exercises, detailMap) {
   // Ensure removed/renamed slugs do not leave stale HTML files.
   await fs.rm(JA_EXERCISES_DIR, { recursive: true, force: true });
   await fs.mkdir(JA_EXERCISES_DIR, { recursive: true });
+  await fs.mkdir(EN_EXERCISES_DIR, { recursive: true });
 
   const categories = buildCategories(exercises);
   const listHtml = listPageHtml(exercises, categories);
   await fs.writeFile(path.join(JA_EXERCISES_DIR, "index.html"), listHtml, "utf-8");
+  const listHtmlEn = listPageHtmlEn(exercises, categories);
+  await fs.writeFile(path.join(EN_EXERCISES_DIR, "index.html"), listHtmlEn, "utf-8");
 
   for (const exercise of exercises) {
     const detail = detailMap[exercise.id] || detailMap[exercise.slug] || {};

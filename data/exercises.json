@@ -106,21 +106,6 @@
     "descEn": "Use a cable machine to arms-together flye motion. Open the arms and bring them together with the pecs. Targets pecs (focus on adduction/feel); constant tension through the range. Great for pec contraction and shape."
   },
   {
-    "id": "ex008",
-    "name": "プッシュアップ",
-    "nameEn": "Push-up",
-    "muscleGroup": "chest",
-    "aliases": [
-      "腕立て伏せ",
-      "push up"
-    ],
-    "equipment": "bodyweight",
-    "trackingType": "repsOnly",
-    "pattern": "horizontal_push",
-    "descJa": "プッシュアップとは、自重を使って「押す」動作で胸（大胸筋）、肩前部（三角筋前部）、腕（上腕三頭筋）を鍛える種目です。器具なしで手軽にでき、フォーム次第で負荷調整しやすいのが特徴で、体を一直線に保ち、胸を床へ近づけて押し上げる動作を繰り返します。厚い胸板づくりや上半身の押す力の向上が期待できます。",
-    "descEn": "Use your bodyweight to press. Keep a straight body, lower the chest, and press up. Targets pecs, front delts, and triceps; no equipment needed. Build chest size and pressing strength."
-  },
-  {
     "id": "ex009",
     "name": "マシンチェストプレス",
     "nameEn": "Chest Press Machine",
@@ -1749,25 +1734,6 @@
     "pattern": "horizontal_push",
     "descJa": "デクラインチェストプレスとは、マシンを使ってベンチ角度を下げた状態で「押す」動作で胸下部（大胸筋下部）、肩前部（三角筋前部）、腕（上腕三頭筋）を鍛える種目です。軌道が安定して狙った部位に効かせやすいのが特徴で、ベンチに仰向けになり、胸に下ろして押し上げる動作を繰り返します。胸下部の厚みづくりや上半身の押す力の向上が期待できます。",
     "descEn": "Use a decline chest press machine. Lower to the lower chest and press up. Targets lower pecs, front delts, and triceps; stable path makes it easy to load safely. Builds lower chest size and pressing strength."
-  },
-  {
-    "id": "ex118",
-    "name": "アームバー",
-    "nameEn": "Spring Bar (Arm Bar)",
-    "muscleGroup": "chest",
-    "aliases": [
-      "パワーツイスター",
-      "スプリングバー",
-      "油圧アームバー",
-      "spring bar",
-      "power twister",
-      "arm bar"
-    ],
-    "equipment": "device",
-    "trackingType": "repsOnly",
-    "pattern": "horizontal_push",
-    "descJa": "アームバーとは、棒状の金属製のバネや油圧式の器具を腕の力で曲げることで上半身を鍛えるトレーニング用品です。特に大胸筋、上腕二頭筋、背筋に負荷がかかるのが特徴で、バーをコントロールしながら曲げ、ゆっくり戻す動作を繰り返します。",
-    "descEn": "An arm bar (spring/hydraulic bar) is a metal bar you bend with arm strength to train the upper body. It especially loads the chest, biceps, and back. Bend the bar under control and return slowly for reps."
   },
   {
     "id": "ex119",
