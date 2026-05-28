@@ -372,3 +372,14 @@ UI文言、オンボーディング、ヘルプ、エラーメッセージ、設
   - ブログ / 記事の継続運用を前提にしない
   - 過度なアニメーションや重い演出で体験を損ねない
   - 証明できない比較最上級（「最も」「唯一」等）を前提にしない
+
+---
+
+## Codex Response Rule / 確認URL
+- Biggr Web リポジトリでの Codex の最終回答には、最後に必ず確認用URLを記載する。
+- Tailscale Serve が利用できる場合は、iPhoneから確認できるURLを優先する。
+  - 日本語: `https://takanorimac-studio.tail07f3c7.ts.net/ja/`
+  - 英語: `https://takanorimac-studio.tail07f3c7.ts.net/en/`
+- Tailscale Serve が利用できない場合は、代替としてローカル確認URLを記載する。
+  - 日本語: `http://localhost:8000/ja/`
+  - 英語: `http://localhost:8000/en/`
