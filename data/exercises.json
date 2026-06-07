@@ -555,18 +555,65 @@
   },
   {
     "id": "ex040",
-    "name": "ラットプルダウン（ラットプルバー）",
+    "name": "ラットプルダウン",
     "nameEn": "Lat Pulldown",
     "muscleGroup": "back",
     "aliases": [
+      "ラットプルダウン（ラットプルバー）",
       "プルダウン",
-      "lat pull down"
+      "ラットプル",
+      "lat pull down",
+      "lat pulldown",
+      "ワイドプルダウン",
+      "ワイドラットプルダウン",
+      "ワイドグリッププルダウン",
+      "ラットプルダウン ワイド",
+      "lat pulldown wide grip",
+      "wide grip lat pulldown",
+      "パラレルラットプルダウン",
+      "Vバーラットプルダウン",
+      "lat pulldown parallel grip",
+      "parallel grip lat pulldown",
+      "ラットプル ミドル パラレル",
+      "ミドルパラレルラットプル",
+      "lat pulldown parallel middle",
+      "parallel grip lat pulldown middle",
+      "ラットプル ミドル オーバー",
+      "ミドルオーバーラットプル",
+      "lat pulldown overhand middle",
+      "overhand grip lat pulldown middle",
+      "ラットプル ミドル アンダー",
+      "ミドルアンダーラットプル",
+      "lat pulldown underhand middle",
+      "underhand grip lat pulldown middle",
+      "ラットプル ナロー パラレル",
+      "ナローパラレルラットプル",
+      "lat pulldown parallel narrow",
+      "parallel grip lat pulldown narrow",
+      "ラットプル ナロー オーバー",
+      "ナローオーバーラットプル",
+      "lat pulldown overhand narrow",
+      "overhand grip lat pulldown narrow",
+      "ラットプル ナロー アンダー",
+      "ナローアンダーラットプル",
+      "lat pulldown underhand narrow",
+      "underhand grip lat pulldown narrow",
+      "ラットプル オーバー ワイド",
+      "オーバーグリップワイドラットプルダウン",
+      "lat pulldown overhand wide",
+      "overhand wide grip lat pulldown",
+      "マググリップ ラットプルダウン",
+      "MAG grip lat pulldown",
+      "ストレートアームプルダウン",
+      "サイドプル",
+      "straight arm",
+      "straight-arm pulldown"
     ],
     "equipment": "cable",
     "trackingType": "weightReps",
     "pattern": "vertical_pull",
-    "descJa": "ラットプルダウン（ラットプルバー）とは、ケーブルを使って「引く」動作で背中（広背筋、僧帽筋、菱形筋）＋腕（上腕二頭筋）を鍛える種目です。可動域全体で張力が抜けにくいのが特徴で、胸を張り、バーを鎖骨付近へ引き下げて戻す動作を繰り返します。背中の厚み・広がり作りや姿勢改善が期待できます。",
-    "descEn": "Use a cable machine to pull down/up. Pull down to the upper chest (or pull yourself up). Targets lats and upper back (plus arms); constant tension through the range. Build a wider/thicker back and better posture."
+    "descJa": "ラットプルダウンは、ケーブルを使って背中を鍛える種目です。胸を軽く張り、バーやグリップを鎖骨の近くへ引き下げます。ワイド、パラレル、MAGグリップ、ストレートアームなどのバリエーションがあります。",
+    "descEn": "Use a cable machine to pull a bar or handle toward the upper chest while keeping the chest lifted. Lat pulldown trains the lats and upper back, with variations such as wide grip, parallel grip, MAG grip, and straight-arm pulldown."
   },
   {
     "id": "ex041",
@@ -685,21 +732,6 @@
     "pattern": "horizontal_pull",
     "descJa": "フェイスプルとは、ケーブルを使って「引く」動作で肩後部（三角筋後部）、僧帽筋、ローテーターカフを鍛える種目です。可動域全体で張力が抜けにくいのが特徴で、反動を抑えてコントロールしながら反復します。背中の厚み・広がり作りや姿勢改善が期待できます。",
     "descEn": "Use a cable machine to row/pull. Pull toward the torso and return. Targets rear delts, lower traps, and shoulder stabilizers; constant tension through the range. Build a wider/thicker back and better posture."
-  },
-  {
-    "id": "ex049",
-    "name": "ストレートアームプルダウン",
-    "nameEn": "Straight-arm Pulldown",
-    "muscleGroup": "back",
-    "aliases": [
-      "サイドプル",
-      "straight arm"
-    ],
-    "equipment": "cable",
-    "trackingType": "weightReps",
-    "pattern": "horizontal_pull",
-    "descJa": "ストレートアームプルダウンとは、ケーブルを使って「引く」動作で背中（広背筋、僧帽筋、菱形筋）＋腕（上腕二頭筋）を鍛える種目です。可動域全体で張力が抜けにくいのが特徴で、反動を抑えてコントロールしながら反復します。背中の厚み・広がり作りや姿勢改善が期待できます。",
-    "descEn": "Use a cable machine to row/pull. Pull toward the torso and return. Targets lats; constant tension through the range. Build a wider/thicker back and better posture."
   },
   {
     "id": "ex050",
@@ -1493,25 +1525,6 @@
     "descEn": "Step Machine is an aerobic exercise performing step-like movements to train the lower body and cardiovascular fitness. It is easy to maintain rhythm and effective for endurance and fat loss."
   },
   {
-    "id": "ex103",
-    "name": "ラットプルダウン（ベントラットバー・ワイドグリップ）",
-    "nameEn": "Lat Pulldown (Wide Grip)",
-    "muscleGroup": "back",
-    "aliases": [
-      "ワイドプルダウン",
-      "ワイドラットプルダウン",
-      "ワイドグリッププルダウン",
-      "ラットプルダウン ワイド",
-      "lat pulldown wide grip",
-      "wide grip lat pulldown"
-    ],
-    "equipment": "cable",
-    "trackingType": "weightReps",
-    "pattern": "vertical_pull",
-    "descJa": "ラットプルダウン（ベントラットバー・ワイドグリップ）とは、ケーブルを使ってワイドグリップで「引く」動作で背中（広背筋、僧帽筋、菱形筋）と腕（上腕二頭筋）を鍛える種目です。ワイド幅により背中の外側を意識しやすいのが特徴で、胸を張ってバーを鎖骨付近へ引き下げ、コントロールして戻す動作を繰り返します。背中の幅づくりや姿勢改善が期待できます。",
-    "descEn": "Use a cable machine with a wide grip and pull to the upper chest. Targets lats, upper back, and biceps with emphasis on back width. Build a wider back and improve posture."
-  },
-  {
     "id": "ex104",
     "name": "D.Y.ロウ",
     "nameEn": "D.Y. Row",
@@ -1834,22 +1847,6 @@
     "descEn": "Use dumbbells on an incline bench to raise the arms forward. Targets front delts with less momentum and a longer effective range. Helps build front-delt size and control."
   },
   {
-    "id": "ex125",
-    "name": "バーベルフロントプレス",
-    "nameEn": "Barbell Front Press",
-    "muscleGroup": "shoulders",
-    "aliases": [
-      "フロントプレス",
-      "barbell front press",
-      "standing front press"
-    ],
-    "equipment": "barbell",
-    "trackingType": "weightReps",
-    "pattern": "vertical_push",
-    "descJa": "バーベルフロントプレスとは、バーベルを使って前側から頭上へ「押す」動作で肩（三角筋）と腕（上腕三頭筋）を鍛える種目です。高重量を扱いやすく、全身の連動を使いやすいのが特徴で、体幹を固めてフロントラック位から真上へ押し上げ、コントロールして下ろす動作を繰り返します。肩の筋力向上とプレス種目の強化が期待できます。",
-    "descEn": "Press a barbell from the front rack to overhead. Targets delts and triceps; supports heavier loading and full-body coordination. Builds overhead pressing strength."
-  },
-  {
     "id": "ex126",
     "name": "スミスフロントプレス",
     "nameEn": "Smith Front Press",
@@ -2031,141 +2028,5 @@
     "pattern": "hip_abduction",
     "descJa": "3Dマルチアブダクターとは、マシンを使って「股関節を外へ開く」動作を行い、主に臀部外側（中臀筋など）を鍛える筋力トレーニングです。座面設定や動作角度を調整しながら狙いを変えやすいのが特徴で、反動を抑えて外へ開き、コントロールして戻す動作を繰り返します。これにより、股関節の安定性向上とヒップラインの改善が期待できます。",
     "descEn": "Use a machine to abduct the hips with adjustable setup and angles. Open the legs against resistance and return slowly. Targets glute medius and surrounding abductors for hip stability and glute development."
-  },
-  {
-    "id": "ex137",
-    "name": "ラットプルダウン（マググリップ・ミディアム・グリップ・ニュートラル）",
-    "nameEn": "Lat Pulldown (MAG Grip, Medium Grip, Neutral)",
-    "muscleGroup": "back",
-    "aliases": [
-      "ラットプル ミドル パラレル",
-      "ミドルパラレルラットプル",
-      "lat pulldown parallel middle",
-      "parallel grip lat pulldown middle"
-    ],
-    "equipment": "cable",
-    "trackingType": "weightReps",
-    "pattern": "vertical_pull",
-    "descJa": "ラットプルダウン（マググリップ・ミディアム・グリップ・ニュートラル）とは、ケーブルを使ってマググリップの中間幅ニュートラルで「引く」動作を行い、主に背中（広背筋、僧帽筋、菱形筋）と腕（上腕二頭筋）を鍛える種目です。手首と肘の軌道を自然に保ちやすいのが特徴で、胸を張ってバーを引き下げ、コントロールして戻す動作を繰り返します。背中の厚みと安定した引く力の向上が期待できます。",
-    "descEn": "Use a cable machine with a MAG medium neutral grip and pull to the upper chest. Targets lats, upper back, and biceps with a natural arm path and stable wrist position. Supports balanced back development and pulling strength."
-  },
-  {
-    "id": "ex138",
-    "name": "ラットプルダウン（マググリップ・ミディアム・グリップ・プロネイト）",
-    "nameEn": "Lat Pulldown (MAG Grip, Medium Grip, Pronated)",
-    "muscleGroup": "back",
-    "aliases": [
-      "ラットプル ミドル オーバー",
-      "ミドルオーバーラットプル",
-      "lat pulldown overhand middle",
-      "overhand grip lat pulldown middle"
-    ],
-    "equipment": "cable",
-    "trackingType": "weightReps",
-    "pattern": "vertical_pull",
-    "descJa": "ラットプルダウン（マググリップ・ミディアム・グリップ・プロネイト）とは、ケーブルを使ってマググリップの中間幅プロネイトで「引く」動作を行い、主に背中（広背筋、僧帽筋、菱形筋）と腕（上腕二頭筋）を鍛える種目です。可動域と安定性のバランスを取りやすいのが特徴で、胸を張って引き下げ、ゆっくり戻す動作を繰り返します。背中全体の筋力向上とフォーム習得が期待できます。",
-    "descEn": "Use a cable machine with a MAG medium pronated grip and pull to the upper chest. Balances range of motion and control while targeting lats, upper back, and biceps. Good for overall back strength and technique."
-  },
-  {
-    "id": "ex139",
-    "name": "ラットプルダウン（マググリップ・ミディアム・グリップ・スピネイト）",
-    "nameEn": "Lat Pulldown (MAG Grip, Medium Grip, Supinated)",
-    "muscleGroup": "back",
-    "aliases": [
-      "ラットプル ミドル アンダー",
-      "ミドルアンダーラットプル",
-      "lat pulldown underhand middle",
-      "underhand grip lat pulldown middle"
-    ],
-    "equipment": "cable",
-    "trackingType": "weightReps",
-    "pattern": "vertical_pull",
-    "descJa": "ラットプルダウン（マググリップ・ミディアム・グリップ・スピネイト）とは、ケーブルを使ってマググリップの中間幅スピネイトで「引く」動作を行い、主に背中（広背筋）と腕（上腕二頭筋）を鍛える種目です。上腕二頭筋の関与を高めやすいのが特徴で、胸を張って肘を体側へ引き、コントロールして戻す動作を繰り返します。広背筋下部の意識づけと引く力の向上が期待できます。",
-    "descEn": "Use a cable machine with a MAG medium supinated grip and pull down under control. Increases biceps contribution while training lats and upper back. Useful for lower-lat focus and pulling strength."
-  },
-  {
-    "id": "ex140",
-    "name": "ラットプルダウン（マググリップ・クローズ・グリップ・ニュートラル）",
-    "nameEn": "Lat Pulldown (MAG Grip, Close Grip, Neutral)",
-    "muscleGroup": "back",
-    "aliases": [
-      "ラットプル ナロー パラレル",
-      "ナローパラレルラットプル",
-      "lat pulldown parallel narrow",
-      "parallel grip lat pulldown narrow"
-    ],
-    "equipment": "cable",
-    "trackingType": "weightReps",
-    "pattern": "vertical_pull",
-    "descJa": "ラットプルダウン（マググリップ・クローズ・グリップ・ニュートラル）とは、ケーブルを使ってマググリップの狭め幅ニュートラルで「引く」動作を行い、主に背中（広背筋）と腕（上腕二頭筋）を鍛える種目です。肘を体側へ寄せて収縮を作りやすいのが特徴で、胸を張って引き下げ、ゆっくり戻す動作を繰り返します。背中の厚みづくりと収縮感の向上が期待できます。",
-    "descEn": "Use a cable machine with a MAG close neutral grip and pull to the upper chest. Encourages elbows close to the torso for strong contraction in lats and biceps. Helps build back thickness."
-  },
-  {
-    "id": "ex141",
-    "name": "ラットプルダウン（マググリップ・クローズ・グリップ・プロネイト）",
-    "nameEn": "Lat Pulldown (MAG Grip, Close Grip, Pronated)",
-    "muscleGroup": "back",
-    "aliases": [
-      "ラットプル ナロー オーバー",
-      "ナローオーバーラットプル",
-      "lat pulldown overhand narrow",
-      "overhand grip lat pulldown narrow"
-    ],
-    "equipment": "cable",
-    "trackingType": "weightReps",
-    "pattern": "vertical_pull",
-    "descJa": "ラットプルダウン（マググリップ・クローズ・グリップ・プロネイト）とは、ケーブルを使ってマググリップの狭め幅プロネイトで「引く」動作を行い、主に背中（広背筋）と腕（上腕二頭筋）を鍛える種目です。可動域を取りやすく、下ろし位置を安定させやすいのが特徴で、反動を抑えて引き下げ、コントロールして戻す動作を繰り返します。背中全体の筋力向上が期待できます。",
-    "descEn": "Use a cable machine with a MAG close pronated grip and pull down with control. The setup allows a stable path and solid range of motion while targeting lats, upper back, and biceps."
-  },
-  {
-    "id": "ex142",
-    "name": "ラットプルダウン（マググリップ・クローズ・グリップ・スピネイト）",
-    "nameEn": "Lat Pulldown (MAG Grip, Close Grip, Supinated)",
-    "muscleGroup": "back",
-    "aliases": [
-      "ラットプル ナロー アンダー",
-      "ナローアンダーラットプル",
-      "lat pulldown underhand narrow",
-      "underhand grip lat pulldown narrow"
-    ],
-    "equipment": "cable",
-    "trackingType": "weightReps",
-    "pattern": "vertical_pull",
-    "descJa": "ラットプルダウン（マググリップ・クローズ・グリップ・スピネイト）とは、ケーブルを使ってマググリップの狭め幅スピネイトで「引く」動作を行い、主に背中（広背筋）と腕（上腕二頭筋）を鍛える種目です。肘を前から下へ引きやすく上腕二頭筋を使いやすいのが特徴で、胸を張って引き下げ、ゆっくり戻す動作を繰り返します。引く力の強化と背中下部の意識づけが期待できます。",
-    "descEn": "Use a cable machine with a MAG close supinated grip and pull down under control. This setup increases biceps involvement while training lats and upper back, helping improve pulling strength."
-  },
-  {
-    "id": "ex143",
-    "name": "ラットプルダウン（ワイドパラレルグリップ）",
-    "nameEn": "Lat Pulldown (Wide Parallel Grip)",
-    "muscleGroup": "back",
-    "aliases": [
-      "パラレルラットプルダウン",
-      "Vバーラットプルダウン",
-      "lat pulldown parallel grip",
-      "parallel grip lat pulldown"
-    ],
-    "equipment": "cable",
-    "trackingType": "weightReps",
-    "pattern": "vertical_pull",
-    "descJa": "ラットプルダウン（ワイドパラレルグリップ）とは、ケーブルを使ってワイドな平行グリップで「引く」動作を行い、主に背中（広背筋、僧帽筋、菱形筋）と腕（上腕二頭筋）を鍛える種目です。ニュートラル手位で手首に負担をかけにくく、広めの幅で背中全体を使いやすいのが特徴で、胸を張って引き下げ、コントロールして戻す動作を繰り返します。背中の厚みづくりとフォーム安定が期待できます。",
-    "descEn": "Use a cable machine with a wide parallel-grip attachment and pull to the upper chest. The neutral hand position is wrist-friendly, and the wider setup helps engage the lats and upper back broadly. Build back thickness with stable pulling mechanics."
-  },
-  {
-    "id": "ex144",
-    "name": "ラットプルダウン（マググリップ・ワイドグリップ）",
-    "nameEn": "Lat Pulldown (MAG Grip, Wide Grip)",
-    "muscleGroup": "back",
-    "aliases": [
-      "ラットプル オーバー ワイド",
-      "オーバーグリップワイドラットプルダウン",
-      "lat pulldown overhand wide",
-      "overhand wide grip lat pulldown"
-    ],
-    "equipment": "cable",
-    "trackingType": "weightReps",
-    "pattern": "vertical_pull",
-    "descJa": "ラットプルダウン（マググリップ・ワイドグリップ）とは、ケーブルを使ってマググリップのワイドグリップで「引く」動作を行い、背中（広背筋、僧帽筋、菱形筋）と腕（上腕二頭筋）を鍛える種目です。背中外側へ刺激を乗せやすいのが特徴で、胸を張ってバーを鎖骨付近へ引き下げ、コントロールして戻す動作を繰り返します。背中の幅づくりと姿勢改善が期待できます。",
-    "descEn": "Use a cable machine with a MAG wide grip and pull to the upper chest. Targets lats, upper back, and biceps while emphasizing outer-lat width. Build a wider back and improve posture."
   }
 ]

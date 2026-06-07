@@ -66,1433 +66,1323 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://biggrapp.com/en/exercises/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <loc>https://biggrapp.com/ja/exercises/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://biggrapp.com/en/exercises/3d-multi-abductor/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/ab-wheel-rollout/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/arnold-press/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/back-extension/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/back-squat/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/barbell-back-press/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/barbell-bench-press/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/barbell-bent-over-row/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/barbell-curl/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/barbell-deadlift/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/barbell-front-press/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/barbell-hip-thrust/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/barbell-lying-triceps-extension/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/bench-dips/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/bench-glute-bridge/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/bodyweight-squat/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/bulgarian-squat/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/cable-curl/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/cable-flye/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/cable-hammer-curl/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/cable-lateral-raise/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/cable-pallof-press/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/cable-pullover/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/cable-reverse-curl/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/cable-rotary-torso/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/cable-triceps-extension/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/cable-triceps-kickback/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/cable-triceps-pushdown/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/cable-woodchop/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/chest-press-machine/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/chin-up/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/clean-and-jerk/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/climbmill/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/crunch/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/d-y-row/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/dead-hang/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/deadlift-elite/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/decline-bench-press/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/decline-chest-press/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/decline-dumbbell-press/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/deficit-deadlift/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/diamond-push-up/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/donkey-calf-raise/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/dumbbell-bench-press/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/dumbbell-bulgarian-squat/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/dumbbell-curl/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/dumbbell-flye/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/dumbbell-lunge/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/dumbbell-lying-triceps-extension/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/dumbbell-overhead-triceps-extension/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/dumbbell-rear-delt-flye/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/dumbbell-shoulder-press/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/dumbbell-split-squat/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/dumbbell-step-up/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/elliptical-trainer/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/face-pull/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/forward-lunge/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/front-plank/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/front-raise/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/front-squat/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/glute-bridge/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/glute-drive-machine/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/goblet-squat/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/good-morning/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/hack-squat-machine/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/hammer-curl/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/hanging-leg-raise/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/hip-abduction-machine/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/hip-adduction-machine/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/hip-thrust-elite/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/incline-barbell-bench-press/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/incline-chest-press/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/incline-dumbbell-curl/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/incline-dumbbell-press/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/incline-front-raise/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/incline-rear-raise/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/iso-lateral-wide-pulldown/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/kettlebell-swing/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/landmine-press/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/lat-pulldown/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/lat-pulldown-mag-grip-close-grip-neutral/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/lat-pulldown-mag-grip-close-grip-pronated/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/lat-pulldown-mag-grip-close-grip-supinated/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/lat-pulldown-mag-grip-medium-grip-neutral/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/lat-pulldown-mag-grip-medium-grip-pronated/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/lat-pulldown-mag-grip-medium-grip-supinated/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/lat-pulldown-mag-grip-wide-grip/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/lat-pulldown-wide-grip/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/lat-pulldown-wide-parallel-grip/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/lateral-raise/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/lateral-raise-machine/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/leg-extension/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/leg-press/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/leg-press-calf-raise/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/lying-leg-curl/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/lying-rear-raise/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/one-arm-dumbbell-row/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/overhead-press/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/pec-deck/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/pendlay-row/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/pike-push-up/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/plate-pinch/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/power-clean/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/power-snatch/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/preacher-curl/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/pull-up/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/push-press/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/rear-delt-machine/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/recumbent-bike/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/reverse-crunch/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/reverse-flye/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/reverse-lunge/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/reverse-wrist-curl/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/romanian-deadlift/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/russian-twist/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/seated-cable-row/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/seated-calf-raise/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/seated-leg-curl/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/self-propelled-treadmill/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/shoulder-press-machine/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/side-lunge/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/side-plank/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/side-push-up/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/smith-back-press/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/smith-front-press/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/smith-machine-bench-press/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/smith-machine-incline-bench-press/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/smith-machine-squat/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/split-squat/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/standing-calf-raise/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/stationary-bike/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/step-machine/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/step-up/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/stiff-leg-deadlift/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/straight-arm-pulldown/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/swimming/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/t-bar-row/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/thruster/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/treadmill/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/upright-row/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/walking-lunge/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/en/exercises/wrist-curl/</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/ja/exercises/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <loc>https://biggrapp.com/en/exercises/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/3d-multi-abductor/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/3d-multi-abductor/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/ab-wheel-rollout/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/ab-wheel-rollout/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/arnold-press/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/arnold-press/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/back-extension/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/back-extension/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/back-squat/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/back-squat/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/barbell-back-press/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/barbell-back-press/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/barbell-bench-press/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/barbell-bench-press/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/barbell-bent-over-row/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/barbell-bent-over-row/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/barbell-curl/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/barbell-curl/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/barbell-deadlift/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://biggrapp.com/ja/exercises/barbell-front-press/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <loc>https://biggrapp.com/en/exercises/barbell-deadlift/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/barbell-hip-thrust/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/barbell-hip-thrust/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/barbell-lying-triceps-extension/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/barbell-lying-triceps-extension/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/bench-dips/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/bench-dips/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/bench-glute-bridge/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/bench-glute-bridge/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/bodyweight-squat/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/bodyweight-squat/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/bulgarian-squat/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/bulgarian-squat/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/cable-curl/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/cable-curl/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/cable-flye/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/cable-flye/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/cable-hammer-curl/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/cable-hammer-curl/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/cable-lateral-raise/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/cable-lateral-raise/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/cable-pallof-press/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/cable-pallof-press/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/cable-pullover/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/cable-pullover/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/cable-reverse-curl/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/cable-reverse-curl/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/cable-rotary-torso/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/cable-rotary-torso/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/cable-triceps-extension/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/cable-triceps-extension/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/cable-triceps-kickback/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/cable-triceps-kickback/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/cable-triceps-pushdown/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/cable-triceps-pushdown/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/cable-woodchop/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/cable-woodchop/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/chest-press-machine/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/chest-press-machine/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/chin-up/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/chin-up/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/clean-and-jerk/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/clean-and-jerk/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/climbmill/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/climbmill/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/crunch/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/crunch/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/d-y-row/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/d-y-row/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/dead-hang/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/dead-hang/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/deadlift-elite/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/deadlift-elite/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/decline-bench-press/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/decline-bench-press/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/decline-chest-press/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/decline-chest-press/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/decline-dumbbell-press/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/decline-dumbbell-press/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/deficit-deadlift/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/deficit-deadlift/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/diamond-push-up/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/diamond-push-up/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/donkey-calf-raise/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/donkey-calf-raise/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/dumbbell-bench-press/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/dumbbell-bench-press/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/dumbbell-bulgarian-squat/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/dumbbell-bulgarian-squat/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/dumbbell-curl/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/dumbbell-curl/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/dumbbell-flye/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/dumbbell-flye/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/dumbbell-lunge/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/dumbbell-lunge/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/dumbbell-lying-triceps-extension/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/dumbbell-lying-triceps-extension/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/dumbbell-overhead-triceps-extension/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/dumbbell-overhead-triceps-extension/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/dumbbell-rear-delt-flye/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/dumbbell-rear-delt-flye/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/dumbbell-shoulder-press/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/dumbbell-shoulder-press/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/dumbbell-split-squat/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/dumbbell-split-squat/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/dumbbell-step-up/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/dumbbell-step-up/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/elliptical-trainer/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/elliptical-trainer/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/face-pull/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/face-pull/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/forward-lunge/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/forward-lunge/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/front-plank/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/front-plank/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/front-raise/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/front-raise/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/front-squat/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/front-squat/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/glute-bridge/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/glute-bridge/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/glute-drive-machine/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/glute-drive-machine/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/goblet-squat/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/goblet-squat/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/good-morning/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/good-morning/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/hack-squat-machine/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/hack-squat-machine/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/hammer-curl/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/hammer-curl/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/hanging-leg-raise/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/hanging-leg-raise/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/hip-abduction-machine/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/hip-abduction-machine/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/hip-adduction-machine/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/hip-adduction-machine/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/hip-thrust-elite/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/hip-thrust-elite/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/incline-barbell-bench-press/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/incline-barbell-bench-press/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/incline-chest-press/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/incline-chest-press/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/incline-dumbbell-curl/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/incline-dumbbell-curl/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/incline-dumbbell-press/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/incline-dumbbell-press/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/incline-front-raise/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/incline-front-raise/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/incline-rear-raise/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/incline-rear-raise/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/iso-lateral-wide-pulldown/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/iso-lateral-wide-pulldown/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/kettlebell-swing/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/kettlebell-swing/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/landmine-press/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/landmine-press/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/lat-pulldown/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://biggrapp.com/ja/exercises/lat-pulldown-mag-grip-close-grip-neutral/</loc>
-    <lastmod>2026-03-29</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/ja/exercises/lat-pulldown-mag-grip-close-grip-pronated/</loc>
-    <lastmod>2026-03-29</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/ja/exercises/lat-pulldown-mag-grip-close-grip-supinated/</loc>
-    <lastmod>2026-03-29</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/ja/exercises/lat-pulldown-mag-grip-medium-grip-neutral/</loc>
-    <lastmod>2026-03-29</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/ja/exercises/lat-pulldown-mag-grip-medium-grip-pronated/</loc>
-    <lastmod>2026-03-29</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/ja/exercises/lat-pulldown-mag-grip-medium-grip-supinated/</loc>
-    <lastmod>2026-03-29</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/ja/exercises/lat-pulldown-mag-grip-wide-grip/</loc>
-    <lastmod>2026-03-29</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/ja/exercises/lat-pulldown-wide-grip/</loc>
-    <lastmod>2026-03-29</lastmod>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://biggrapp.com/ja/exercises/lat-pulldown-wide-parallel-grip/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <loc>https://biggrapp.com/en/exercises/lat-pulldown/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/lateral-raise/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/lateral-raise/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/lateral-raise-machine/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/lateral-raise-machine/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/leg-extension/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/leg-extension/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/leg-press/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/leg-press/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/leg-press-calf-raise/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/leg-press-calf-raise/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/lying-leg-curl/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/lying-leg-curl/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/lying-rear-raise/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/lying-rear-raise/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/one-arm-dumbbell-row/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/one-arm-dumbbell-row/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/overhead-press/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/overhead-press/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/pec-deck/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/pec-deck/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/pendlay-row/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/pendlay-row/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/pike-push-up/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/pike-push-up/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/plate-pinch/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/plate-pinch/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/power-clean/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/power-clean/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/power-snatch/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/power-snatch/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/preacher-curl/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/preacher-curl/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/pull-up/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/pull-up/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/push-press/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/push-press/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/rear-delt-machine/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/rear-delt-machine/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/recumbent-bike/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/recumbent-bike/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/reverse-crunch/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/reverse-crunch/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/reverse-flye/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/reverse-flye/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/reverse-lunge/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/reverse-lunge/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/reverse-wrist-curl/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/reverse-wrist-curl/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/romanian-deadlift/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/romanian-deadlift/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/russian-twist/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/russian-twist/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/seated-cable-row/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/seated-cable-row/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/seated-calf-raise/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/seated-calf-raise/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/seated-leg-curl/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/seated-leg-curl/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/self-propelled-treadmill/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/self-propelled-treadmill/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/shoulder-press-machine/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/shoulder-press-machine/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/side-lunge/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/side-lunge/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/side-plank/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/side-plank/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/side-push-up/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/side-push-up/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/smith-back-press/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/smith-back-press/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/smith-front-press/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/smith-front-press/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/smith-machine-bench-press/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/smith-machine-bench-press/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/smith-machine-incline-bench-press/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/smith-machine-incline-bench-press/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/smith-machine-squat/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/smith-machine-squat/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/split-squat/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/split-squat/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/standing-calf-raise/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/standing-calf-raise/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/stationary-bike/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/stationary-bike/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/step-machine/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/step-machine/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/step-up/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/step-up/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/stiff-leg-deadlift/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://biggrapp.com/ja/exercises/straight-arm-pulldown/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <loc>https://biggrapp.com/en/exercises/stiff-leg-deadlift/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/swimming/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/swimming/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/t-bar-row/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/t-bar-row/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/thruster/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/thruster/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/treadmill/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/treadmill/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/upright-row/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/upright-row/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/walking-lunge/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/walking-lunge/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://biggrapp.com/ja/exercises/wrist-curl/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://biggrapp.com/en/exercises/wrist-curl/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
   </url>
 </urlset>

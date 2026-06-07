@@ -29,6 +29,34 @@ const BASE_URL = "https://biggrapp.com";
 const APP_STORE_URL = "https://apps.apple.com/app/id6758259008";
 const TODAY = new Date().toISOString().slice(0, 10);
 
+const LAT_PULLDOWN_SLUG = "lat-pulldown";
+const LAT_PULLDOWN_REDIRECT_SLUGS = [
+  "lat-pulldown-wide-grip",
+  "lat-pulldown-mag-grip-medium-grip-neutral",
+  "lat-pulldown-mag-grip-medium-grip-pronated",
+  "lat-pulldown-mag-grip-medium-grip-supinated",
+  "lat-pulldown-mag-grip-close-grip-neutral",
+  "lat-pulldown-mag-grip-close-grip-pronated",
+  "lat-pulldown-mag-grip-close-grip-supinated",
+  "lat-pulldown-wide-parallel-grip",
+  "lat-pulldown-mag-grip-wide-grip",
+  "straight-arm-pulldown"
+];
+
+const LAT_PULLDOWN_VARIATIONS_JA = [
+  { name: "ワイドグリップ", description: "広めに握り、背中の広がりを意識しやすい形です。" },
+  { name: "パラレルグリップ", description: "手のひらを向かい合わせて握り、肩まわりを動かしやすい形です。" },
+  { name: "MAGグリップ", description: "ミディアムやクローズなど、握り幅と向きを変えて調整できます。" },
+  { name: "ストレートアーム", description: "肘を大きく曲げずに引き、広背筋の動きを確認しやすい形です。" }
+];
+
+const LAT_PULLDOWN_VARIATIONS_EN = [
+  { name: "Wide grip", description: "A wider grip that makes it easier to focus on back width." },
+  { name: "Parallel grip", description: "A neutral grip that can feel easier around the shoulders." },
+  { name: "MAG grip", description: "Use medium or close handles to adjust grip width and hand position." },
+  { name: "Straight-arm", description: "Keep the elbows nearly fixed to feel the lats through the pull." }
+];
+
 const MUSCLE_GROUP_ORDER = [
   "chest",
   "back",
@@ -576,6 +604,46 @@ function buildSeoDescription(exercise, detail, equipmentLabel) {
     return detail.seoDescription;
   }
   return `${exercise.name}の基本をわかりやすく紹介。鍛えられる部位、使用器具（${equipmentLabel}）、回数目安、フォーム確認用の動画リンクを掲載。筋トレ記録アプリ Biggr。`;
+}
+
+function isLatPulldown(exercise) {
+  return exercise.slug === LAT_PULLDOWN_SLUG;
+}
+
+function renderLatPulldownVariations() {
+  return `<section class="section exercise-detail-section" id="variations">
+          <h2 class="exercise-detail-heading">バリエーション</h2>
+          <ul class="form-points-list">
+            ${LAT_PULLDOWN_VARIATIONS_JA.map(
+              (variation) => `<li><strong>${escapeHtml(variation.name)}</strong> ${escapeHtml(variation.description)}</li>`
+            ).join("\n            ")}
+          </ul>
+        </section>`;
+}
+
+function renderLatPulldownVariationsEn() {
+  return `<section class="section exercise-detail-section" id="variations">
+          <h2 class="exercise-detail-heading">Variations</h2>
+          <ul class="form-points-list">
+            ${LAT_PULLDOWN_VARIATIONS_EN.map(
+              (variation) => `<li><strong>${escapeHtml(variation.name)}</strong> ${escapeHtml(variation.description)}</li>`
+            ).join("\n            ")}
+          </ul>
+        </section>`;
+}
+
+function displayAliasesForDetail(exercise) {
+  if (isLatPulldown(exercise)) {
+    return ["プルダウン", "ラットプル", "ワイドプルダウン", "ストレートアームプルダウン"];
+  }
+  return normalizeAliases(exercise.aliases);
+}
+
+function displayAliasesForDetailEn(exercise) {
+  if (isLatPulldown(exercise)) {
+    return ["Pulldown", "Wide grip lat pulldown", "MAG grip lat pulldown", "Straight-arm pulldown"];
+  }
+  return normalizeAliases(exercise.aliases);
 }
 
 function sanitizeHttpUrl(value) {
@@ -1510,7 +1578,7 @@ function detailPageHtml(exercise, detail, relatedExercises) {
   const formPoints = buildFormPoints(exercise, detail.formPoints);
   const tips = buildTips(exercise, detail.tips);
   const socialLinks = buildSocialLinks(exercise, detail);
-  const aliases = normalizeAliases(exercise.aliases);
+  const aliases = displayAliasesForDetail(exercise);
 
   const leadText = buildLeadText(exercise);
   const detailImageSrc = toDetailExerciseImageSrc(exercise);
@@ -1518,6 +1586,7 @@ function detailPageHtml(exercise, detail, relatedExercises) {
   const seoDescription = buildSeoDescription(exercise, detail, equipmentLabel);
   const canonicalUrl = `${BASE_URL}/ja/exercises/${exercise.slug}/`;
   const structuredData = JSON.stringify(buildDetailStructuredData(exercise, seoDescription));
+  const variationsHtml = isLatPulldown(exercise) ? renderLatPulldownVariations() : "";
 
   const aliasesHtml = aliases.length > 0
     ? `<div class="detail-fact">
@@ -1625,6 +1694,8 @@ function detailPageHtml(exercise, detail, relatedExercises) {
           </dl>
         </section>
 
+        ${variationsHtml}
+
         ${socialLinksHtml}
 
         <section class="section exercise-detail-section" id="how-to">
@@ -1727,6 +1798,238 @@ function detailPageHtml(exercise, detail, relatedExercises) {
 </html>`;
 }
 
+function detailPageHtmlEnLatPulldown(exercise) {
+  const aliases = displayAliasesForDetailEn(exercise);
+  const seoTitle = "What Is Lat Pulldown? Muscles Worked, Equipment, and Variations | Biggr";
+  const seoDescription =
+    "Learn the basics of Lat Pulldown, including muscles worked, form basics, rep guidance, and variations such as wide grip, MAG grip, and straight-arm pulldown.";
+  const canonicalUrl = `${BASE_URL}/en/exercises/${exercise.slug}/`;
+  const structuredData = JSON.stringify({
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        name: exercise.nameEn,
+        description: seoDescription,
+        inLanguage: "en",
+        url: canonicalUrl
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Biggr", item: `${BASE_URL}/en/` },
+          { "@type": "ListItem", position: 2, name: "Exercise Library", item: `${BASE_URL}/en/exercises/` },
+          { "@type": "ListItem", position: 3, name: exercise.nameEn, item: canonicalUrl }
+        ]
+      }
+    ]
+  });
+
+  return `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>${escapeHtml(seoTitle)}</title>
+  <meta name="description" content="${escapeHtml(seoDescription)}">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="${escapeHtml(seoTitle)}">
+  <meta property="og:description" content="${escapeHtml(seoDescription)}">
+  <meta property="og:url" content="${canonicalUrl}">
+  <meta property="og:image" content="${BASE_URL}/assets/hero/hero-en-light.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="apple-touch-icon" sizes="180x180" href="../../../assets/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../../assets/favicon/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../../../assets/favicon/favicon-16.png">
+  <link rel="manifest" href="../../../site.webmanifest">
+  <link rel="canonical" href="${canonicalUrl}">
+  <link rel="alternate" hreflang="en" href="${canonicalUrl}">
+  <link rel="alternate" hreflang="ja" href="${BASE_URL}/ja/exercises/${exercise.slug}/">
+  <link rel="alternate" hreflang="x-default" href="${canonicalUrl}">
+  <script type="application/ld+json">${structuredData}</script>
+  <link rel="stylesheet" href="../../../css/style.css">
+</head>
+<body class="exercise-detail-page">
+  <div class="container">
+    <header class="app-header">
+      <div class="app-header-inner">
+        <a class="app-brand" href="../../index.html">
+          <img src="../../../assets/app/app-icon.png" alt="Biggr app icon" class="app-icon">
+          <span class="app-name">Biggr</span>
+        </a>
+        <a class="app-cta" href="${APP_STORE_URL}">Download on the App Store</a>
+      </div>
+    </header>
+
+    <main class="main-content">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="../../index.html">Biggr</a>
+        <span aria-hidden="true">/</span>
+        <a href="../index.html">Exercise Library</a>
+        <span aria-hidden="true">/</span>
+        <span>${escapeHtml(exercise.nameEn)}</span>
+      </nav>
+
+      <article class="exercise-detail-article">
+        <h1 class="exercise-page-title">${escapeHtml(exercise.nameEn)}</h1>
+        <p class="exercise-page-lead">${escapeHtml(exercise.descEn)}</p>
+        <div class="exercise-detail-media">
+          <img src="../../../assets/exercises/${escapeHtml(exercise.slug)}.png" alt="${escapeHtml(
+            exercise.nameEn
+          )} exercise image" class="exercise-detail-image" loading="lazy" decoding="async">
+        </div>
+
+        <section class="section exercise-basic-info" aria-labelledby="basic-info-title">
+          <h2 class="exercise-detail-heading" id="basic-info-title">Basic Info</h2>
+          <dl class="detail-facts">
+            <div class="detail-fact">
+              <dt>Primary Muscle Group</dt>
+              <dd>Back</dd>
+            </div>
+            <div class="detail-fact">
+              <dt>Equipment</dt>
+              <dd>Cable</dd>
+            </div>
+            <div class="detail-fact">
+              <dt>Tracking</dt>
+              <dd>Weight and reps</dd>
+            </div>
+            <div class="detail-fact">
+              <dt>Also Known As</dt>
+              <dd>${aliases.map((alias) => escapeHtml(alias)).join(" / ")}</dd>
+            </div>
+          </dl>
+        </section>
+
+        ${renderLatPulldownVariationsEn()}
+
+        <section class="section exercise-detail-section" id="how-to">
+          <h2 class="exercise-detail-heading">How to Perform</h2>
+          <ol class="howto-list">
+            <li>Keep your chest lifted and shoulders down.</li>
+            <li>Pull the handle toward the upper chest with the elbows.</li>
+            <li>Control the return without letting tension drop.</li>
+          </ol>
+        </section>
+
+        <section class="section exercise-detail-section" id="form-points">
+          <h2 class="exercise-detail-heading">Form Tips</h2>
+          <ul class="form-points-list">
+            <li>Do not overarch the lower back.</li>
+            <li>Keep the shoulders from rolling forward.</li>
+            <li>Use a load you can control without swinging.</li>
+          </ul>
+        </section>
+
+        <section class="section exercise-detail-section" id="rep-guide">
+          <h2 class="exercise-detail-heading">Rep Guide</h2>
+          <p class="exercise-detail-note">General guidelines. Adjust based on your goal, experience, and condition.</p>
+          <ul class="rep-guide-list">
+            <li><span class="rep-guide-label">Strength:</span> 1-5 reps</li>
+            <li><span class="rep-guide-label">Hypertrophy:</span> 6-12 reps</li>
+            <li><span class="rep-guide-label">Endurance:</span> 13-20 reps</li>
+          </ul>
+        </section>
+
+        <section class="section exercise-detail-section" id="related">
+          <h2 class="exercise-detail-heading">Related Exercises</h2>
+          <ul class="related-list">
+            <li><a class="related-item" href="../seated-cable-row/">Seated Cable Row<span class="related-meta">Back / Cable</span></a></li>
+            <li><a class="related-item" href="../cable-pullover/">Cable Pullover<span class="related-meta">Back / Cable</span></a></li>
+            <li><a class="related-item" href="../pull-up/">Pull-up<span class="related-meta">Back / Bodyweight</span></a></li>
+          </ul>
+          <p class="exercise-detail-copy"><a href="../index.html">Back to Exercise Library</a></p>
+        </section>
+
+        <section class="section exercise-detail-cta" id="download">
+          ${renderDownloadPanelEn("../../../assets")}
+        </section>
+      </article>
+    </main>
+
+    <hr class="footer-divider">
+
+    <footer class="site-footer">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <img src="../../../assets/app/app-icon.png" alt="Biggr app icon" class="footer-icon">
+          <div class="footer-lang">
+            <p class="footer-title">Language</p>
+            <select id="lang-select" class="footer-select" aria-label="Language" onchange="location.href=this.value;">
+              <option value="../../../ja/exercises/${escapeHtml(exercise.slug)}/">日本語</option>
+              <option value="../${escapeHtml(exercise.slug)}/" selected>English</option>
+            </select>
+          </div>
+        </div>
+        <div class="footer-column footer-about">
+          <p class="footer-title">About</p>
+          <div class="footer-list">
+            <a href="${APP_STORE_URL}">Download on the App Store</a>
+          </div>
+        </div>
+        <div class="footer-column footer-support">
+          <p class="footer-title">Support</p>
+          <div class="footer-list">
+            <a href="../index.html">Exercise Library</a>
+            <a href="../../faq.html">FAQ</a>
+            <a href="../../releasenotes.html">Release Notes</a>
+            <a href="https://forms.gle/xawttwzNAxQLWsqz7" target="_blank" rel="noopener">Contact</a>
+          </div>
+        </div>
+        <div class="footer-column footer-legal">
+          <p class="footer-title">Legal</p>
+          <div class="footer-list">
+            <a href="../../privacypolicy.html">Privacy Policy</a>
+            <a href="../../terms.html">Terms of Service</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-meta">© ${new Date().getFullYear()} Biggr App</p>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>`;
+}
+
+function redirectPageHtml({ lang, slug }) {
+  const isJa = lang === "ja";
+  const targetUrl = `${BASE_URL}/${lang}/exercises/${LAT_PULLDOWN_SLUG}/`;
+  const relativeTarget = `../${LAT_PULLDOWN_SLUG}/`;
+  const title = isJa ? "ラットプルダウンに統合しました | Biggr" : "Moved to Lat Pulldown | Biggr";
+  const description = isJa
+    ? "この種目ページはラットプルダウンに統合しました。"
+    : "This exercise page has moved to Lat Pulldown.";
+
+  return `<!DOCTYPE html>
+<html lang="${lang}">
+<head>
+  <meta charset="UTF-8">
+  <title>${escapeHtml(title)}</title>
+  <meta name="description" content="${escapeHtml(description)}">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="refresh" content="0; url=${relativeTarget}">
+  <link rel="canonical" href="${targetUrl}">
+  <meta name="robots" content="noindex, follow">
+  <link rel="stylesheet" href="../../../css/style.css">
+</head>
+<body class="exercise-detail-page">
+  <div class="container">
+    <main class="main-content">
+      <article class="exercise-detail-article">
+        <h1 class="exercise-page-title">${isJa ? "ラットプルダウンに統合しました" : "Moved to Lat Pulldown"}</h1>
+        <p class="exercise-page-lead">${escapeHtml(description)}</p>
+        <p class="exercise-detail-copy"><a href="${relativeTarget}">${
+          isJa ? "ラットプルダウンを見る" : "Open Lat Pulldown"
+        }</a></p>
+      </article>
+    </main>
+  </div>
+</body>
+</html>`;
+}
+
 function buildCategories(exercises) {
   const categories = MUSCLE_GROUP_ORDER.filter((category) => exercises.some((exercise) => exercise.muscleGroup === category));
 
@@ -1758,6 +2061,22 @@ async function writeExercisePages(exercises, detailMap) {
     const targetDir = path.join(JA_EXERCISES_DIR, exercise.slug);
     await fs.mkdir(targetDir, { recursive: true });
     await fs.writeFile(path.join(targetDir, "index.html"), html, "utf-8");
+
+    if (isLatPulldown(exercise)) {
+      const enTargetDir = path.join(EN_EXERCISES_DIR, exercise.slug);
+      await fs.mkdir(enTargetDir, { recursive: true });
+      await fs.writeFile(path.join(enTargetDir, "index.html"), detailPageHtmlEnLatPulldown(exercise), "utf-8");
+    }
+  }
+
+  for (const slug of LAT_PULLDOWN_REDIRECT_SLUGS) {
+    const jaRedirectDir = path.join(JA_EXERCISES_DIR, slug);
+    await fs.mkdir(jaRedirectDir, { recursive: true });
+    await fs.writeFile(path.join(jaRedirectDir, "index.html"), redirectPageHtml({ lang: "ja", slug }), "utf-8");
+
+    const enRedirectDir = path.join(EN_EXERCISES_DIR, slug);
+    await fs.mkdir(enRedirectDir, { recursive: true });
+    await fs.writeFile(path.join(enRedirectDir, "index.html"), redirectPageHtml({ lang: "en", slug }), "utf-8");
   }
 
   return categories;
@@ -1799,10 +2118,17 @@ async function updateSitemap(exercises) {
   const xmlText = await fs.readFile(SITEMAP_PATH, "utf-8");
   const parsedEntries = parseSitemap(xmlText);
 
-  const filteredEntries = parsedEntries.filter((entry) => !entry.loc.includes("/ja/exercises/"));
+  const filteredEntries = parsedEntries.filter(
+    (entry) => !entry.loc.includes("/ja/exercises/") && !entry.loc.includes("/en/exercises/")
+  );
 
   filteredEntries.push({
     loc: `${BASE_URL}/ja/exercises/`,
+    lastmod: TODAY,
+    changefreq: "weekly"
+  });
+  filteredEntries.push({
+    loc: `${BASE_URL}/en/exercises/`,
     lastmod: TODAY,
     changefreq: "weekly"
   });
@@ -1811,6 +2137,11 @@ async function updateSitemap(exercises) {
   for (const exercise of sortedExercises) {
     filteredEntries.push({
       loc: `${BASE_URL}/ja/exercises/${exercise.slug}/`,
+      lastmod: TODAY,
+      changefreq: "monthly"
+    });
+    filteredEntries.push({
+      loc: `${BASE_URL}/en/exercises/${exercise.slug}/`,
       lastmod: TODAY,
       changefreq: "monthly"
     });
