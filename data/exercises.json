@@ -1587,21 +1587,6 @@
     "descEn": "Use dumbbells in a rear-foot-elevated split squat. Lower under control and stand back up. Targets quads, hamstrings, and glutes; improves stability."
   },
   {
-    "id": "ex109",
-    "name": "バックランジ",
-    "nameEn": "Reverse Lunge",
-    "muscleGroup": "legs",
-    "aliases": [
-      "リバースランジ",
-      "バックワードランジ"
-    ],
-    "equipment": "bodyweight",
-    "trackingType": "repsOnly",
-    "pattern": "lunge",
-    "descJa": "バックランジとは、自重を使って「後ろに踏み出してしゃがむ」動作でお尻（臀筋）、脚（大腿四頭筋）を鍛える種目です。前脚に体重を乗せ、後ろへ踏み出して沈み込み、前脚で押して戻す動作を繰り返します。下半身の筋力・筋量アップが期待できます。",
-    "descEn": "Step back and lower into a lunge using bodyweight. Drive through the front leg to return. Targets quads, hamstrings, and glutes."
-  },
-  {
     "id": "ex110",
     "name": "サイドランジ",
     "nameEn": "Side Lunge",
