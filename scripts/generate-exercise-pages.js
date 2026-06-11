@@ -661,14 +661,6 @@ function toYoutubeSearchUrl(query) {
   return `https://www.youtube.com/results?search_query=${encodeURIComponent(query)}`;
 }
 
-function toTikTokSearchUrl(query) {
-  return `https://www.tiktok.com/search?q=${encodeURIComponent(query)}`;
-}
-
-function toInstagramSearchUrl(query) {
-  return `https://www.instagram.com/explore/search/keyword/?q=${encodeURIComponent(query)}`;
-}
-
 function normalizeSocialLink(input, fallbackKey) {
   if (typeof input === "string") {
     return {
@@ -692,8 +684,6 @@ function buildSocialLinks(exercise, detail) {
   const socialMap = detail && detail.socialLinks && typeof detail.socialLinks === "object" ? detail.socialLinks : {};
 
   const youtubeSource = normalizeSocialLink(socialMap.youtube || detail.youtubeUrl, "youtube");
-  const tiktokSource = normalizeSocialLink(socialMap.tiktok, "tiktok");
-  const instagramSource = normalizeSocialLink(socialMap.instagram, "instagram");
 
   const normalizedYoutubeTitle =
     youtubeSource.title || (typeof detail.youtubeTitle === "string" ? detail.youtubeTitle.trim() : "") || `${exercise.name}のフォーム動画`;
@@ -706,22 +696,6 @@ function buildSocialLinks(exercise, detail) {
       title: normalizedYoutubeTitle,
       url: youtubeSource.url || toYoutubeSearchUrl(exercise.name),
       ctaLabel: "YouTubeで見る"
-    },
-    {
-      platform: "tiktok",
-      label: "TikTok",
-      iconUrl: "../../../assets/sns/tiktok.svg",
-      title: tiktokSource.title || `${exercise.name}の動作をTikTokで探す`,
-      url: tiktokSource.url || toTikTokSearchUrl(exercise.name),
-      ctaLabel: "TikTokで見る"
-    },
-    {
-      platform: "instagram",
-      label: "Instagram",
-      iconUrl: "../../../assets/sns/Instagram.svg",
-      title: instagramSource.title || `${exercise.name}のフォームをInstagramで探す`,
-      url: instagramSource.url || toInstagramSearchUrl(exercise.name),
-      ctaLabel: "Instagramで見る"
     }
   ];
 }
