@@ -43,14 +43,17 @@
       </nav>
 
       <article class="exercise-detail-article">
-        <h1 class="exercise-page-title">水泳</h1>
-        <p class="exercise-page-lead">水泳とは、水中で全身を使って推進する有酸素トレーニングです。浮力により関節への衝撃を抑えやすいのが特徴で、フォームを保ちながら一定距離を反復して泳ぎます。これにより、心肺持久力の向上や全身持久力の強化が期待できます。</p>
-        <div class="exercise-detail-media">
-          <img src="../../../assets/exercises/swimming.png" alt="水泳の種目イメージ" class="exercise-detail-image" loading="lazy" decoding="async">
+        <div class="exercise-detail-intro" data-category="cardio">
+          <div class="exercise-detail-intro-copy">
+            <h1 class="exercise-page-title"><span class="exercise-title-part">水泳</span></h1>
+          </div>
+          <div class="exercise-detail-media">
+            <img src="../../../assets/exercises/swimming.png" alt="水泳の種目イメージ" class="exercise-detail-image" loading="lazy" decoding="async">
+          </div>
         </div>
 
-        <section class="section exercise-basic-info" aria-labelledby="basic-info-title">
-          <h2 class="exercise-detail-heading" id="basic-info-title">基本情報</h2>
+        <section class="section exercise-basic-info">
+          <p class="exercise-page-lead">水泳とは、水中で全身を使って推進する有酸素トレーニングです。浮力により関節への衝撃を抑えやすいのが特徴で、フォームを保ちながら一定距離を反復して泳ぎます。これにより、心肺持久力の向上や全身持久力の強化が期待できます。</p>
           <dl class="detail-facts">
             <div class="detail-fact">
               <dt>対象部位</dt>
@@ -71,16 +74,17 @@
           </dl>
         </section>
 
-        
 
-        <section class="section exercise-detail-section" id="social-videos">
-        <h2 class="exercise-detail-heading">SNS参考動画</h2>
-        <div class="social-link-grid">
-          <a class="social-link-card social-link-card-youtube" href="https://www.youtube.com/results?search_query=%E6%B0%B4%E6%B3%B3" target="_blank" rel="noopener noreferrer" aria-label="YouTubeで見る">
-          <img src="../../../assets/sns/youtube.svg" alt="" loading="lazy" decoding="async" class="social-link-logo">
-        </a>
-        </div>
+
+        <section class="section exercise-detail-section" id="youtube-videos">
+        <h2 class="exercise-detail-heading">YouTube動画</h2>
+        <a class="youtube-video-search-link" href="https://www.youtube.com/results?search_query=%E6%B0%B4%E6%B3%B3%20%E3%82%84%E3%82%8A%E6%96%B9%20%E3%83%95%E3%82%A9%E3%83%BC%E3%83%A0" target="_blank" rel="noopener noreferrer">YouTubeで動画を探す</a>
       </section>
+      <section class="section exercise-detail-section youtube-shorts-section" id="youtube-shorts">
+        <h2 class="exercise-detail-heading">YouTubeショート</h2>
+        <a class="youtube-video-search-link" href="https://www.youtube.com/results?search_query=%E6%B0%B4%E6%B3%B3%20%E3%82%B7%E3%83%A7%E3%83%BC%E3%83%88" target="_blank" rel="noopener noreferrer">YouTubeショートを探す</a>
+      </section>
+
 
         <section class="section exercise-detail-section" id="how-to">
           <h2 class="exercise-detail-heading">動作方法</h2>
@@ -155,6 +159,11 @@
         </li>
           </ul>
           <p class="exercise-detail-copy"><a href="../index.html">筋トレ種目一覧に戻る</a></p>
+        </section>
+
+        <section class="section exercise-detail-section youtube-disclosure">
+          <h2 class="exercise-detail-heading">YouTube動画について</h2>
+          <p class="youtube-video-note">動画はYouTubeの公開情報をもとに表示しています。内容は投稿者によるもので、Biggrによる監修ではありません。</p>
         </section>
 
         <section class="section exercise-detail-cta" id="download">

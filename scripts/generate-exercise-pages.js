@@ -24,6 +24,10 @@ const EN_EXERCISES_DIR = path.join(DOCS_DIR, "en", "exercises");
 const EXERCISE_IMAGE_DIR = path.join(DOCS_DIR, "assets", "exercises");
 const PLACEHOLDER_EXERCISE_IMAGE_PATH = path.join(EXERCISE_IMAGE_DIR, "climbmill.png");
 const SITEMAP_PATH = path.join(DOCS_DIR, "sitemap.xml");
+const YOUTUBE_VIDEOS_PATH = path.join(DATA_DIR, "youtube-videos.json");
+const SHORT_MAX_DURATION_SECONDS = 180;
+const AUTO_SHORT_MAX_DURATION_SECONDS = 60;
+const SHORTS_TITLE_PATTERN = /(?:#shorts\b|#ショート)/i;
 
 const BASE_URL = "https://biggrapp.com";
 const APP_STORE_URL = "https://apps.apple.com/app/id6758259008";
@@ -59,12 +63,12 @@ const LAT_PULLDOWN_VARIATIONS_EN = [
 
 const MUSCLE_GROUP_ORDER = [
   "chest",
-  "back",
   "shoulders",
   "arms",
+  "back",
   "legs",
-  "cardio",
   "abs",
+  "cardio",
   "full_body",
   "other"
 ];
@@ -76,7 +80,7 @@ const MUSCLE_GROUP_LABELS = {
   arms: "腕",
   legs: "脚",
   cardio: "有酸素",
-  abs: "腹筋",
+  abs: "体幹",
   full_body: "全身",
   other: "その他"
 };
@@ -592,6 +596,76 @@ function buildLeadText(exercise) {
   return `${exercise.name}は、${muscleLabel}を中心に取り入れやすい種目です。無理のない負荷設定でフォームを確認しながら継続してください。`;
 }
 
+const EXERCISE_TITLE_PART_TOKENS_JA = [
+  "オーバーヘッド", "ハムストリング", "アイソラテラル", "デフィシット", "ルーマニアン", "スティフレッグ",
+  "インクライン", "デクライン", "ライイング", "ウォーキング", "スタンディング", "リカンベント", "エリプティカル",
+  "自走式", "ブルガリアン", "ケトルベル", "トライセプス", "リアデルト", "アーノルド", "アップライト",
+  "ラテラルレイズ", "プレスダウン", "ステップアップ", "プッシュアップ", "プッシュ・アップ", "デッドリフト",
+  "レッグエクステンション", "レッグカール", "レッグレイズ", "カーフレイズ", "ペックデック", "バックエクステンション",
+  "アブホイール", "ロールアウト", "ウッドチョップ", "ロータリートルソー", "クライムミル", "ステップマシン",
+  "エアロバイク", "ハンギング", "アイソラテラル", "ダンベル", "バーベル", "ケーブル", "スミス", "マシン",
+  "シーテッド", "フロント", "バック", "スプリット", "リバース", "オーバーヘッド", "サイド", "ワイド",
+  "パワー", "ハンマー", "グルート", "ヒップ", "エクステンション", "プルダウン", "プルオーバー", "プルアップ",
+  "チンアップ", "デッドハング", "スクワット", "ベンチ", "チェスト", "プレス", "フライ", "ロウ", "カール",
+  "レイズ", "ランジ", "スラスター", "スラスト", "ブリッジ", "スイング", "クリーン", "ジャーク", "スナッチ", "ディップス",
+  "キックバック", "ピンチ", "リストカール", "クランチ", "プランク", "パロフ", "ツイスト", "トルソー", "カーフ",
+  "レッグ", "トレッドミル", "クライム", "ステップ", "フロント", "パイク", "パワー", "グッドモーニング",
+  "アブダクション", "アダクション", "アブダクター", "ドライブ", "エリート", "マルチ", "3D", "Tバー", "D.Y.",
+  "水泳", "ペック", "アップ", "エアロ", "グッド", "モーニング"
+].sort((a, b) => b.length - a.length);
+
+function splitJapaneseExerciseTitle(title) {
+  const parts = [];
+  let position = 0;
+
+  while (position < title.length) {
+    const parenthetical = title.slice(position).match(/^(（[^）]*）|\([^)]*\))/);
+    if (parenthetical) {
+      parts.push(parenthetical[0]);
+      position += parenthetical[0].length;
+      continue;
+    }
+
+    const token = EXERCISE_TITLE_PART_TOKENS_JA.find((candidate) => title.startsWith(candidate, position));
+    if (token) {
+      parts.push(token);
+      position += token.length;
+      continue;
+    }
+
+    let nextPosition = position + 1;
+    while (
+      nextPosition < title.length &&
+      !EXERCISE_TITLE_PART_TOKENS_JA.some((candidate) => title.startsWith(candidate, nextPosition)) &&
+      !/^(（|\()/.test(title.slice(nextPosition))
+    ) {
+      nextPosition += 1;
+    }
+    parts.push(title.slice(position, nextPosition));
+    position = nextPosition;
+  }
+
+  const mergedParts = [];
+  for (let index = 0; index < parts.length; index += 1) {
+    const part = parts[index];
+    if (/^[・、。，]+$/.test(part) && mergedParts.length > 0) {
+      mergedParts[mergedParts.length - 1] += part;
+    } else if (part === "&" && index + 1 < parts.length) {
+      mergedParts.push(`${part}${parts[index + 1]}`);
+      index += 1;
+    } else {
+      mergedParts.push(part);
+    }
+  }
+  return mergedParts;
+}
+
+function renderExerciseTitleJa(exercise) {
+  return splitJapaneseExerciseTitle(exercise.name)
+    .map((part) => `<span class="exercise-title-part">${escapeHtml(part)}</span>`)
+    .join("");
+}
+
 function buildSeoTitle(exercise, detail) {
   if (detail && detail.seoTitle) {
     return detail.seoTitle;
@@ -661,43 +735,149 @@ function toYoutubeSearchUrl(query) {
   return `https://www.youtube.com/results?search_query=${encodeURIComponent(query)}`;
 }
 
-function normalizeSocialLink(input, fallbackKey) {
-  if (typeof input === "string") {
-    return {
-      url: sanitizeHttpUrl(input),
-      title: ""
-    };
-  }
-
-  if (input && typeof input === "object") {
-    return {
-      url: sanitizeHttpUrl(input.url || input[`${fallbackKey}Url`]),
-      title: typeof input.title === "string" ? input.title.trim() : ""
-    };
-  }
-
-  return { url: "", title: "" };
+function youtubeSearchQuery(exercise, language) {
+  return language === "ja"
+    ? `${exercise.name} やり方 フォーム`
+    : `${exercise.nameEn} form tutorial`;
 }
 
-function buildSocialLinks(exercise, detail) {
-  // `socialLinks` を優先しつつ、既存の `youtubeUrl` / `youtubeTitle` も後方互換で扱う。
-  const socialMap = detail && detail.socialLinks && typeof detail.socialLinks === "object" ? detail.socialLinks : {};
+function normalizeYoutubeVideos(videos) {
+  if (!Array.isArray(videos)) {
+    return [];
+  }
 
-  const youtubeSource = normalizeSocialLink(socialMap.youtube || detail.youtubeUrl, "youtube");
+  const hiddenChannelTitles = new Set(["【SGIR公式】切り抜きfitness"]);
+  const seen = new Set();
+  return videos
+    .filter((video) => !hiddenChannelTitles.has(String(video && video.channelTitle || "").trim()))
+    .filter((video) => video && /^[A-Za-z0-9_-]{11}$/.test(video.videoId || ""))
+    .filter((video) => {
+      if (seen.has(video.videoId)) return false;
+      seen.add(video.videoId);
+      return true;
+    })
+    .map((video) => ({
+      videoId: video.videoId,
+      title: String(video.title || "YouTube video").trim(),
+      channelTitle: String(video.channelTitle || "YouTube").trim(),
+      thumbnailUrl: sanitizeHttpUrl(video.thumbnailUrl) || `https://i.ytimg.com/vi/${video.videoId}/mqdefault.jpg`,
+      viewCount: Number.isFinite(Number(video.viewCount)) ? Number(video.viewCount) : 0,
+      durationSeconds:
+        video.durationSeconds !== null && Number.isFinite(Number(video.durationSeconds))
+          ? Number(video.durationSeconds)
+          : null,
+      orientation: ["portrait", "non-portrait"].includes(video.orientation) ? video.orientation : "unknown"
+    }));
+}
 
-  const normalizedYoutubeTitle =
-    youtubeSource.title || (typeof detail.youtubeTitle === "string" ? detail.youtubeTitle.trim() : "") || `${exercise.name}のフォーム動画`;
-
-  return [
-    {
-      platform: "youtube",
-      label: "YouTube",
-      iconUrl: "../../../assets/sns/youtube.svg",
-      title: normalizedYoutubeTitle,
-      url: youtubeSource.url || toYoutubeSearchUrl(exercise.name),
-      ctaLabel: "YouTubeで見る"
+function formatYoutubeViewCount(viewCount, language) {
+  if (language === "ja" && viewCount >= 10000) {
+    if (viewCount >= 100000000) {
+      return `${Math.floor(viewCount / 100000000)}億`;
     }
-  ];
+    return `${Math.floor(viewCount / 10000)}万`;
+  }
+
+  return new Intl.NumberFormat(language === "ja" ? "ja-JP" : "en-US").format(viewCount);
+}
+
+function renderYoutubeVideoGroup(exercise, videos, language, options) {
+  const isJa = language === "ja";
+  const searchUrl = toYoutubeSearchUrl(options.searchQuery);
+  if (videos.length === 0) {
+    return `<section class="section exercise-detail-section${options.sectionId === "youtube-shorts" ? " youtube-shorts-section" : ""}" id="${options.sectionId}">
+        <h2 class="exercise-detail-heading">${options.title}</h2>
+        <a class="youtube-video-search-link" href="${escapeHtml(searchUrl)}" target="_blank" rel="noopener noreferrer">${
+          options.emptySearchLabel
+        }</a>
+      </section>`;
+  }
+
+  const itemHtml = videos
+    .map((video, index) => {
+      const viewCount = formatYoutubeViewCount(video.viewCount, language);
+      const watchUrl = `https://www.youtube.com/watch?v=${encodeURIComponent(video.videoId)}`;
+      return `<li class="youtube-video-item"${index >= 10 ? " hidden" : ""}>
+          <article class="youtube-video-card">
+            <div class="youtube-video-media">
+              <button class="youtube-video-play" type="button" data-video-id="${escapeHtml(
+                video.videoId
+              )}" data-video-title="${escapeHtml(video.title)}" aria-label="${escapeHtml(
+                isJa ? `${video.title}を再生` : `Play ${video.title}`
+              )}">
+                <img class="youtube-video-thumbnail" src="${escapeHtml(video.thumbnailUrl)}" alt="" loading="lazy" decoding="async">
+              </button>
+            </div>
+            <h3 class="youtube-video-title"><a class="youtube-video-link" href="${watchUrl}" target="_blank" rel="noopener noreferrer">${escapeHtml(
+              video.title
+            )}</a></h3>
+            <p class="youtube-video-meta">${escapeHtml(video.channelTitle)} · ${escapeHtml(
+              isJa ? `${viewCount} 回視聴` : `${viewCount} views`
+            )}</p>
+          </article>
+        </li>`;
+    })
+    .join("\n        ");
+
+  return `<section class="section exercise-detail-section${options.sectionId === "youtube-shorts" ? " youtube-shorts-section" : ""}" id="${options.sectionId}">
+        <h2 class="exercise-detail-heading">${options.title}</h2>
+        <ul class="youtube-video-grid" id="${options.listId}">
+        ${itemHtml}
+        </ul>
+        <div class="youtube-video-actions">
+          <button class="youtube-video-more" type="button" aria-controls="${options.listId}" aria-expanded="false"${
+            videos.length <= 10 ? " hidden" : ""
+          }>${isJa ? "もっと見る" : "Show more"}</button>
+        </div>
+        <a class="youtube-video-search-link youtube-video-search-more" href="${escapeHtml(
+          searchUrl
+        )}" target="_blank" rel="noopener noreferrer"${videos.length > 10 ? " hidden" : ""}>${
+          options.moreSearchLabel
+        }</a>
+${options.note ? `        <p class="youtube-video-note">${options.note}</p>` : ""}
+      </section>`;
+}
+
+function renderYoutubeVideosSection(exercise, videoData, language) {
+  const allVideos = normalizeYoutubeVideos(videoData && videoData[exercise.slug] && videoData[exercise.slug][language]);
+  const isJa = language === "ja";
+  const classifiableVideos = allVideos.filter((video) => video.durationSeconds !== null);
+  const isShortsByTitle = (video) => SHORTS_TITLE_PATTERN.test(video.title);
+  const shorts = classifiableVideos.filter(
+    (video) =>
+      video.durationSeconds <= AUTO_SHORT_MAX_DURATION_SECONDS ||
+      (video.durationSeconds <= SHORT_MAX_DURATION_SECONDS &&
+        (isShortsByTitle(video) || video.orientation === "portrait"))
+  );
+  const regularVideos = classifiableVideos.filter(
+    (video) =>
+      video.durationSeconds > SHORT_MAX_DURATION_SECONDS ||
+      (video.durationSeconds > AUTO_SHORT_MAX_DURATION_SECONDS &&
+        video.durationSeconds <= SHORT_MAX_DURATION_SECONDS &&
+        !isShortsByTitle(video) &&
+        video.orientation === "non-portrait")
+  );
+  const shortSearchQuery = `${isJa ? exercise.name : exercise.nameEn} ${isJa ? "ショート" : "shorts"}`;
+  const regularSection = renderYoutubeVideoGroup(exercise, regularVideos, language, {
+    sectionId: "youtube-videos",
+    listId: "youtube-video-list",
+    title: isJa ? "YouTube動画" : "YouTube Videos",
+    searchQuery: youtubeSearchQuery(exercise, language),
+    emptySearchLabel: isJa ? "YouTubeで動画を探す" : "Search YouTube",
+    moreSearchLabel: isJa ? "YouTubeでさらに見る" : "Find more on YouTube",
+    note: ""
+  });
+  const shortsSection = renderYoutubeVideoGroup(exercise, shorts, language, {
+    sectionId: "youtube-shorts",
+    listId: "youtube-short-list",
+    title: isJa ? "YouTubeショート" : "YouTube Shorts",
+    searchQuery: shortSearchQuery,
+    emptySearchLabel: isJa ? "YouTubeショートを探す" : "Search YouTube Shorts",
+    moreSearchLabel: isJa ? "YouTubeショートをさらに見る" : "Find more YouTube Shorts",
+    note: ""
+  });
+
+  return `${regularSection}\n      ${shortsSection}`;
 }
 
 function buildRelatedExercises(allExercises, current, detail) {
@@ -998,7 +1178,6 @@ function listPageHtml(exercises, categories) {
                     <img src="${escapeHtml(imageSrc)}" alt="${escapeHtml(exercise.name)}の種目イメージ" class="exercise-card-image" loading="lazy" decoding="async">
                   </div>
                   <h3 class="exercise-card-title">${escapeHtml(exercise.name)}</h3>
-                  <p class="exercise-card-meta">${escapeHtml(muscleGroupLabel)}</p>
                 </a>`;
             })
             .join("\n");
@@ -1291,7 +1470,6 @@ function listPageHtmlEn(exercises, categories) {
                     <img src="${escapeHtml(imageSrc)}" alt="${escapeHtml(exercise.nameEn)} exercise image" class="exercise-card-image" loading="lazy" decoding="async">
                   </div>
                   <h3 class="exercise-card-title">${escapeHtml(exercise.nameEn)}</h3>
-                  <p class="exercise-card-meta">${escapeHtml(muscleGroupLabel)}</p>
                 </a>`;
             })
             .join("\n");
@@ -1542,7 +1720,7 @@ ${equipmentSectionHtml}
 </html>`;
 }
 
-function detailPageHtml(exercise, detail, relatedExercises) {
+function detailPageHtml(exercise, detail, relatedExercises, videoData) {
   const equipmentLabel = mapLabel(EQUIPMENT_LABELS, exercise.equipment, "その他");
   const muscleGroupLabel = mapLabel(MUSCLE_GROUP_LABELS, exercise.muscleGroup, "その他");
   const trackingTypeLabel = mapLabel(TRACKING_TYPE_LABELS, exercise.trackingType, "未設定");
@@ -1551,7 +1729,6 @@ function detailPageHtml(exercise, detail, relatedExercises) {
   const howToSteps = buildHowToSteps(exercise, detail.howToSteps);
   const formPoints = buildFormPoints(exercise, detail.formPoints);
   const tips = buildTips(exercise, detail.tips);
-  const socialLinks = buildSocialLinks(exercise, detail);
   const aliases = displayAliasesForDetail(exercise);
 
   const leadText = buildLeadText(exercise);
@@ -1561,6 +1738,11 @@ function detailPageHtml(exercise, detail, relatedExercises) {
   const canonicalUrl = `${BASE_URL}/ja/exercises/${exercise.slug}/`;
   const structuredData = JSON.stringify(buildDetailStructuredData(exercise, seoDescription));
   const variationsHtml = isLatPulldown(exercise) ? renderLatPulldownVariations() : "";
+  const youtubeVideosHtml = renderYoutubeVideosSection(exercise, videoData, "ja");
+  const youtubeVideosBlock = youtubeVideosHtml ? `\n        ${youtubeVideosHtml}\n` : "";
+  const videoScriptHtml = normalizeYoutubeVideos(videoData && videoData[exercise.slug] && videoData[exercise.slug].ja).length > 0
+    ? '\n  <script src="../../../js/exercise-videos.js" defer></script>'
+    : "";
 
   const aliasesHtml = aliases.length > 0
     ? `<div class="detail-fact">
@@ -1568,23 +1750,6 @@ function detailPageHtml(exercise, detail, relatedExercises) {
             <dd>${aliases.map((alias) => escapeHtml(alias)).join(" / ")}</dd>
           </div>`
     : "";
-
-  const socialCardsHtml = socialLinks
-    .map((social) => {
-      return `<a class="social-link-card social-link-card-${escapeHtml(social.platform)}" href="${escapeHtml(
-        social.url
-      )}" target="_blank" rel="noopener noreferrer" aria-label="${escapeHtml(social.ctaLabel)}">
-          <img src="${escapeHtml(social.iconUrl)}" alt="" loading="lazy" decoding="async" class="social-link-logo">
-        </a>`;
-    })
-    .join("\n            ");
-
-  const socialLinksHtml = `<section class="section exercise-detail-section" id="social-videos">
-        <h2 class="exercise-detail-heading">SNS参考動画</h2>
-        <div class="social-link-grid">
-          ${socialCardsHtml}
-        </div>
-      </section>`;
 
   const relatedHtml = relatedExercises
     .map((related) => {
@@ -1643,14 +1808,17 @@ function detailPageHtml(exercise, detail, relatedExercises) {
       </nav>
 
       <article class="exercise-detail-article">
-        <h1 class="exercise-page-title">${escapeHtml(exercise.name)}</h1>
-        <p class="exercise-page-lead">${escapeHtml(leadText)}</p>
-        <div class="exercise-detail-media">
-          <img src="${escapeHtml(detailImageSrc)}" alt="${escapeHtml(exercise.name)}の種目イメージ" class="exercise-detail-image" loading="lazy" decoding="async">
+        <div class="exercise-detail-intro" data-category="${escapeHtml(exercise.muscleGroup)}">
+          <div class="exercise-detail-intro-copy">
+            <h1 class="exercise-page-title">${renderExerciseTitleJa(exercise)}</h1>
+          </div>
+          <div class="exercise-detail-media">
+            <img src="${escapeHtml(detailImageSrc)}" alt="${escapeHtml(exercise.name)}の種目イメージ" class="exercise-detail-image" loading="lazy" decoding="async">
+          </div>
         </div>
 
-        <section class="section exercise-basic-info" aria-labelledby="basic-info-title">
-          <h2 class="exercise-detail-heading" id="basic-info-title">基本情報</h2>
+        <section class="section exercise-basic-info">
+          <p class="exercise-page-lead">${escapeHtml(leadText)}</p>
           <dl class="detail-facts">
             <div class="detail-fact">
               <dt>対象部位</dt>
@@ -1668,9 +1836,8 @@ function detailPageHtml(exercise, detail, relatedExercises) {
           </dl>
         </section>
 
-        ${variationsHtml}
-
-        ${socialLinksHtml}
+${variationsHtml}
+${youtubeVideosBlock}
 
         <section class="section exercise-detail-section" id="how-to">
           <h2 class="exercise-detail-heading">動作方法</h2>
@@ -1720,6 +1887,11 @@ function detailPageHtml(exercise, detail, relatedExercises) {
           <p class="exercise-detail-copy"><a href="../index.html">筋トレ種目一覧に戻る</a></p>
         </section>
 
+        <section class="section exercise-detail-section youtube-disclosure">
+          <h2 class="exercise-detail-heading">YouTube動画について</h2>
+          <p class="youtube-video-note">動画はYouTubeの公開情報をもとに表示しています。内容は投稿者によるもので、Biggrによる監修ではありません。</p>
+        </section>
+
         <section class="section exercise-detail-cta" id="download">
           ${renderDownloadPanel("../../../assets")}
         </section>
@@ -1767,12 +1939,12 @@ function detailPageHtml(exercise, detail, relatedExercises) {
         <p class="footer-meta">© ${new Date().getFullYear()} Biggr App</p>
       </div>
     </footer>
-  </div>
+  </div>${videoScriptHtml}
 </body>
 </html>`;
 }
 
-function detailPageHtmlEnLatPulldown(exercise) {
+function detailPageHtmlEnLatPulldown(exercise, videoData) {
   const aliases = displayAliasesForDetailEn(exercise);
   const seoTitle = "What Is Lat Pulldown? Muscles Worked, Equipment, and Variations | Biggr";
   const seoDescription =
@@ -1798,6 +1970,11 @@ function detailPageHtmlEnLatPulldown(exercise) {
       }
     ]
   });
+  const youtubeVideosHtml = renderYoutubeVideosSection(exercise, videoData, "en");
+  const youtubeVideosBlock = youtubeVideosHtml ? `\n        ${youtubeVideosHtml}\n` : "";
+  const videoScriptHtml = normalizeYoutubeVideos(videoData && videoData[exercise.slug] && videoData[exercise.slug].en).length > 0
+    ? '\n  <script src="../../../js/exercise-videos.js" defer></script>'
+    : "";
 
   return `<!DOCTYPE html>
 <html lang="en">
@@ -1845,16 +2022,19 @@ function detailPageHtmlEnLatPulldown(exercise) {
       </nav>
 
       <article class="exercise-detail-article">
-        <h1 class="exercise-page-title">${escapeHtml(exercise.nameEn)}</h1>
-        <p class="exercise-page-lead">${escapeHtml(exercise.descEn)}</p>
-        <div class="exercise-detail-media">
-          <img src="../../../assets/exercises/${escapeHtml(exercise.slug)}.png" alt="${escapeHtml(
-            exercise.nameEn
-          )} exercise image" class="exercise-detail-image" loading="lazy" decoding="async">
+        <div class="exercise-detail-intro" data-category="${escapeHtml(exercise.muscleGroup)}">
+          <div class="exercise-detail-intro-copy">
+            <h1 class="exercise-page-title">${escapeHtml(exercise.nameEn)}</h1>
+          </div>
+          <div class="exercise-detail-media">
+            <img src="../../../assets/exercises/${escapeHtml(exercise.slug)}.png" alt="${escapeHtml(
+              exercise.nameEn
+            )} exercise image" class="exercise-detail-image" loading="lazy" decoding="async">
+          </div>
         </div>
 
-        <section class="section exercise-basic-info" aria-labelledby="basic-info-title">
-          <h2 class="exercise-detail-heading" id="basic-info-title">Basic Info</h2>
+        <section class="section exercise-basic-info">
+          <p class="exercise-page-lead">${escapeHtml(exercise.descEn)}</p>
           <dl class="detail-facts">
             <div class="detail-fact">
               <dt>Primary Muscle Group</dt>
@@ -1875,7 +2055,8 @@ function detailPageHtmlEnLatPulldown(exercise) {
           </dl>
         </section>
 
-        ${renderLatPulldownVariationsEn()}
+${renderLatPulldownVariationsEn()}
+${youtubeVideosBlock}
 
         <section class="section exercise-detail-section" id="how-to">
           <h2 class="exercise-detail-heading">How to Perform</h2>
@@ -1913,6 +2094,11 @@ function detailPageHtmlEnLatPulldown(exercise) {
             <li><a class="related-item" href="../pull-up/">Pull-up<span class="related-meta">Back / Bodyweight</span></a></li>
           </ul>
           <p class="exercise-detail-copy"><a href="../index.html">Back to Exercise Library</a></p>
+        </section>
+
+        <section class="section exercise-detail-section youtube-disclosure">
+          <h2 class="exercise-detail-heading">About YouTube Videos</h2>
+          <p class="youtube-video-note">Videos are shown from public YouTube information. Their content is provided by each creator and is not reviewed by Biggr.</p>
         </section>
 
         <section class="section exercise-detail-cta" id="download">
@@ -1962,7 +2148,7 @@ function detailPageHtmlEnLatPulldown(exercise) {
         <p class="footer-meta">© ${new Date().getFullYear()} Biggr App</p>
       </div>
     </footer>
-  </div>
+  </div>${videoScriptHtml}
 </body>
 </html>`;
 }
@@ -2016,7 +2202,61 @@ function buildCategories(exercises) {
   return categories.concat(unknownCategories);
 }
 
-async function writeExercisePages(exercises, detailMap) {
+function replaceYoutubeSection(html, sectionHtml) {
+  const withoutExisting = html
+    .replace(/\n[ \t]*<section\b(?=[^>]*\bid="youtube-(?:videos|shorts)")[^>]*>[\s\S]*?<\/section>/g, "")
+    .replace(/\n[ \t]*<section class="section exercise-detail-section" id="social-videos">[\s\S]*?<\/section>/g, "")
+    .replace(/\n  <script src="\.\.\/\.\.\/\.\.\/js\/exercise-videos\.js" defer><\/script>/, "");
+  const marker = '<section class="section exercise-detail-section" id="how-to">';
+  const withSection = sectionHtml
+    ? withoutExisting.replace(marker, `${sectionHtml}\n\n        ${marker}`)
+    : withoutExisting;
+
+  if (!sectionHtml || !sectionHtml.includes('class="youtube-video-grid"') || withSection.includes("../../../js/exercise-videos.js")) {
+    return withSection;
+  }
+  return withSection.replace("</body>", '  <script src="../../../js/exercise-videos.js" defer></script>\n</body>');
+}
+
+function upgradeExistingEnglishExerciseLayout(html, exercise) {
+  const introMatch = html.match(
+    /<h1 class="exercise-page-title">([\s\S]*?)<\/h1>\s*<p class="exercise-page-lead">([\s\S]*?)<\/p>\s*(<div class="exercise-detail-media">[\s\S]*?<\/div>)/
+  );
+  if (!introMatch) return html;
+
+  const [, title, lead, media] = introMatch;
+  const intro = `<div class="exercise-detail-intro" data-category="${escapeHtml(exercise.muscleGroup)}">
+          <div class="exercise-detail-intro-copy">
+            <h1 class="exercise-page-title">${title}</h1>
+          </div>
+          ${media}
+        </div>`;
+  let updated = html.replace(introMatch[0], intro);
+  const basicInfoHeading = /<section class="section exercise-basic-info"[^>]*>\s*<h2 class="exercise-detail-heading" id="basic-info-title">Basic Info<\/h2>\s*/;
+  if (basicInfoHeading.test(updated)) {
+    updated = updated.replace(
+      basicInfoHeading,
+      `<section class="section exercise-basic-info">\n          <p class="exercise-page-lead">${lead}</p>\n`
+    );
+  }
+  return updated;
+}
+
+async function updateExistingEnglishVideoSections(exercises, videoData) {
+  for (const exercise of exercises) {
+    if (isLatPulldown(exercise)) continue;
+    const filePath = path.join(EN_EXERCISES_DIR, exercise.slug, "index.html");
+    try {
+      const html = upgradeExistingEnglishExerciseLayout(await fs.readFile(filePath, "utf8"), exercise);
+      const sectionHtml = renderYoutubeVideosSection(exercise, videoData, "en");
+      await fs.writeFile(filePath, replaceYoutubeSection(html, sectionHtml), "utf8");
+    } catch (error) {
+      if (error.code !== "ENOENT") throw error;
+    }
+  }
+}
+
+async function writeExercisePages(exercises, detailMap, videoData) {
   // Ensure removed/renamed slugs do not leave stale HTML files.
   await fs.rm(JA_EXERCISES_DIR, { recursive: true, force: true });
   await fs.mkdir(JA_EXERCISES_DIR, { recursive: true });
@@ -2031,7 +2271,7 @@ async function writeExercisePages(exercises, detailMap) {
   for (const exercise of exercises) {
     const detail = detailMap[exercise.id] || detailMap[exercise.slug] || {};
     const related = buildRelatedExercises(exercises, exercise, detail);
-    const html = detailPageHtml(exercise, detail, related);
+    const html = detailPageHtml(exercise, detail, related, videoData);
     const targetDir = path.join(JA_EXERCISES_DIR, exercise.slug);
     await fs.mkdir(targetDir, { recursive: true });
     await fs.writeFile(path.join(targetDir, "index.html"), html, "utf-8");
@@ -2039,7 +2279,7 @@ async function writeExercisePages(exercises, detailMap) {
     if (isLatPulldown(exercise)) {
       const enTargetDir = path.join(EN_EXERCISES_DIR, exercise.slug);
       await fs.mkdir(enTargetDir, { recursive: true });
-      await fs.writeFile(path.join(enTargetDir, "index.html"), detailPageHtmlEnLatPulldown(exercise), "utf-8");
+      await fs.writeFile(path.join(enTargetDir, "index.html"), detailPageHtmlEnLatPulldown(exercise, videoData), "utf-8");
     }
   }
 
@@ -2052,6 +2292,8 @@ async function writeExercisePages(exercises, detailMap) {
     await fs.mkdir(enRedirectDir, { recursive: true });
     await fs.writeFile(path.join(enRedirectDir, "index.html"), redirectPageHtml({ lang: "en", slug }), "utf-8");
   }
+
+  await updateExistingEnglishVideoSections(exercises, videoData);
 
   return categories;
 }
@@ -2144,6 +2386,7 @@ function validateExercises(exercises) {
 async function main() {
   const exercisesRaw = await readJson(path.join(DATA_DIR, "exercises.json"));
   const detailMap = await readJson(path.join(DATA_DIR, "exercise-detail-ja.json"));
+  const videoData = await readJson(YOUTUBE_VIDEOS_PATH);
 
   if (!Array.isArray(exercisesRaw) || exercisesRaw.length === 0) {
     throw new Error("data/exercises.json must be a non-empty array.");
@@ -2158,7 +2401,7 @@ async function main() {
   });
 
   const createdImageCount = await ensureExercisePlaceholderImages(exercises);
-  const categories = await writeExercisePages(exercises, detailMap);
+  const categories = await writeExercisePages(exercises, detailMap, videoData);
   await updateSitemap(exercises);
 
   const detailCount = exercises.filter((exercise) => detailMap[exercise.id] || detailMap[exercise.slug]).length;
