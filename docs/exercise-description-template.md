@@ -76,5 +76,6 @@
 
 ## 運用メモ
 - 新規種目を追加したら `scripts/generate-exercise-pages.js` を実行してHTMLを再生成する。
+- 種目別YouTube動画は `data/youtube-videos.json` で管理する。`YOUTUBE_API_KEY` を設定して `scripts/update-youtube-videos.js` を実行すると、言語別・再生回数順の動画を更新できる。
 - 生成後は `docs/sitemap.xml` が更新されるため、差分を必ず確認する。
 - 種目IDを再採番した場合は、`data/exercise-detail-ja.json` のキー（`exXXX`）が一致しているか必ず確認する。

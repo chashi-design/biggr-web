@@ -645,6 +645,11 @@ html[lang="en"] .copy-line:last-child {
   color: var(--text-strong);
 }
 
+.exercise-title-part {
+  display: inline-block;
+  white-space: nowrap;
+}
+
 .exercise-page-lead {
   width: 100%;
   max-width: none;
@@ -652,6 +657,10 @@ html[lang="en"] .copy-line:last-child {
   font-size: 1.05rem;
   line-height: 1.8;
   color: var(--text-secondary);
+}
+
+.exercise-basic-info .exercise-page-lead {
+  margin: 0 0 20px;
 }
 
 .section-header-left {
@@ -711,7 +720,7 @@ html[lang="en"] .copy-line:last-child {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 8px 14px;
+  padding: 8px 16px;
   font-size: 0.95rem;
   font-weight: 600;
   text-decoration: none;
@@ -728,9 +737,41 @@ html[lang="en"] .copy-line:last-child {
 }
 
 .exercise-tab.is-active {
-  color: var(--cta-text);
-  background: var(--cta-bg);
-  border-color: var(--cta-bg);
+  color: #fff;
+  background: var(--exercise-category-color, var(--cta-bg));
+  border-color: var(--exercise-category-color, var(--cta-bg));
+}
+
+@media (prefers-color-scheme: dark) {
+  .exercise-tab.is-active {
+    color: #111;
+  }
+}
+
+.exercise-tab[data-category="chest"] { --exercise-category-color: #FF4141; }
+.exercise-tab[data-category="shoulders"] { --exercise-category-color: #FF881F; }
+.exercise-tab[data-category="arms"] { --exercise-category-color: #21CC4C; }
+.exercise-tab[data-category="back"] { --exercise-category-color: #00D4BD; }
+.exercise-tab[data-category="legs"] { --exercise-category-color: #00C1E9; }
+.exercise-tab[data-category="abs"] { --exercise-category-color: #D237E7; }
+.exercise-tab[data-category="cardio"] { --exercise-category-color: #BC8055; }
+
+.exercise-detail-intro[data-category="chest"] { --exercise-category-color: #FF4141; }
+.exercise-detail-intro[data-category="shoulders"] { --exercise-category-color: #FF881F; }
+.exercise-detail-intro[data-category="arms"] { --exercise-category-color: #21CC4C; }
+.exercise-detail-intro[data-category="back"] { --exercise-category-color: #00D4BD; }
+.exercise-detail-intro[data-category="legs"] { --exercise-category-color: #00C1E9; }
+.exercise-detail-intro[data-category="abs"] { --exercise-category-color: #D237E7; }
+.exercise-detail-intro[data-category="cardio"] { --exercise-category-color: #BC8055; }
+
+.exercise-detail-intro[data-category] .exercise-page-title {
+  color: color-mix(in srgb, var(--exercise-category-color, #111) 45%, #111);
+}
+
+@media (prefers-color-scheme: dark) {
+  .exercise-detail-intro[data-category] .exercise-page-title {
+    color: color-mix(in srgb, var(--exercise-category-color, #fff) 58%, #fff);
+  }
 }
 
 .exercise-search-status {
@@ -781,7 +822,7 @@ html[lang="en"] .copy-line:last-child {
   gap: 10px;
   min-height: 100%;
   padding: 20px;
-  border: 1px solid var(--border-strong);
+  border: 0;
   border-radius: 24px;
   overflow: hidden;
   text-decoration: none;
@@ -801,8 +842,7 @@ html[lang="en"] .copy-line:last-child {
 .exercise-card-media {
   margin: -20px -20px 6px;
   overflow: hidden;
-  border-bottom: 1px solid var(--border);
-  border-radius: 0;
+  border-radius: 24px;
 }
 
 .exercise-card-image {
@@ -813,7 +853,7 @@ html[lang="en"] .copy-line:last-child {
 }
 
 .exercise-card-title {
-  margin: 0;
+  margin: 0 0 0 -16px;
   font-size: 1.08rem;
   line-height: 1.5;
   color: var(--text-strong);
@@ -837,14 +877,40 @@ html[lang="en"] .copy-line:last-child {
   margin-top: 32px;
 }
 
-.exercise-detail-media {
-  margin: 20px auto 0;
+.exercise-detail-intro {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 18px;
 }
 
-@media (min-width: 720px) {
+.exercise-detail-intro-copy {
+  display: flex;
+  align-items: center;
+  padding: 40px 24px;
+  background: color-mix(in srgb, var(--exercise-category-color, var(--emphasis)) 6%, var(--emphasis));
+  border-radius: 24px;
+}
+
+.exercise-detail-media {
+  margin: 0 auto;
+}
+
+@media (min-width: 721px) {
+  .exercise-detail-intro {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: stretch;
+    gap: 18px;
+  }
+
+  .exercise-detail-intro-copy {
+    aspect-ratio: 980 / 610;
+    padding: 24px;
+  }
+
   .exercise-detail-media {
-    width: 500px;
+    width: 100%;
     max-width: 100%;
+    margin: 0;
   }
 }
 
@@ -966,6 +1032,181 @@ html[lang="en"] .copy-line:last-child {
   height: 56px;
 }
 
+.youtube-video-intro {
+  margin: 0 0 18px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+.youtube-video-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.youtube-video-item[hidden] {
+  display: none;
+}
+
+.youtube-video-card {
+  min-width: 0;
+}
+
+.youtube-video-media {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  border-radius: 24px;
+  background: #111;
+}
+
+.youtube-shorts-section .youtube-video-media {
+  aspect-ratio: 9 / 16;
+}
+
+.youtube-shorts-section .youtube-video-grid {
+  grid-template-columns: repeat(2, minmax(min(180px, calc((100% - 18px) / 2)), 1fr));
+}
+
+.youtube-video-play,
+.youtube-video-frame {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.youtube-video-play {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+  background: #111;
+}
+
+.youtube-video-play::after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 62px;
+  height: 44px;
+  content: "";
+  border-radius: 12px;
+  background: #ff0033;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 4px 18px rgb(0 0 0 / 28%);
+}
+
+.youtube-video-play::before {
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  left: 50%;
+  content: "";
+  border-top: 9px solid transparent;
+  border-bottom: 9px solid transparent;
+  border-left: 15px solid #fff;
+  transform: translate(-42%, -50%);
+}
+
+.youtube-video-play:hover .youtube-video-thumbnail {
+  transform: scale(1.02);
+}
+
+.youtube-video-play:focus-visible {
+  outline: 3px solid var(--focus-ring);
+  outline-offset: -3px;
+}
+
+.youtube-video-thumbnail {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 180ms ease;
+}
+
+.youtube-video-title {
+  margin: 10px 0 2px;
+  font-size: 1rem;
+  font-weight: 650;
+  line-height: 1.5;
+  color: var(--text-strong);
+}
+
+.youtube-video-meta {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--text-subtle);
+}
+
+.youtube-video-link {
+  color: inherit;
+}
+
+.youtube-video-search-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 48px;
+  padding: 10px 20px;
+  border: 1px solid var(--border-strong);
+  border-radius: 999px;
+  color: var(--text-strong);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.youtube-video-search-link[hidden] {
+  display: none;
+}
+
+.youtube-video-search-link:hover {
+  background: var(--chip-bg);
+  text-decoration: none;
+}
+
+.youtube-video-search-link:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+
+.youtube-video-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 24px;
+}
+
+.youtube-video-more {
+  min-height: 48px;
+  padding: 10px 22px;
+  border: 1px solid var(--border-strong);
+  border-radius: 999px;
+  font: inherit;
+  font-weight: 600;
+  color: var(--text-strong);
+  cursor: pointer;
+  background: var(--surface, transparent);
+}
+
+.youtube-video-more:hover {
+  background: var(--chip-bg);
+}
+
+.youtube-video-more:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+
+.youtube-video-note {
+  margin: 18px 0 0;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--text-subtle);
+}
+
 
 .related-list {
   display: grid;
@@ -974,6 +1215,30 @@ html[lang="en"] .copy-line:last-child {
   margin: 0;
   padding: 0;
   list-style: none;
+}
+
+@media (max-width: 680px) {
+  .youtube-video-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 604px) {
+  .youtube-shorts-section .youtube-video-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 962px) {
+  .youtube-shorts-section .youtube-video-grid {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 603px) {
+  .youtube-shorts-section .youtube-video-grid {
+    grid-template-columns: repeat(2, minmax(min(180px, calc((100% - 18px) / 2)), 1fr));
+  }
 }
 
 .related-list > li {

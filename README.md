@@ -4,6 +4,26 @@ Biggr のランディングページです。
 
 静的HTMLを `docs/` に置き、そのまま配信します。ローカル確認では `docs/` をHTTPサーバーで公開します。
 
+## 種目別YouTube動画を更新する
+
+種目詳細ページのYouTube動画は `data/youtube-videos.json` にキャッシュし、ページ生成時に埋め込みます。動画は再生回数の多い順です。日本語ページは日本語、英語ページは英語の検索結果を優先します。
+
+YouTube Data API v3 のAPIキーを環境変数に設定して更新します。APIキーはHTMLやJSONには保存されません。
+
+```sh
+YOUTUBE_API_KEY=... node scripts/update-youtube-videos.js --language ja --limit 50
+YOUTUBE_API_KEY=... node scripts/update-youtube-videos.js --language en --limit 50
+node scripts/generate-exercise-pages.js
+```
+
+APIの利用上限に合わせ、未取得の種目だけを複数回に分けて更新できます。特定の種目を更新する場合は `--slug`、既存キャッシュを更新する場合は `--refresh` を付けます。
+
+```sh
+YOUTUBE_API_KEY=... node scripts/update-youtube-videos.js --slug barbell-bench-press --refresh
+```
+
+生成ページでは初めに10件を表示し、「もっと見る」で10件ずつ追加します。YouTubeプレーヤーは再生操作後に読み込むため、一覧表示だけではiframeを読み込みません。
+
 ## iPhoneからTailscale越しに開発する
 
 自宅で動いているMacへiPhoneからSSHで接続し、Codexに修正を依頼し、そのままiPhoneのSafariで確認するための手順です。
